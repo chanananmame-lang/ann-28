@@ -1,13 +1,8 @@
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'home_page_alt1_model.dart';
 export 'home_page_alt1_model.dart';
 
@@ -24,66 +19,67 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final animationsMap = {
-    'rowOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: Offset(0.0, 22.0),
-          end: Offset(0.0, 0.0),
-        ),
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: Offset(0.2, 0.0),
-          end: Offset(1.0, 1.0),
-        ),
-      ],
-    ),
-    'columnOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: Offset(0.0, 60.0),
-          end: Offset(0.0, 0.0),
-        ),
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: Offset(1.0, 0.0),
-          end: Offset(1.0, 1.0),
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => HomePageAlt1Model());
 
+    animationsMap.addAll({
+      'rowOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(0.0, 22.0),
+            end: const Offset(0.0, 0.0),
+          ),
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(0.2, 0.0),
+            end: const Offset(1.0, 1.0),
+          ),
+        ],
+      ),
+      'columnOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(0.0, 60.0),
+            end: const Offset(0.0, 0.0),
+          ),
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(1.0, 0.0),
+            end: const Offset(1.0, 1.0),
+          ),
+        ],
+      ),
+    });
     setupAnimations(
       animationsMap.values.where((anim) =>
           anim.trigger == AnimationTrigger.onActionTrigger ||
@@ -112,7 +108,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -126,12 +122,12 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                             borderRadius: BorderRadius.circular(40.0),
                           ),
                           child: Padding(
-                            padding: EdgeInsets.all(2.0),
+                            padding: const EdgeInsets.all(2.0),
                             child: Container(
                               width: 60.0,
                               height: 60.0,
                               clipBehavior: Clip.antiAlias,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
                               ),
                               child: Image.asset(
@@ -144,7 +140,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -157,11 +153,15 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                 FFLocalizations.of(context).getText(
                                   '51kawpgz' /* Welcome, */,
                                 ),
-                                style:
-                                    FlutterFlowTheme.of(context).headlineSmall,
+                                style: FlutterFlowTheme.of(context)
+                                    .headlineSmall
+                                    .override(
+                                      fontFamily: 'Lexend',
+                                      letterSpacing: 0.0,
+                                    ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     4.0, 0.0, 0.0, 0.0),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
@@ -173,19 +173,25 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                         fontFamily: 'Lexend',
                                         color: FlutterFlowTheme.of(context)
                                             .tertiary,
+                                        letterSpacing: 0.0,
                                       ),
                                 ),
                               ),
                             ],
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 4.0, 0.0, 0.0),
                             child: Text(
                               FFLocalizations.of(context).getText(
                                 '30kx6e5v' /* Your latest updates are below. */,
                               ),
-                              style: FlutterFlowTheme.of(context).bodySmall,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodySmall
+                                  .override(
+                                    fontFamily: 'Lexend',
+                                    letterSpacing: 0.0,
+                                  ),
                             ),
                           ),
                         ],
@@ -195,7 +201,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -204,14 +210,17 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                       width: MediaQuery.sizeOf(context).width * 0.92,
                       height: 190.0,
                       decoration: BoxDecoration(
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                             blurRadius: 6.0,
                             color: Color(0x4B1A1F24),
-                            offset: Offset(0.0, 2.0),
+                            offset: Offset(
+                              0.0,
+                              2.0,
+                            ),
                           )
                         ],
-                        gradient: LinearGradient(
+                        gradient: const LinearGradient(
                           colors: [Color(0xFF00968A), Color(0xFFF2A384)],
                           stops: [0.0, 1.0],
                           begin: AlignmentDirectional(0.94, -1.0),
@@ -223,7 +232,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 20.0, 20.0, 20.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -238,7 +247,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 20.0, 36.0, 20.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -253,13 +262,14 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                         fontFamily: 'Lexend',
                                         color: FlutterFlowTheme.of(context)
                                             .textColor,
+                                        letterSpacing: 0.0,
                                       ),
                                 ),
                               ],
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 20.0, 8.0, 20.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -275,13 +285,14 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                         color: FlutterFlowTheme.of(context)
                                             .textColor,
                                         fontSize: 32.0,
+                                        letterSpacing: 0.0,
                                       ),
                                 ),
                               ],
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 20.0, 20.0, 20.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -297,6 +308,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                         fontFamily: 'Roboto Mono',
                                         color: FlutterFlowTheme.of(context)
                                             .textColor,
+                                        letterSpacing: 0.0,
                                       ),
                                 ),
                                 Text(
@@ -309,6 +321,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                         fontFamily: 'Roboto Mono',
                                         color: FlutterFlowTheme.of(context)
                                             .textColor,
+                                        letterSpacing: 0.0,
                                       ),
                                 ),
                               ],
@@ -321,19 +334,22 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                 ).animateOnPageLoad(animationsMap['rowOnPageLoadAnimation']!),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                 child: Container(
                   width: MediaQuery.sizeOf(context).width * 1.0,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
                         blurRadius: 4.0,
                         color: Color(0x34000000),
-                        offset: Offset(0.0, -2.0),
+                        offset: Offset(
+                          0.0,
+                          -2.0,
+                        ),
                       )
                     ],
-                    borderRadius: BorderRadius.only(
+                    borderRadius: const BorderRadius.only(
                       bottomLeft: Radius.circular(0.0),
                       bottomRight: Radius.circular(0.0),
                       topLeft: Radius.circular(16.0),
@@ -344,7 +360,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             20.0, 16.0, 20.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -353,13 +369,18 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                               FFLocalizations.of(context).getText(
                                 'y7zomzzp' /* Quick Service */,
                               ),
-                              style: FlutterFlowTheme.of(context).bodySmall,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodySmall
+                                  .override(
+                                    fontFamily: 'Lexend',
+                                    letterSpacing: 0.0,
+                                  ),
                             ),
                           ],
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 12.0, 16.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -384,14 +405,18 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                     size: 40.0,
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 8.0, 0.0, 0.0),
                                     child: Text(
                                       FFLocalizations.of(context).getText(
                                         'rfozud9v' /* Transfer */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Lexend',
+                                            letterSpacing: 0.0,
+                                          ),
                                     ),
                                   ),
                                 ],
@@ -416,14 +441,18 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                     size: 40.0,
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 8.0, 0.0, 0.0),
                                     child: Text(
                                       FFLocalizations.of(context).getText(
                                         'pcrarg0a' /* Activity */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Lexend',
+                                            letterSpacing: 0.0,
+                                          ),
                                     ),
                                   ),
                                 ],
@@ -448,14 +477,18 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                     size: 40.0,
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 8.0, 0.0, 0.0),
                                     child: Text(
                                       FFLocalizations.of(context).getText(
                                         'zmjsfzgg' /* My Bank */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Lexend',
+                                            letterSpacing: 0.0,
+                                          ),
                                     ),
                                   ),
                                 ],
@@ -465,7 +498,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             20.0, 12.0, 20.0, 12.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -474,14 +507,19 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                               FFLocalizations.of(context).getText(
                                 'dfjtbkbo' /* Transaction */,
                               ),
-                              style: FlutterFlowTheme.of(context).bodySmall,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodySmall
+                                  .override(
+                                    fontFamily: 'Lexend',
+                                    letterSpacing: 0.0,
+                                  ),
                             ),
                           ],
                         ),
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
                         child: Container(
                           width: MediaQuery.sizeOf(context).width * 0.92,
                           height: 70.0,
@@ -494,16 +532,16 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     8.0, 0.0, 0.0, 0.0),
                                 child: Card(
                                   clipBehavior: Clip.antiAliasWithSaveLayer,
-                                  color: Color(0x6639D2C0),
+                                  color: const Color(0x6639D2C0),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(40.0),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsets.all(8.0),
+                                    padding: const EdgeInsets.all(8.0),
                                     child: Icon(
                                       Icons.monetization_on_rounded,
                                       color:
@@ -515,7 +553,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       12.0, 0.0, 0.0, 0.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -528,17 +566,25 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                           'g7t9krj7' /* Go Far Rewards */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
-                                            .headlineSmall,
+                                            .headlineSmall
+                                            .override(
+                                              fontFamily: 'Lexend',
+                                              letterSpacing: 0.0,
+                                            ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 4.0, 0.0, 0.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
                                             'vupu5y5p' /* Income */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyMedium,
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Lexend',
+                                                letterSpacing: 0.0,
+                                              ),
                                         ),
                                       ),
                                     ],
@@ -546,7 +592,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     12.0, 0.0, 12.0, 0.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -564,10 +610,11 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                             fontFamily: 'Lexend',
                                             color: FlutterFlowTheme.of(context)
                                                 .tertiary,
+                                            letterSpacing: 0.0,
                                           ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 4.0, 0.0, 0.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
@@ -579,6 +626,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                             .override(
                                               fontFamily: 'Lexend',
                                               fontSize: 12.0,
+                                              letterSpacing: 0.0,
                                             ),
                                       ),
                                     ),
@@ -591,7 +639,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
                         child: Container(
                           width: MediaQuery.sizeOf(context).width * 0.92,
                           height: 70.0,
@@ -604,16 +652,16 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     8.0, 0.0, 0.0, 0.0),
                                 child: Card(
                                   clipBehavior: Clip.antiAliasWithSaveLayer,
-                                  color: Color(0x6639D2C0),
+                                  color: const Color(0x6639D2C0),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(40.0),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsets.all(8.0),
+                                    padding: const EdgeInsets.all(8.0),
                                     child: Icon(
                                       Icons.monetization_on_rounded,
                                       color:
@@ -625,7 +673,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       12.0, 0.0, 0.0, 0.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -638,17 +686,25 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                           '2thn73jc' /* Go Far Rewards */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
-                                            .headlineSmall,
+                                            .headlineSmall
+                                            .override(
+                                              fontFamily: 'Lexend',
+                                              letterSpacing: 0.0,
+                                            ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 4.0, 0.0, 0.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
                                             '1fjdiibo' /* Income */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyMedium,
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Lexend',
+                                                letterSpacing: 0.0,
+                                              ),
                                         ),
                                       ),
                                     ],
@@ -656,7 +712,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     12.0, 0.0, 12.0, 0.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -674,10 +730,11 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                             fontFamily: 'Lexend',
                                             color: FlutterFlowTheme.of(context)
                                                 .tertiary,
+                                            letterSpacing: 0.0,
                                           ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 4.0, 0.0, 0.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
@@ -689,6 +746,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                             .override(
                                               fontFamily: 'Lexend',
                                               fontSize: 12.0,
+                                              letterSpacing: 0.0,
                                             ),
                                       ),
                                     ),
@@ -701,7 +759,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
                         child: Container(
                           width: MediaQuery.sizeOf(context).width * 0.92,
                           height: 70.0,
@@ -714,16 +772,16 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     8.0, 0.0, 0.0, 0.0),
                                 child: Card(
                                   clipBehavior: Clip.antiAliasWithSaveLayer,
-                                  color: Color(0x6639D2C0),
+                                  color: const Color(0x6639D2C0),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(40.0),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsets.all(8.0),
+                                    padding: const EdgeInsets.all(8.0),
                                     child: Icon(
                                       Icons.monetization_on_rounded,
                                       color:
@@ -735,7 +793,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       12.0, 0.0, 0.0, 0.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -748,17 +806,25 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                           '8t6ddwco' /* Go Far Rewards */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
-                                            .headlineSmall,
+                                            .headlineSmall
+                                            .override(
+                                              fontFamily: 'Lexend',
+                                              letterSpacing: 0.0,
+                                            ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 4.0, 0.0, 0.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
                                             'td15kjsa' /* Income */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyMedium,
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Lexend',
+                                                letterSpacing: 0.0,
+                                              ),
                                         ),
                                       ),
                                     ],
@@ -766,7 +832,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     12.0, 0.0, 12.0, 0.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -784,10 +850,11 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                             fontFamily: 'Lexend',
                                             color: FlutterFlowTheme.of(context)
                                                 .tertiary,
+                                            letterSpacing: 0.0,
                                           ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 4.0, 0.0, 0.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
@@ -799,6 +866,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                             .override(
                                               fontFamily: 'Lexend',
                                               fontSize: 12.0,
+                                              letterSpacing: 0.0,
                                             ),
                                       ),
                                     ),
@@ -811,7 +879,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
                         child: Container(
                           width: MediaQuery.sizeOf(context).width * 0.92,
                           height: 70.0,
@@ -824,16 +892,16 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     8.0, 0.0, 0.0, 0.0),
                                 child: Card(
                                   clipBehavior: Clip.antiAliasWithSaveLayer,
-                                  color: Color(0x6639D2C0),
+                                  color: const Color(0x6639D2C0),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(40.0),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsets.all(8.0),
+                                    padding: const EdgeInsets.all(8.0),
                                     child: Icon(
                                       Icons.monetization_on_rounded,
                                       color:
@@ -845,7 +913,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       12.0, 0.0, 0.0, 0.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -858,17 +926,25 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                           '8pdmehj2' /* Go Far Rewards */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
-                                            .headlineSmall,
+                                            .headlineSmall
+                                            .override(
+                                              fontFamily: 'Lexend',
+                                              letterSpacing: 0.0,
+                                            ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 4.0, 0.0, 0.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
                                             'krrhjgc4' /* Income */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyMedium,
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Lexend',
+                                                letterSpacing: 0.0,
+                                              ),
                                         ),
                                       ),
                                     ],
@@ -876,7 +952,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     12.0, 0.0, 12.0, 0.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -894,10 +970,11 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                             fontFamily: 'Lexend',
                                             color: FlutterFlowTheme.of(context)
                                                 .tertiary,
+                                            letterSpacing: 0.0,
                                           ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 4.0, 0.0, 0.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
@@ -909,6 +986,7 @@ class _HomePageAlt1WidgetState extends State<HomePageAlt1Widget>
                                             .override(
                                               fontFamily: 'Lexend',
                                               fontSize: 12.0,
+                                              letterSpacing: 0.0,
                                             ),
                                       ),
                                     ),

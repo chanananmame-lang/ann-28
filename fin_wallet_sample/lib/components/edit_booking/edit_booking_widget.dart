@@ -6,12 +6,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'edit_booking_model.dart';
 export 'edit_booking_model.dart';
 
@@ -41,11 +36,11 @@ class _EditBookingWidgetState extends State<EditBookingWidget> {
     super.initState();
     _model = createModel(context, () => EditBookingModel());
 
-    _model.personsNameController ??=
+    _model.personsNameTextController ??=
         TextEditingController(text: widget.userAppointment?.appointmentName);
     _model.personsNameFocusNode ??= FocusNode();
 
-    _model.problemDescriptionController ??= TextEditingController(
+    _model.problemDescriptionTextController ??= TextEditingController(
         text: widget.userAppointment?.appointmentDescription);
     _model.problemDescriptionFocusNode ??= FocusNode();
   }
@@ -66,26 +61,29 @@ class _EditBookingWidgetState extends State<EditBookingWidget> {
         color: FlutterFlowTheme.of(context).darkBackground,
       ),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Divider(
+              const Divider(
                 thickness: 3.0,
                 indent: 150.0,
                 endIndent: 150.0,
                 color: Color(0xFF465056),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                 child: Text(
                   FFLocalizations.of(context).getText(
                     '6j668hma' /* Edit Appointment */,
                   ),
-                  style: FlutterFlowTheme.of(context).headlineSmall,
+                  style: FlutterFlowTheme.of(context).headlineSmall.override(
+                        fontFamily: 'Lexend',
+                        letterSpacing: 0.0,
+                      ),
                 ),
               ),
               Row(
@@ -94,47 +92,58 @@ class _EditBookingWidgetState extends State<EditBookingWidget> {
                   Expanded(
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           'cbp936ta' /* Edit the fields below in order... */,
                         ),
-                        style: FlutterFlowTheme.of(context).bodyMedium,
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Lexend',
+                              letterSpacing: 0.0,
+                            ),
                       ),
                     ),
                   ),
                 ],
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                 child: Text(
                   FFLocalizations.of(context).getText(
                     '6btfslje' /* Emails will be sent to: */,
                   ),
-                  style: FlutterFlowTheme.of(context).bodyMedium,
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontFamily: 'Lexend',
+                        letterSpacing: 0.0,
+                      ),
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 12.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 12.0),
                 child: Text(
                   currentUserEmail,
                   style: FlutterFlowTheme.of(context).titleMedium.override(
                         fontFamily: 'Lexend',
                         color: FlutterFlowTheme.of(context).primary,
+                        letterSpacing: 0.0,
                       ),
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                 child: TextFormField(
-                  controller: _model.personsNameController,
+                  controller: _model.personsNameTextController,
                   focusNode: _model.personsNameFocusNode,
                   obscureText: false,
                   decoration: InputDecoration(
                     labelText: FFLocalizations.of(context).getText(
                       'mhko6q8p' /* Booking For */,
                     ),
-                    labelStyle: FlutterFlowTheme.of(context).bodyMedium,
+                    labelStyle:
+                        FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Lexend',
+                              letterSpacing: 0.0,
+                            ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
                         color: FlutterFlowTheme.of(context).background,
@@ -143,21 +152,21 @@ class _EditBookingWidgetState extends State<EditBookingWidget> {
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Color(0x00000000),
                         width: 2.0,
                       ),
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                     errorBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Color(0x00000000),
                         width: 2.0,
                       ),
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                     focusedErrorBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Color(0x00000000),
                         width: 2.0,
                       ),
@@ -166,19 +175,20 @@ class _EditBookingWidgetState extends State<EditBookingWidget> {
                     filled: true,
                     fillColor: FlutterFlowTheme.of(context).darkBackground,
                     contentPadding:
-                        EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 0.0, 24.0),
+                        const EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 0.0, 24.0),
                   ),
                   style: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily: 'Lexend',
                         color: FlutterFlowTheme.of(context).textColor,
+                        letterSpacing: 0.0,
                         fontWeight: FontWeight.bold,
                       ),
-                  validator: _model.personsNameControllerValidator
+                  validator: _model.personsNameTextControllerValidator
                       .asValidator(context),
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                 child: FlutterFlowDropDown<String>(
                   controller: _model.dropDownValueController ??=
                       FormFieldController<String>(
@@ -206,6 +216,7 @@ class _EditBookingWidgetState extends State<EditBookingWidget> {
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily: 'Lexend',
                         color: FlutterFlowTheme.of(context).textColor,
+                        letterSpacing: 0.0,
                       ),
                   icon: Icon(
                     Icons.keyboard_arrow_down_rounded,
@@ -217,23 +228,28 @@ class _EditBookingWidgetState extends State<EditBookingWidget> {
                   borderColor: FlutterFlowTheme.of(context).background,
                   borderWidth: 2.0,
                   borderRadius: 8.0,
-                  margin: EdgeInsetsDirectional.fromSTEB(20.0, 4.0, 16.0, 4.0),
+                  margin: const EdgeInsetsDirectional.fromSTEB(20.0, 4.0, 16.0, 4.0),
                   hidesUnderline: true,
                   isSearchable: false,
                   isMultiSelect: false,
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                 child: TextFormField(
-                  controller: _model.problemDescriptionController,
+                  controller: _model.problemDescriptionTextController,
                   focusNode: _model.problemDescriptionFocusNode,
                   obscureText: false,
                   decoration: InputDecoration(
+                    isDense: false,
                     labelText: FFLocalizations.of(context).getText(
                       'oy6qvd33' /* What's the problem? */,
                     ),
-                    labelStyle: FlutterFlowTheme.of(context).bodyMedium,
+                    labelStyle:
+                        FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Lexend',
+                              letterSpacing: 0.0,
+                            ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
                         color: FlutterFlowTheme.of(context).background,
@@ -242,21 +258,21 @@ class _EditBookingWidgetState extends State<EditBookingWidget> {
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Color(0x00000000),
                         width: 2.0,
                       ),
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                     errorBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Color(0x00000000),
                         width: 2.0,
                       ),
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                     focusedErrorBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Color(0x00000000),
                         width: 2.0,
                       ),
@@ -265,43 +281,44 @@ class _EditBookingWidgetState extends State<EditBookingWidget> {
                     filled: true,
                     fillColor: FlutterFlowTheme.of(context).darkBackground,
                     contentPadding:
-                        EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 0.0, 24.0),
+                        const EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 0.0, 24.0),
                   ),
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Lexend',
                         color: FlutterFlowTheme.of(context).textColor,
+                        letterSpacing: 0.0,
                       ),
                   textAlign: TextAlign.start,
                   maxLines: 8,
                   keyboardType: TextInputType.multiline,
-                  validator: _model.problemDescriptionControllerValidator
+                  validator: _model.problemDescriptionTextControllerValidator
                       .asValidator(context),
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                 child: InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () async {
-                    await DatePicker.showDatePicker(
-                      context,
-                      showTitleActions: true,
-                      onConfirm: (date) {
-                        safeSetState(() {
-                          _model.datePicked = date;
-                        });
-                      },
-                      currentTime: getCurrentTimestamp,
-                      minTime: DateTime(0, 0, 0),
-                      locale: LocaleType.values.firstWhere(
-                        (l) =>
-                            l.name == FFLocalizations.of(context).languageCode,
-                        orElse: () => LocaleType.en,
-                      ),
+                    final datePickedDate = await showDatePicker(
+                      context: context,
+                      initialDate: getCurrentTimestamp,
+                      firstDate: getCurrentTimestamp,
+                      lastDate: DateTime(2050),
                     );
+
+                    if (datePickedDate != null) {
+                      safeSetState(() {
+                        _model.datePicked = DateTime(
+                          datePickedDate.year,
+                          datePickedDate.month,
+                          datePickedDate.day,
+                        );
+                      });
+                    }
                   },
                   child: Material(
                     color: Colors.transparent,
@@ -330,7 +347,7 @@ class _EditBookingWidgetState extends State<EditBookingWidget> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       20.0, 0.0, 0.0, 0.0),
                                   child: Text(
                                     FFLocalizations.of(context).getText(
@@ -341,15 +358,16 @@ class _EditBookingWidgetState extends State<EditBookingWidget> {
                                         .override(
                                           fontFamily: 'Lexend',
                                           fontSize: 12.0,
+                                          letterSpacing: 0.0,
                                         ),
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       20.0, 4.0, 0.0, 0.0),
                                   child: Text(
                                     dateTimeFormat(
-                                      'MMMMEEEEd',
+                                      "MMMMEEEEd",
                                       widget.userAppointment!.appointmentTime!,
                                       locale: FFLocalizations.of(context)
                                           .languageCode,
@@ -360,6 +378,7 @@ class _EditBookingWidgetState extends State<EditBookingWidget> {
                                           fontFamily: 'Lexend',
                                           color: FlutterFlowTheme.of(context)
                                               .tertiary,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.w600,
                                         ),
                                   ),
@@ -368,7 +387,7 @@ class _EditBookingWidgetState extends State<EditBookingWidget> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 8.0, 0.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
@@ -398,7 +417,7 @@ class _EditBookingWidgetState extends State<EditBookingWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 20.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 20.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -415,18 +434,19 @@ class _EditBookingWidgetState extends State<EditBookingWidget> {
                         width: 100.0,
                         height: 50.0,
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).background,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
                                   fontFamily: 'Lexend',
                                   color: Colors.white,
+                                  letterSpacing: 0.0,
                                   fontWeight: FontWeight.w500,
                                 ),
                         elevation: 0.0,
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Colors.transparent,
                           width: 1.0,
                         ),
@@ -437,10 +457,11 @@ class _EditBookingWidgetState extends State<EditBookingWidget> {
                       onPressed: () async {
                         await widget.userAppointment!.reference
                             .update(createAppointmentsRecordData(
-                          appointmentName: _model.personsNameController.text,
+                          appointmentName:
+                              _model.personsNameTextController.text,
                           appointmentType: _model.dropDownValue,
                           appointmentDescription:
-                              _model.problemDescriptionController.text,
+                              _model.problemDescriptionTextController.text,
                           appointmentTime: _model.datePicked,
                         ));
                         context.pop();
@@ -452,18 +473,19 @@ class _EditBookingWidgetState extends State<EditBookingWidget> {
                         width: 150.0,
                         height: 50.0,
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).primary,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
                                   fontFamily: 'Lexend',
                                   color: Colors.white,
+                                  letterSpacing: 0.0,
                                   fontWeight: FontWeight.w500,
                                 ),
                         elevation: 3.0,
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Colors.transparent,
                           width: 1.0,
                         ),

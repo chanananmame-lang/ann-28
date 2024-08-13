@@ -5,8 +5,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'notifications_settings_model.dart';
 export 'notifications_settings_model.dart';
 
@@ -63,9 +61,12 @@ class _NotificationsSettingsWidgetState
           FFLocalizations.of(context).getText(
             'sc4ff4ce' /* Notifications */,
           ),
-          style: FlutterFlowTheme.of(context).headlineSmall,
+          style: FlutterFlowTheme.of(context).headlineSmall.override(
+                fontFamily: 'Lexend',
+                letterSpacing: 0.0,
+              ),
         ),
-        actions: [],
+        actions: const [],
         centerTitle: false,
         elevation: 0.0,
       ),
@@ -96,12 +97,14 @@ class _NotificationsSettingsWidgetState
                 ),
               );
             }
+
             final columnUsersRecord = snapshot.data!;
+
             return Column(
               mainAxisSize: MainAxisSize.max,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -110,30 +113,49 @@ class _NotificationsSettingsWidgetState
                           FFLocalizations.of(context).getText(
                             'r72zvrv5' /* Choose what notifcations you w... */,
                           ),
-                          style: FlutterFlowTheme.of(context).bodySmall,
+                          style:
+                              FlutterFlowTheme.of(context).bodySmall.override(
+                                    fontFamily: 'Lexend',
+                                    letterSpacing: 0.0,
+                                  ),
                         ),
                       ),
                     ],
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                   child: SwitchListTile.adaptive(
-                    value: _model.switchListTileValue1 ??= true,
+                    value: _model.pushNotificationsValue ??=
+                        columnUsersRecord.receivePushNotifications,
                     onChanged: (newValue) async {
-                      setState(() => _model.switchListTileValue1 = newValue!);
+                      setState(() => _model.pushNotificationsValue = newValue);
+                      if (newValue) {
+                        await currentUserReference!
+                            .update(createUsersRecordData(
+                          receivePushNotifications:
+                              _model.pushNotificationsValue,
+                        ));
+                      }
                     },
                     title: Text(
                       FFLocalizations.of(context).getText(
                         'gjygkr0n' /* Push Notifications */,
                       ),
-                      style: FlutterFlowTheme.of(context).headlineSmall,
+                      style:
+                          FlutterFlowTheme.of(context).headlineSmall.override(
+                                fontFamily: 'Lexend',
+                                letterSpacing: 0.0,
+                              ),
                     ),
                     subtitle: Text(
                       FFLocalizations.of(context).getText(
                         '3y3yhxbk' /* Receive Push notifications fro... */,
                       ),
-                      style: FlutterFlowTheme.of(context).bodySmall,
+                      style: FlutterFlowTheme.of(context).bodySmall.override(
+                            fontFamily: 'Lexend',
+                            letterSpacing: 0.0,
+                          ),
                     ),
                     tileColor: FlutterFlowTheme.of(context).secondaryBackground,
                     activeColor: FlutterFlowTheme.of(context).tertiary,
@@ -141,25 +163,38 @@ class _NotificationsSettingsWidgetState
                     dense: false,
                     controlAffinity: ListTileControlAffinity.trailing,
                     contentPadding:
-                        EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 12.0),
+                        const EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 12.0),
                   ),
                 ),
                 SwitchListTile.adaptive(
-                  value: _model.switchListTileValue2 ??= true,
+                  value: _model.emailNotificationsValue ??=
+                      columnUsersRecord.receiveEmailNotifications,
                   onChanged: (newValue) async {
-                    setState(() => _model.switchListTileValue2 = newValue!);
+                    setState(() => _model.emailNotificationsValue = newValue);
+                    if (newValue) {
+                      await currentUserReference!.update(createUsersRecordData(
+                        receiveEmailNotifications:
+                            _model.emailNotificationsValue,
+                      ));
+                    }
                   },
                   title: Text(
                     FFLocalizations.of(context).getText(
                       '1ytebj35' /* Email Notifications */,
                     ),
-                    style: FlutterFlowTheme.of(context).headlineSmall,
+                    style: FlutterFlowTheme.of(context).headlineSmall.override(
+                          fontFamily: 'Lexend',
+                          letterSpacing: 0.0,
+                        ),
                   ),
                   subtitle: Text(
                     FFLocalizations.of(context).getText(
                       '9lvh5nst' /* Receive email notifications fr... */,
                     ),
-                    style: FlutterFlowTheme.of(context).bodySmall,
+                    style: FlutterFlowTheme.of(context).bodySmall.override(
+                          fontFamily: 'Lexend',
+                          letterSpacing: 0.0,
+                        ),
                   ),
                   tileColor: FlutterFlowTheme.of(context).secondaryBackground,
                   activeColor: FlutterFlowTheme.of(context).tertiary,
@@ -167,24 +202,36 @@ class _NotificationsSettingsWidgetState
                   dense: false,
                   controlAffinity: ListTileControlAffinity.trailing,
                   contentPadding:
-                      EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 12.0),
+                      const EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 12.0),
                 ),
                 SwitchListTile.adaptive(
-                  value: _model.switchListTileValue3 ??= true,
+                  value: _model.locationTrackingValue ??=
+                      columnUsersRecord.locationServices,
                   onChanged: (newValue) async {
-                    setState(() => _model.switchListTileValue3 = newValue!);
+                    setState(() => _model.locationTrackingValue = newValue);
+                    if (newValue) {
+                      await currentUserReference!.update(createUsersRecordData(
+                        locationServices: _model.locationTrackingValue,
+                      ));
+                    }
                   },
                   title: Text(
                     FFLocalizations.of(context).getText(
                       '69d2j74u' /* Location Services */,
                     ),
-                    style: FlutterFlowTheme.of(context).headlineSmall,
+                    style: FlutterFlowTheme.of(context).headlineSmall.override(
+                          fontFamily: 'Lexend',
+                          letterSpacing: 0.0,
+                        ),
                   ),
                   subtitle: Text(
                     FFLocalizations.of(context).getText(
                       '3k8cuv0d' /* Allow us to track your locatio... */,
                     ),
-                    style: FlutterFlowTheme.of(context).bodySmall,
+                    style: FlutterFlowTheme.of(context).bodySmall.override(
+                          fontFamily: 'Lexend',
+                          letterSpacing: 0.0,
+                        ),
                   ),
                   tileColor: FlutterFlowTheme.of(context).secondaryBackground,
                   activeColor: FlutterFlowTheme.of(context).tertiary,
@@ -192,10 +239,10 @@ class _NotificationsSettingsWidgetState
                   dense: false,
                   controlAffinity: ListTileControlAffinity.trailing,
                   contentPadding:
-                      EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 12.0),
+                      const EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 12.0),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                   child: FFButtonWidget(
                     onPressed: () async {
                       context.pop();
@@ -207,17 +254,18 @@ class _NotificationsSettingsWidgetState
                       width: 190.0,
                       height: 50.0,
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       iconPadding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).primary,
                       textStyle:
                           FlutterFlowTheme.of(context).titleSmall.override(
                                 fontFamily: 'Lexend',
                                 color: FlutterFlowTheme.of(context).textColor,
+                                letterSpacing: 0.0,
                               ),
                       elevation: 3.0,
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Colors.transparent,
                         width: 1.0,
                       ),

@@ -3,13 +3,9 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'm_y_budgets_model.dart';
 export 'm_y_budgets_model.dart';
 
@@ -26,92 +22,93 @@ class _MYBudgetsWidgetState extends State<MYBudgetsWidget>
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final animationsMap = {
-    'containerOnPageLoadAnimation1': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 200.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 200.ms,
-          begin: Offset(0.0, 49.0),
-          end: Offset(0.0, 0.0),
-        ),
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 200.ms,
-          begin: Offset(1.0, 0.0),
-          end: Offset(1.0, 1.0),
-        ),
-      ],
-    ),
-    'containerOnPageLoadAnimation2': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 50.ms,
-          duration: 200.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 50.ms,
-          duration: 200.ms,
-          begin: Offset(0.0, 51.0),
-          end: Offset(0.0, 0.0),
-        ),
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 50.ms,
-          duration: 200.ms,
-          begin: Offset(1.0, 0.0),
-          end: Offset(1.0, 1.0),
-        ),
-      ],
-    ),
-    'listViewOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 90.ms,
-          duration: 150.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 90.ms,
-          duration: 150.ms,
-          begin: Offset(0.0, 26.0),
-          end: Offset(0.0, 0.0),
-        ),
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 90.ms,
-          duration: 150.ms,
-          begin: Offset(1.0, 0.0),
-          end: Offset(1.0, 1.0),
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => MYBudgetsModel());
 
+    animationsMap.addAll({
+      'containerOnPageLoadAnimation1': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 200.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 200.0.ms,
+            begin: const Offset(0.0, 49.0),
+            end: const Offset(0.0, 0.0),
+          ),
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 200.0.ms,
+            begin: const Offset(1.0, 0.0),
+            end: const Offset(1.0, 1.0),
+          ),
+        ],
+      ),
+      'containerOnPageLoadAnimation2': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 50.0.ms,
+            duration: 200.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 50.0.ms,
+            duration: 200.0.ms,
+            begin: const Offset(0.0, 51.0),
+            end: const Offset(0.0, 0.0),
+          ),
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 50.0.ms,
+            duration: 200.0.ms,
+            begin: const Offset(1.0, 0.0),
+            end: const Offset(1.0, 1.0),
+          ),
+        ],
+      ),
+      'listViewOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 90.0.ms,
+            duration: 150.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 90.0.ms,
+            duration: 150.0.ms,
+            begin: const Offset(0.0, 26.0),
+            end: const Offset(0.0, 0.0),
+          ),
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 90.0.ms,
+            duration: 150.0.ms,
+            begin: const Offset(1.0, 0.0),
+            end: const Offset(1.0, 1.0),
+          ),
+        ],
+      ),
+    });
     setupAnimations(
       animationsMap.values.where((anim) =>
           anim.trigger == AnimationTrigger.onActionTrigger ||
@@ -137,7 +134,7 @@ class _MYBudgetsWidgetState extends State<MYBudgetsWidget>
           context.pushNamed(
             'createBudget',
             extra: <String, dynamic>{
-              kTransitionInfoKey: TransitionInfo(
+              kTransitionInfoKey: const TransitionInfo(
                 hasTransition: true,
                 transitionType: PageTransitionType.bottomToTop,
                 duration: Duration(milliseconds: 220),
@@ -160,9 +157,12 @@ class _MYBudgetsWidgetState extends State<MYBudgetsWidget>
           FFLocalizations.of(context).getText(
             'cd0zp71n' /* My Budget */,
           ),
-          style: FlutterFlowTheme.of(context).displaySmall,
+          style: FlutterFlowTheme.of(context).displaySmall.override(
+                fontFamily: 'Lexend',
+                letterSpacing: 0.0,
+              ),
         ),
-        actions: [],
+        actions: const [],
         centerTitle: false,
         elevation: 0.0,
       ),
@@ -174,11 +174,12 @@ class _MYBudgetsWidgetState extends State<MYBudgetsWidget>
             Expanded(
               child: ListView(
                 padding: EdgeInsets.zero,
+                primary: false,
                 scrollDirection: Axis.vertical,
                 children: [
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 16.0),
+                        const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 16.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -189,17 +190,20 @@ class _MYBudgetsWidgetState extends State<MYBudgetsWidget>
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
-                            boxShadow: [
+                            boxShadow: const [
                               BoxShadow(
                                 blurRadius: 4.0,
                                 color: Color(0x3F14181B),
-                                offset: Offset(0.0, 3.0),
+                                offset: Offset(
+                                  0.0,
+                                  3.0,
+                                ),
                               )
                             ],
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           child: Padding(
-                            padding: EdgeInsets.all(12.0),
+                            padding: const EdgeInsets.all(12.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -210,10 +214,15 @@ class _MYBudgetsWidgetState extends State<MYBudgetsWidget>
                                     'hfwbiivj' /* Income */,
                                   ),
                                   textAlign: TextAlign.start,
-                                  style: FlutterFlowTheme.of(context).bodySmall,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodySmall
+                                      .override(
+                                        fontFamily: 'Lexend',
+                                        letterSpacing: 0.0,
+                                      ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 8.0, 0.0, 12.0),
                                   child: Text(
                                     FFLocalizations.of(context).getText(
@@ -227,6 +236,7 @@ class _MYBudgetsWidgetState extends State<MYBudgetsWidget>
                                           color: FlutterFlowTheme.of(context)
                                               .tertiary,
                                           fontSize: 32.0,
+                                          letterSpacing: 0.0,
                                         ),
                                   ),
                                 ),
@@ -234,7 +244,7 @@ class _MYBudgetsWidgetState extends State<MYBudgetsWidget>
                                   width: 80.0,
                                   height: 28.0,
                                   decoration: BoxDecoration(
-                                    color: Color(0x4D39D2C0),
+                                    color: const Color(0x4D39D2C0),
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
                                   child: Row(
@@ -253,6 +263,7 @@ class _MYBudgetsWidgetState extends State<MYBudgetsWidget>
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .tertiary,
+                                              letterSpacing: 0.0,
                                             ),
                                       ),
                                       Icon(
@@ -275,17 +286,20 @@ class _MYBudgetsWidgetState extends State<MYBudgetsWidget>
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
-                            boxShadow: [
+                            boxShadow: const [
                               BoxShadow(
                                 blurRadius: 4.0,
                                 color: Color(0x3F14181B),
-                                offset: Offset(0.0, 3.0),
+                                offset: Offset(
+                                  0.0,
+                                  3.0,
+                                ),
                               )
                             ],
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           child: Padding(
-                            padding: EdgeInsets.all(12.0),
+                            padding: const EdgeInsets.all(12.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -296,10 +310,15 @@ class _MYBudgetsWidgetState extends State<MYBudgetsWidget>
                                     'wcsc04wg' /* Spending */,
                                   ),
                                   textAlign: TextAlign.start,
-                                  style: FlutterFlowTheme.of(context).bodySmall,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodySmall
+                                      .override(
+                                        fontFamily: 'Lexend',
+                                        letterSpacing: 0.0,
+                                      ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 8.0, 0.0, 12.0),
                                   child: Text(
                                     FFLocalizations.of(context).getText(
@@ -313,6 +332,7 @@ class _MYBudgetsWidgetState extends State<MYBudgetsWidget>
                                           color: FlutterFlowTheme.of(context)
                                               .errorRed,
                                           fontSize: 32.0,
+                                          letterSpacing: 0.0,
                                         ),
                                   ),
                                 ),
@@ -320,7 +340,7 @@ class _MYBudgetsWidgetState extends State<MYBudgetsWidget>
                                   width: 80.0,
                                   height: 28.0,
                                   decoration: BoxDecoration(
-                                    color: Color(0x9AF06A6A),
+                                    color: const Color(0x9AF06A6A),
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
                                   child: Row(
@@ -339,6 +359,7 @@ class _MYBudgetsWidgetState extends State<MYBudgetsWidget>
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .errorRed,
+                                              letterSpacing: 0.0,
                                             ),
                                       ),
                                       Icon(
@@ -390,6 +411,7 @@ class _MYBudgetsWidgetState extends State<MYBudgetsWidget>
                           ),
                         );
                       }
+
                       return ListView.builder(
                         padding: EdgeInsets.zero,
                         shrinkWrap: true,
@@ -399,7 +421,7 @@ class _MYBudgetsWidgetState extends State<MYBudgetsWidget>
                           final listViewBudgetsRecord =
                               listViewBudgetsRecordList[listViewIndex];
                           return Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 16.0, 0.0, 16.0, 12.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
@@ -424,7 +446,7 @@ class _MYBudgetsWidgetState extends State<MYBudgetsWidget>
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsets.all(12.0),
+                                  padding: const EdgeInsets.all(12.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -432,7 +454,7 @@ class _MYBudgetsWidgetState extends State<MYBudgetsWidget>
                                         CrossAxisAlignment.start,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 4.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -450,6 +472,7 @@ class _MYBudgetsWidgetState extends State<MYBudgetsWidget>
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .alternate,
+                                                        letterSpacing: 0.0,
                                                       ),
                                             ),
                                             Icon(
@@ -477,10 +500,11 @@ class _MYBudgetsWidgetState extends State<MYBudgetsWidget>
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .textColor,
+                                              letterSpacing: 0.0,
                                             ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 4.0, 0.0, 0.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -502,13 +526,14 @@ class _MYBudgetsWidgetState extends State<MYBudgetsWidget>
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .alternate,
+                                                        letterSpacing: 0.0,
                                                       ),
                                             ),
                                             Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 0.0, 4.0, 0.0),
                                                   child: Text(
@@ -523,7 +548,8 @@ class _MYBudgetsWidgetState extends State<MYBudgetsWidget>
                                                         .override(
                                                           fontFamily: 'Lexend',
                                                           color:
-                                                              Color(0xB3FFFFFF),
+                                                              const Color(0xB3FFFFFF),
+                                                          letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w300,
                                                         ),
@@ -552,6 +578,7 @@ class _MYBudgetsWidgetState extends State<MYBudgetsWidget>
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .textColor,
+                                                        letterSpacing: 0.0,
                                                       ),
                                                 ),
                                               ],

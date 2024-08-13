@@ -3,16 +3,15 @@ import 'dart:async';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
-import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 class UsersRecord extends FirestoreRecord {
   UsersRecord._(
-    DocumentReference reference,
-    Map<String, dynamic> data,
-  ) : super(reference, data) {
+    super.reference,
+    super.data,
+  ) {
     _initializeFields();
   }
 
@@ -66,6 +65,21 @@ class UsersRecord extends FirestoreRecord {
   String get userTitle => _userTitle ?? '';
   bool hasUserTitle() => _userTitle != null;
 
+  // "receive_push_notifications" field.
+  bool? _receivePushNotifications;
+  bool get receivePushNotifications => _receivePushNotifications ?? false;
+  bool hasReceivePushNotifications() => _receivePushNotifications != null;
+
+  // "receive_email_notifications" field.
+  bool? _receiveEmailNotifications;
+  bool get receiveEmailNotifications => _receiveEmailNotifications ?? false;
+  bool hasReceiveEmailNotifications() => _receiveEmailNotifications != null;
+
+  // "location_services" field.
+  bool? _locationServices;
+  bool get locationServices => _locationServices ?? false;
+  bool hasLocationServices() => _locationServices != null;
+
   void _initializeFields() {
     _displayName = snapshotData['display_name'] as String?;
     _email = snapshotData['email'] as String?;
@@ -77,6 +91,11 @@ class UsersRecord extends FirestoreRecord {
     _photoUrl = snapshotData['photo_url'] as String?;
     _createdTime = snapshotData['created_time'] as DateTime?;
     _userTitle = snapshotData['userTitle'] as String?;
+    _receivePushNotifications =
+        snapshotData['receive_push_notifications'] as bool?;
+    _receiveEmailNotifications =
+        snapshotData['receive_email_notifications'] as bool?;
+    _locationServices = snapshotData['location_services'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -123,6 +142,9 @@ Map<String, dynamic> createUsersRecordData({
   String? photoUrl,
   DateTime? createdTime,
   String? userTitle,
+  bool? receivePushNotifications,
+  bool? receiveEmailNotifications,
+  bool? locationServices,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -136,6 +158,9 @@ Map<String, dynamic> createUsersRecordData({
       'photo_url': photoUrl,
       'created_time': createdTime,
       'userTitle': userTitle,
+      'receive_push_notifications': receivePushNotifications,
+      'receive_email_notifications': receiveEmailNotifications,
+      'location_services': locationServices,
     }.withoutNulls,
   );
 
@@ -156,7 +181,10 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.phoneNumber == e2?.phoneNumber &&
         e1?.photoUrl == e2?.photoUrl &&
         e1?.createdTime == e2?.createdTime &&
-        e1?.userTitle == e2?.userTitle;
+        e1?.userTitle == e2?.userTitle &&
+        e1?.receivePushNotifications == e2?.receivePushNotifications &&
+        e1?.receiveEmailNotifications == e2?.receiveEmailNotifications &&
+        e1?.locationServices == e2?.locationServices;
   }
 
   @override
@@ -170,7 +198,10 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.phoneNumber,
         e?.photoUrl,
         e?.createdTime,
-        e?.userTitle
+        e?.userTitle,
+        e?.receivePushNotifications,
+        e?.receiveEmailNotifications,
+        e?.locationServices
       ]);
 
   @override

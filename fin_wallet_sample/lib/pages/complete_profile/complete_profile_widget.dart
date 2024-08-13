@@ -6,13 +6,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'complete_profile_model.dart';
 export 'complete_profile_model.dart';
 
@@ -29,205 +24,206 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final animationsMap = {
-    'circleImageOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.bounceOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.bounceOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: Offset(0.0, 19.0),
-          end: Offset(0.0, 0.0),
-        ),
-        ScaleEffect(
-          curve: Curves.bounceOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: Offset(1.0, 0.0),
-          end: Offset(1.0, 1.0),
-        ),
-      ],
-    ),
-    'textOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 50.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 50.ms,
-          duration: 600.ms,
-          begin: Offset(0.0, 20.0),
-          end: Offset(0.0, 0.0),
-        ),
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 50.ms,
-          duration: 600.ms,
-          begin: Offset(1.0, 0.0),
-          end: Offset(1.0, 1.0),
-        ),
-      ],
-    ),
-    'textFieldOnPageLoadAnimation1': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 100.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 100.ms,
-          duration: 600.ms,
-          begin: Offset(0.0, 20.0),
-          end: Offset(0.0, 0.0),
-        ),
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 100.ms,
-          duration: 600.ms,
-          begin: Offset(1.0, 0.0),
-          end: Offset(1.0, 1.0),
-        ),
-      ],
-    ),
-    'textFieldOnPageLoadAnimation2': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 200.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 200.ms,
-          duration: 600.ms,
-          begin: Offset(0.0, 40.0),
-          end: Offset(0.0, 0.0),
-        ),
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 200.ms,
-          duration: 600.ms,
-          begin: Offset(1.0, 0.0),
-          end: Offset(1.0, 1.0),
-        ),
-      ],
-    ),
-    'textFieldOnPageLoadAnimation3': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 200.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 200.ms,
-          duration: 600.ms,
-          begin: Offset(0.0, 60.0),
-          end: Offset(0.0, 0.0),
-        ),
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 200.ms,
-          duration: 600.ms,
-          begin: Offset(1.0, 0.0),
-          end: Offset(1.0, 1.0),
-        ),
-      ],
-    ),
-    'buttonOnPageLoadAnimation1': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.bounceOut,
-          delay: 400.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.bounceOut,
-          delay: 400.ms,
-          duration: 600.ms,
-          begin: Offset(0.0, 40.0),
-          end: Offset(0.0, 0.0),
-        ),
-        ScaleEffect(
-          curve: Curves.bounceOut,
-          delay: 400.ms,
-          duration: 600.ms,
-          begin: Offset(1.0, 0.0),
-          end: Offset(1.0, 1.0),
-        ),
-      ],
-    ),
-    'buttonOnPageLoadAnimation2': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.bounceOut,
-          delay: 400.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.bounceOut,
-          delay: 400.ms,
-          duration: 600.ms,
-          begin: Offset(0.0, 40.0),
-          end: Offset(0.0, 0.0),
-        ),
-        ScaleEffect(
-          curve: Curves.bounceOut,
-          delay: 400.ms,
-          duration: 600.ms,
-          begin: Offset(1.0, 0.0),
-          end: Offset(1.0, 1.0),
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => CompleteProfileModel());
 
-    _model.yourNameController ??= TextEditingController();
+    _model.yourNameTextController ??= TextEditingController();
     _model.yourNameFocusNode ??= FocusNode();
 
-    _model.yourAgeController ??= TextEditingController();
+    _model.yourAgeTextController ??= TextEditingController();
     _model.yourAgeFocusNode ??= FocusNode();
 
-    _model.yourTitleController ??= TextEditingController();
+    _model.yourTitleTextController ??= TextEditingController();
     _model.yourTitleFocusNode ??= FocusNode();
 
+    animationsMap.addAll({
+      'circleImageOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.bounceOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.bounceOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(0.0, 19.0),
+            end: const Offset(0.0, 0.0),
+          ),
+          ScaleEffect(
+            curve: Curves.bounceOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(1.0, 0.0),
+            end: const Offset(1.0, 1.0),
+          ),
+        ],
+      ),
+      'textOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 50.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 50.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(0.0, 20.0),
+            end: const Offset(0.0, 0.0),
+          ),
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 50.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(1.0, 0.0),
+            end: const Offset(1.0, 1.0),
+          ),
+        ],
+      ),
+      'textFieldOnPageLoadAnimation1': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 100.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 100.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(0.0, 20.0),
+            end: const Offset(0.0, 0.0),
+          ),
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 100.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(1.0, 0.0),
+            end: const Offset(1.0, 1.0),
+          ),
+        ],
+      ),
+      'textFieldOnPageLoadAnimation2': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 200.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 200.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(0.0, 40.0),
+            end: const Offset(0.0, 0.0),
+          ),
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 200.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(1.0, 0.0),
+            end: const Offset(1.0, 1.0),
+          ),
+        ],
+      ),
+      'textFieldOnPageLoadAnimation3': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 200.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 200.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(0.0, 60.0),
+            end: const Offset(0.0, 0.0),
+          ),
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 200.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(1.0, 0.0),
+            end: const Offset(1.0, 1.0),
+          ),
+        ],
+      ),
+      'buttonOnPageLoadAnimation1': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.bounceOut,
+            delay: 400.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.bounceOut,
+            delay: 400.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(0.0, 40.0),
+            end: const Offset(0.0, 0.0),
+          ),
+          ScaleEffect(
+            curve: Curves.bounceOut,
+            delay: 400.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(1.0, 0.0),
+            end: const Offset(1.0, 1.0),
+          ),
+        ],
+      ),
+      'buttonOnPageLoadAnimation2': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.bounceOut,
+            delay: 400.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.bounceOut,
+            delay: 400.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(0.0, 40.0),
+            end: const Offset(0.0, 0.0),
+          ),
+          ScaleEffect(
+            curve: Curves.bounceOut,
+            delay: 400.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(1.0, 0.0),
+            end: const Offset(1.0, 1.0),
+          ),
+        ],
+      ),
+    });
     setupAnimations(
       animationsMap.values.where((anim) =>
           anim.trigger == AnimationTrigger.onActionTrigger ||
@@ -255,9 +251,12 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
           FFLocalizations.of(context).getText(
             'yhcaf7r2' /* Complete Profile */,
           ),
-          style: FlutterFlowTheme.of(context).headlineSmall,
+          style: FlutterFlowTheme.of(context).headlineSmall.override(
+                fontFamily: 'Lexend',
+                letterSpacing: 0.0,
+              ),
         ),
-        actions: [],
+        actions: const [],
         centerTitle: false,
         elevation: 0.0,
       ),
@@ -280,7 +279,7 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
               mainAxisSize: MainAxisSize.max,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
                   child: InkWell(
                     splashColor: Colors.transparent,
                     focusColor: Colors.transparent,
@@ -352,7 +351,7 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
                       width: 100.0,
                       height: 100.0,
                       clipBehavior: Clip.antiAlias,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                       ),
                       child: Image.network(
@@ -369,44 +368,55 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
                   FFLocalizations.of(context).getText(
                     'r6npjsue' /* Upload a photo for us to easil... */,
                   ),
-                  style: FlutterFlowTheme.of(context).bodyMedium,
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontFamily: 'Lexend',
+                        letterSpacing: 0.0,
+                      ),
                 ).animateOnPageLoad(animationsMap['textOnPageLoadAnimation']!),
                 Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 0.0),
+                      const EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 0.0),
                   child: TextFormField(
-                    controller: _model.yourNameController,
+                    controller: _model.yourNameTextController,
                     focusNode: _model.yourNameFocusNode,
                     obscureText: false,
                     decoration: InputDecoration(
                       labelText: FFLocalizations.of(context).getText(
                         'sdptn7dd' /* Your Name */,
                       ),
-                      labelStyle: FlutterFlowTheme.of(context).bodySmall,
-                      hintStyle: FlutterFlowTheme.of(context).bodySmall,
+                      labelStyle:
+                          FlutterFlowTheme.of(context).bodySmall.override(
+                                fontFamily: 'Lexend',
+                                letterSpacing: 0.0,
+                              ),
+                      hintStyle:
+                          FlutterFlowTheme.of(context).bodySmall.override(
+                                fontFamily: 'Lexend',
+                                letterSpacing: 0.0,
+                              ),
                       enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Color(0x00000000),
                           width: 1.0,
                         ),
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Color(0x00000000),
                           width: 1.0,
                         ),
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                       errorBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Color(0x00000000),
                           width: 1.0,
                         ),
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                       focusedErrorBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Color(0x00000000),
                           width: 1.0,
                         ),
@@ -415,54 +425,65 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
                       filled: true,
                       fillColor:
                           FlutterFlowTheme.of(context).secondaryBackground,
-                      contentPadding: EdgeInsetsDirectional.fromSTEB(
+                      contentPadding: const EdgeInsetsDirectional.fromSTEB(
                           20.0, 24.0, 20.0, 24.0),
                     ),
-                    style: FlutterFlowTheme.of(context).bodyMedium,
-                    validator:
-                        _model.yourNameControllerValidator.asValidator(context),
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Lexend',
+                          letterSpacing: 0.0,
+                        ),
+                    validator: _model.yourNameTextControllerValidator
+                        .asValidator(context),
                   ).animateOnPageLoad(
                       animationsMap['textFieldOnPageLoadAnimation1']!),
                 ),
                 Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 0.0),
+                      const EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 0.0),
                   child: TextFormField(
-                    controller: _model.yourAgeController,
+                    controller: _model.yourAgeTextController,
                     focusNode: _model.yourAgeFocusNode,
                     obscureText: false,
                     decoration: InputDecoration(
                       labelText: FFLocalizations.of(context).getText(
                         'n636qnrx' /* Your Age */,
                       ),
-                      labelStyle: FlutterFlowTheme.of(context).bodySmall,
+                      labelStyle:
+                          FlutterFlowTheme.of(context).bodySmall.override(
+                                fontFamily: 'Lexend',
+                                letterSpacing: 0.0,
+                              ),
                       hintText: FFLocalizations.of(context).getText(
                         's7yvjzbs' /* i.e. 34 */,
                       ),
-                      hintStyle: FlutterFlowTheme.of(context).bodySmall,
+                      hintStyle:
+                          FlutterFlowTheme.of(context).bodySmall.override(
+                                fontFamily: 'Lexend',
+                                letterSpacing: 0.0,
+                              ),
                       enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Color(0x00000000),
                           width: 1.0,
                         ),
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Color(0x00000000),
                           width: 1.0,
                         ),
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                       errorBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Color(0x00000000),
                           width: 1.0,
                         ),
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                       focusedErrorBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Color(0x00000000),
                           width: 1.0,
                         ),
@@ -471,55 +492,66 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
                       filled: true,
                       fillColor:
                           FlutterFlowTheme.of(context).secondaryBackground,
-                      contentPadding: EdgeInsetsDirectional.fromSTEB(
+                      contentPadding: const EdgeInsetsDirectional.fromSTEB(
                           20.0, 24.0, 20.0, 24.0),
                     ),
-                    style: FlutterFlowTheme.of(context).bodyMedium,
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Lexend',
+                          letterSpacing: 0.0,
+                        ),
                     keyboardType: TextInputType.number,
-                    validator:
-                        _model.yourAgeControllerValidator.asValidator(context),
+                    validator: _model.yourAgeTextControllerValidator
+                        .asValidator(context),
                   ).animateOnPageLoad(
                       animationsMap['textFieldOnPageLoadAnimation2']!),
                 ),
                 Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 0.0),
+                      const EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 0.0),
                   child: TextFormField(
-                    controller: _model.yourTitleController,
+                    controller: _model.yourTitleTextController,
                     focusNode: _model.yourTitleFocusNode,
                     obscureText: false,
                     decoration: InputDecoration(
                       labelText: FFLocalizations.of(context).getText(
                         '72ii0waq' /* Your Title */,
                       ),
-                      labelStyle: FlutterFlowTheme.of(context).bodySmall,
+                      labelStyle:
+                          FlutterFlowTheme.of(context).bodySmall.override(
+                                fontFamily: 'Lexend',
+                                letterSpacing: 0.0,
+                              ),
                       hintText: FFLocalizations.of(context).getText(
                         'pf8glhkg' /* What is your position? */,
                       ),
-                      hintStyle: FlutterFlowTheme.of(context).bodySmall,
+                      hintStyle:
+                          FlutterFlowTheme.of(context).bodySmall.override(
+                                fontFamily: 'Lexend',
+                                letterSpacing: 0.0,
+                              ),
                       enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Color(0x00000000),
                           width: 1.0,
                         ),
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Color(0x00000000),
                           width: 1.0,
                         ),
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                       errorBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Color(0x00000000),
                           width: 1.0,
                         ),
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                       focusedErrorBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Color(0x00000000),
                           width: 1.0,
                         ),
@@ -528,127 +560,90 @@ class _CompleteProfileWidgetState extends State<CompleteProfileWidget>
                       filled: true,
                       fillColor:
                           FlutterFlowTheme.of(context).secondaryBackground,
-                      contentPadding: EdgeInsetsDirectional.fromSTEB(
+                      contentPadding: const EdgeInsetsDirectional.fromSTEB(
                           20.0, 24.0, 20.0, 24.0),
                     ),
-                    style: FlutterFlowTheme.of(context).bodyMedium,
-                    validator: _model.yourTitleControllerValidator
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Lexend',
+                          letterSpacing: 0.0,
+                        ),
+                    validator: _model.yourTitleTextControllerValidator
                         .asValidator(context),
                   ).animateOnPageLoad(
                       animationsMap['textFieldOnPageLoadAnimation3']!),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                  child: StreamBuilder<UsersRecord>(
-                    stream: UsersRecord.getDocument(currentUserReference!),
-                    builder: (context, snapshot) {
-                      // Customize what your widget looks like when it's loading.
-                      if (!snapshot.hasData) {
-                        return Center(
-                          child: SizedBox(
-                            width: 40.0,
-                            height: 40.0,
-                            child: SpinKitPumpingHeart(
-                              color: FlutterFlowTheme.of(context).primary,
-                              size: 40.0,
-                            ),
-                          ),
-                        );
-                      }
-                      final buttonLoginUsersRecord = snapshot.data!;
-                      return FFButtonWidget(
-                        onPressed: () async {
-                          await buttonLoginUsersRecord.reference
-                              .update(createUsersRecordData(
-                            displayName: _model.yourNameController.text,
-                            age: int.tryParse(_model.yourAgeController.text),
-                            userTitle: _model.yourTitleController.text,
-                            photoUrl: '',
-                          ));
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                  child: FFButtonWidget(
+                    onPressed: () async {
+                      await currentUserReference!.update(createUsersRecordData(
+                        displayName: _model.yourNameTextController.text,
+                        age: int.tryParse(_model.yourAgeTextController.text),
+                        userTitle: _model.yourTitleTextController.text,
+                        photoUrl: '',
+                      ));
 
-                          context.pushNamed('onboarding');
-                        },
-                        text: FFLocalizations.of(context).getText(
-                          'hbhd3bdt' /* Complete Profile */,
-                        ),
-                        options: FFButtonOptions(
-                          width: 230.0,
-                          height: 50.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).primary,
-                          textStyle: FlutterFlowTheme.of(context)
-                              .titleSmall
-                              .override(
+                      context.pushNamed('onboarding');
+                    },
+                    text: FFLocalizations.of(context).getText(
+                      'hbhd3bdt' /* Complete Profile */,
+                    ),
+                    options: FFButtonOptions(
+                      width: 230.0,
+                      height: 50.0,
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      iconPadding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: FlutterFlowTheme.of(context).primary,
+                      textStyle:
+                          FlutterFlowTheme.of(context).titleSmall.override(
                                 fontFamily: 'Lexend',
                                 color: FlutterFlowTheme.of(context).textColor,
+                                letterSpacing: 0.0,
                               ),
-                          elevation: 3.0,
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 1.0,
-                          ),
-                          borderRadius: BorderRadius.circular(30.0),
-                        ),
-                      ).animateOnPageLoad(
-                          animationsMap['buttonOnPageLoadAnimation1']!);
-                    },
-                  ),
+                      elevation: 3.0,
+                      borderSide: const BorderSide(
+                        color: Colors.transparent,
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
+                  ).animateOnPageLoad(
+                      animationsMap['buttonOnPageLoadAnimation1']!),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                  child: StreamBuilder<UsersRecord>(
-                    stream: UsersRecord.getDocument(currentUserReference!),
-                    builder: (context, snapshot) {
-                      // Customize what your widget looks like when it's loading.
-                      if (!snapshot.hasData) {
-                        return Center(
-                          child: SizedBox(
-                            width: 40.0,
-                            height: 40.0,
-                            child: SpinKitPumpingHeart(
-                              color: FlutterFlowTheme.of(context).primary,
-                              size: 40.0,
-                            ),
-                          ),
-                        );
-                      }
-                      final buttonLoginUsersRecord = snapshot.data!;
-                      return FFButtonWidget(
-                        onPressed: () async {
-                          context.pushNamed('onboarding');
-                        },
-                        text: FFLocalizations.of(context).getText(
-                          'w75dikic' /* Skip for Now */,
-                        ),
-                        options: FFButtonOptions(
-                          width: 140.0,
-                          height: 50.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          textStyle: FlutterFlowTheme.of(context)
-                              .titleSmall
-                              .override(
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                  child: FFButtonWidget(
+                    onPressed: () async {
+                      context.pushNamed('onboarding');
+                    },
+                    text: FFLocalizations.of(context).getText(
+                      'w75dikic' /* Skip for Now */,
+                    ),
+                    options: FFButtonOptions(
+                      width: 140.0,
+                      height: 50.0,
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      iconPadding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      textStyle:
+                          FlutterFlowTheme.of(context).titleSmall.override(
                                 fontFamily: 'Lexend',
                                 color: FlutterFlowTheme.of(context).primaryText,
+                                letterSpacing: 0.0,
                               ),
-                          elevation: 0.0,
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 1.0,
-                          ),
-                          borderRadius: BorderRadius.circular(30.0),
-                        ),
-                      ).animateOnPageLoad(
-                          animationsMap['buttonOnPageLoadAnimation2']!);
-                    },
-                  ),
+                      elevation: 0.0,
+                      borderSide: const BorderSide(
+                        color: Colors.transparent,
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
+                  ).animateOnPageLoad(
+                      animationsMap['buttonOnPageLoadAnimation2']!),
                 ),
               ],
             ),

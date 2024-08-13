@@ -1,11 +1,9 @@
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'home_page_model.dart';
 export 'home_page_model.dart';
 
@@ -65,6 +63,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         final homePageUsersRecord = homePageUsersRecordList.isNotEmpty
             ? homePageUsersRecordList.first
             : null;
+
         return Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).background,
@@ -82,7 +81,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(16.0, 40.0, 16.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(16.0, 40.0, 16.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -93,12 +92,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               borderRadius: BorderRadius.circular(40.0),
                             ),
                             child: Padding(
-                              padding: EdgeInsets.all(2.0),
+                              padding: const EdgeInsets.all(2.0),
                               child: Container(
                                 width: 50.0,
                                 height: 50.0,
                                 clipBehavior: Clip.antiAlias,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
                                 ),
                                 child: Image.asset(
@@ -108,7 +107,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 0.0, 0.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
@@ -122,10 +121,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         'ucqlrrlk' /* Welcome, */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
-                                          .headlineSmall,
+                                          .headlineSmall
+                                          .override(
+                                            fontFamily: 'Lexend',
+                                            letterSpacing: 0.0,
+                                          ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           4.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         homePageUsersRecord!.displayName,
@@ -136,6 +139,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primary,
+                                              letterSpacing: 0.0,
                                             ),
                                       ),
                                     ),
@@ -145,8 +149,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   FFLocalizations.of(context).getText(
                                     'c10wb3ot' /* Your account Details are below... */,
                                   ),
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Lexend',
+                                        letterSpacing: 0.0,
+                                      ),
                                 ),
                               ],
                             ),
@@ -156,7 +164,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(20.0, 12.0, 20.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(20.0, 12.0, 20.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -164,13 +172,18 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             FFLocalizations.of(context).getText(
                               '6z1sm34j' /* Total Balance */,
                             ),
-                            style: FlutterFlowTheme.of(context).bodyMedium,
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Lexend',
+                                  letterSpacing: 0.0,
+                                ),
                           ),
                         ],
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
+                      padding: const EdgeInsetsDirectional.fromSTEB(
                           20.0, 12.0, 20.0, 16.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
@@ -184,6 +197,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 .override(
                                   fontFamily: 'Lexend',
                                   fontSize: 32.0,
+                                  letterSpacing: 0.0,
                                 ),
                           ),
                         ],
@@ -193,7 +207,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -205,7 +219,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                       child: Padding(
-                        padding: EdgeInsets.all(12.0),
+                        padding: const EdgeInsets.all(12.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -215,16 +229,26 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               FFLocalizations.of(context).getText(
                                 '30yef7fj' /* Payroll Due */,
                               ),
-                              style: FlutterFlowTheme.of(context).bodySmall,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodySmall
+                                  .override(
+                                    fontFamily: 'Lexend',
+                                    letterSpacing: 0.0,
+                                  ),
                             ),
                             Text(
                               FFLocalizations.of(context).getText(
                                 'zrx9e6tv' /* $12,245 */,
                               ),
-                              style: FlutterFlowTheme.of(context).displaySmall,
+                              style: FlutterFlowTheme.of(context)
+                                  .displaySmall
+                                  .override(
+                                    fontFamily: 'Lexend',
+                                    letterSpacing: 0.0,
+                                  ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 4.0, 0.0, 0.0),
                               child: Text(
                                 FFLocalizations.of(context).getText(
@@ -232,24 +256,28 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 ),
                                 style: GoogleFonts.getFont(
                                   'Lexend Deca',
-                                  color: Color(0xB4FFFFFF),
+                                  color: const Color(0xB4FFFFFF),
                                   fontSize: 12.0,
                                 ),
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 4.0, 0.0, 0.0),
                               child: Text(
                                 FFLocalizations.of(context).getText(
                                   '726vrs60' /* Aug 31, 2021 */,
                                 ),
-                                style:
-                                    FlutterFlowTheme.of(context).headlineSmall,
+                                style: FlutterFlowTheme.of(context)
+                                    .headlineSmall
+                                    .override(
+                                      fontFamily: 'Lexend',
+                                      letterSpacing: 0.0,
+                                    ),
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 4.0, 0.0, 0.0),
                               child: Text(
                                 FFLocalizations.of(context).getText(
@@ -273,7 +301,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                       child: Padding(
-                        padding: EdgeInsets.all(12.0),
+                        padding: const EdgeInsets.all(12.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -283,16 +311,26 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               FFLocalizations.of(context).getText(
                                 'n87v5tth' /* Marketing Budget */,
                               ),
-                              style: FlutterFlowTheme.of(context).bodySmall,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodySmall
+                                  .override(
+                                    fontFamily: 'Lexend',
+                                    letterSpacing: 0.0,
+                                  ),
                             ),
                             Text(
                               FFLocalizations.of(context).getText(
                                 'l5pw5c8c' /* $4,000 */,
                               ),
-                              style: FlutterFlowTheme.of(context).displaySmall,
+                              style: FlutterFlowTheme.of(context)
+                                  .displaySmall
+                                  .override(
+                                    fontFamily: 'Lexend',
+                                    letterSpacing: 0.0,
+                                  ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 4.0, 0.0, 0.0),
                               child: Text(
                                 FFLocalizations.of(context).getText(
@@ -300,24 +338,28 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 ),
                                 style: GoogleFonts.getFont(
                                   'Lexend Deca',
-                                  color: Color(0xB4FFFFFF),
+                                  color: const Color(0xB4FFFFFF),
                                   fontSize: 12.0,
                                 ),
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 4.0, 0.0, 0.0),
                               child: Text(
                                 FFLocalizations.of(context).getText(
                                   '9a2ya1la' /* $3,402 */,
                                 ),
-                                style:
-                                    FlutterFlowTheme.of(context).headlineSmall,
+                                style: FlutterFlowTheme.of(context)
+                                    .headlineSmall
+                                    .override(
+                                      fontFamily: 'Lexend',
+                                      letterSpacing: 0.0,
+                                    ),
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 4.0, 0.0, 0.0),
                               child: Text(
                                 FFLocalizations.of(context).getText(
@@ -338,27 +380,30 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                 child: Container(
                   width: MediaQuery.sizeOf(context).width * 0.92,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).darkBackground,
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
                         blurRadius: 5.0,
                         color: Color(0x66000000),
-                        offset: Offset(0.0, 2.0),
+                        offset: Offset(
+                          0.0,
+                          2.0,
+                        ),
                       )
                     ],
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                   child: Padding(
-                    padding: EdgeInsets.all(4.0),
+                    padding: const EdgeInsets.all(4.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               16.0, 8.0, 16.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -367,13 +412,18 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 FFLocalizations.of(context).getText(
                                   'lmo3ko2i' /* Quick Services */,
                                 ),
-                                style: FlutterFlowTheme.of(context).bodyMedium,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Lexend',
+                                      letterSpacing: 0.0,
+                                    ),
                               ),
                             ],
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.all(16.0),
+                          padding: const EdgeInsets.all(16.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -386,7 +436,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsets.all(12.0),
+                                  padding: const EdgeInsets.all(12.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -394,7 +444,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         CrossAxisAlignment.center,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 12.0),
                                         child: Icon(
                                           Icons.account_balance_outlined,
@@ -404,7 +454,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 4.0, 0.0, 0.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
@@ -432,7 +482,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   context.pushNamed(
                                     'transferFunds',
                                     extra: <String, dynamic>{
-                                      kTransitionInfoKey: TransitionInfo(
+                                      kTransitionInfoKey: const TransitionInfo(
                                         hasTransition: true,
                                         transitionType:
                                             PageTransitionType.bottomToTop,
@@ -450,7 +500,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsets.all(12.0),
+                                    padding: const EdgeInsets.all(12.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
@@ -460,7 +510,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 12.0),
                                           child: Icon(
                                             Icons.swap_horiz_outlined,
@@ -471,7 +521,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 4.0, 0.0, 0.0),
                                           child: Text(
                                             FFLocalizations.of(context).getText(
@@ -508,7 +558,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsets.all(12.0),
+                                    padding: const EdgeInsets.all(12.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
@@ -518,7 +568,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 12.0),
                                           child: Icon(
                                             Icons.stacked_line_chart_rounded,
@@ -529,7 +579,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 4.0, 0.0, 0.0),
                                           child: Text(
                                             FFLocalizations.of(context).getText(
@@ -558,7 +608,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -570,20 +620,20 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                       child: Padding(
-                        padding: EdgeInsets.all(12.0),
+                        padding: const EdgeInsets.all(12.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 4.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 8.0, 0.0),
                                     child: Icon(
                                       Icons.notifications_sharp,
@@ -598,7 +648,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         'nb29ps2o' /* 1 New Alert */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodySmall,
+                                          .bodySmall
+                                          .override(
+                                            fontFamily: 'Lexend',
+                                            letterSpacing: 0.0,
+                                          ),
                                     ),
                                   ),
                                   Text(
@@ -611,13 +665,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           fontFamily: 'Lexend',
                                           color: FlutterFlowTheme.of(context)
                                               .background,
+                                          letterSpacing: 0.0,
                                         ),
                                   ),
                                 ],
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 4.0, 0.0, 0.0),
                               child: Text(
                                 FFLocalizations.of(context).getText(
@@ -625,7 +680,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 ),
                                 style: GoogleFonts.getFont(
                                   'Lexend Deca',
-                                  color: Color(0xB4FFFFFF),
+                                  color: const Color(0xB4FFFFFF),
                                   fontSize: 12.0,
                                 ),
                               ),

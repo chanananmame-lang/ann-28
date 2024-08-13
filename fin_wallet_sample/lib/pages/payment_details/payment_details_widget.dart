@@ -2,13 +2,9 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'payment_details_model.dart';
 export 'payment_details_model.dart';
 
@@ -65,7 +61,9 @@ class _PaymentDetailsWidgetState extends State<PaymentDetailsWidget> {
             ),
           );
         }
+
         final paymentDetailsTransactionsRecord = snapshot.data!;
+
         return Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -90,11 +88,14 @@ class _PaymentDetailsWidgetState extends State<PaymentDetailsWidget> {
               FFLocalizations.of(context).getText(
                 'j0yzgf4n' /* Details */,
               ),
-              style: FlutterFlowTheme.of(context).titleSmall,
+              style: FlutterFlowTheme.of(context).titleSmall.override(
+                    fontFamily: 'Lexend',
+                    letterSpacing: 0.0,
+                  ),
             ),
             actions: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
                 child: FlutterFlowIconButton(
                   borderColor: Colors.transparent,
                   borderRadius: 30.0,
@@ -134,7 +135,7 @@ class _PaymentDetailsWidgetState extends State<PaymentDetailsWidget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             20.0, 0.0, 20.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -150,6 +151,7 @@ class _PaymentDetailsWidgetState extends State<PaymentDetailsWidget> {
                                       fontFamily: 'Lexend',
                                       color: FlutterFlowTheme.of(context)
                                           .textColor,
+                                      letterSpacing: 0.0,
                                     ),
                               ),
                             ),
@@ -157,7 +159,7 @@ class _PaymentDetailsWidgetState extends State<PaymentDetailsWidget> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             20.0, 4.0, 20.0, 20.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -172,6 +174,7 @@ class _PaymentDetailsWidgetState extends State<PaymentDetailsWidget> {
                                       color: FlutterFlowTheme.of(context)
                                           .textColor,
                                       fontSize: 36.0,
+                                      letterSpacing: 0.0,
                                     ),
                               ),
                             ),
@@ -183,7 +186,7 @@ class _PaymentDetailsWidgetState extends State<PaymentDetailsWidget> {
                 ),
                 Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(20.0, 16.0, 20.0, 0.0),
+                      const EdgeInsetsDirectional.fromSTEB(20.0, 16.0, 20.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -192,14 +195,18 @@ class _PaymentDetailsWidgetState extends State<PaymentDetailsWidget> {
                           FFLocalizations.of(context).getText(
                             '0rjyjwed' /* Vendor */,
                           ),
-                          style: FlutterFlowTheme.of(context).bodyMedium,
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Lexend',
+                                    letterSpacing: 0.0,
+                                  ),
                         ),
                       ),
                     ],
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 4.0, 20.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(20.0, 4.0, 20.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -210,6 +217,7 @@ class _PaymentDetailsWidgetState extends State<PaymentDetailsWidget> {
                               .headlineSmall
                               .override(
                                 fontFamily: 'Lexend',
+                                letterSpacing: 0.0,
                                 fontWeight: FontWeight.w500,
                               ),
                         ),
@@ -219,7 +227,7 @@ class _PaymentDetailsWidgetState extends State<PaymentDetailsWidget> {
                 ),
                 Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(20.0, 16.0, 20.0, 0.0),
+                      const EdgeInsetsDirectional.fromSTEB(20.0, 16.0, 20.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -228,31 +236,38 @@ class _PaymentDetailsWidgetState extends State<PaymentDetailsWidget> {
                           FFLocalizations.of(context).getText(
                             'eeyn6dk2' /* When */,
                           ),
-                          style: FlutterFlowTheme.of(context).bodyMedium,
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Lexend',
+                                    letterSpacing: 0.0,
+                                  ),
                         ),
                       ),
                     ],
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 4.0, 20.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(20.0, 4.0, 20.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Text(
                         dateTimeFormat(
-                          'MMMEd',
+                          "MMMEd",
                           paymentDetailsTransactionsRecord.transactionTime!,
                           locale: FFLocalizations.of(context).languageCode,
                         ),
-                        style: FlutterFlowTheme.of(context).bodySmall,
+                        style: FlutterFlowTheme.of(context).bodySmall.override(
+                              fontFamily: 'Lexend',
+                              letterSpacing: 0.0,
+                            ),
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
                         child: Text(
                           dateTimeFormat(
-                            'jm',
+                            "jm",
                             paymentDetailsTransactionsRecord.transactionTime!,
                             locale: FFLocalizations.of(context).languageCode,
                           ),
@@ -261,6 +276,7 @@ class _PaymentDetailsWidgetState extends State<PaymentDetailsWidget> {
                               .override(
                                 fontFamily: 'Lexend',
                                 color: FlutterFlowTheme.of(context).tertiary,
+                                letterSpacing: 0.0,
                               ),
                         ),
                       ),
@@ -268,19 +284,24 @@ class _PaymentDetailsWidgetState extends State<PaymentDetailsWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 4.0, 20.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(20.0, 4.0, 20.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Expanded(
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 16.0, 0.0, 0.0),
                           child: Text(
                             FFLocalizations.of(context).getText(
                               'lccxx6eu' /* Reason */,
                             ),
-                            style: FlutterFlowTheme.of(context).bodyMedium,
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Lexend',
+                                  letterSpacing: 0.0,
+                                ),
                           ),
                         ),
                       ),
@@ -288,14 +309,18 @@ class _PaymentDetailsWidgetState extends State<PaymentDetailsWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 4.0, 20.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(20.0, 4.0, 20.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Expanded(
                         child: Text(
                           paymentDetailsTransactionsRecord.transactionReason,
-                          style: FlutterFlowTheme.of(context).bodySmall,
+                          style:
+                              FlutterFlowTheme.of(context).bodySmall.override(
+                                    fontFamily: 'Lexend',
+                                    letterSpacing: 0.0,
+                                  ),
                         ),
                       ),
                     ],
@@ -303,7 +328,7 @@ class _PaymentDetailsWidgetState extends State<PaymentDetailsWidget> {
                 ),
                 Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(20.0, 12.0, 20.0, 0.0),
+                      const EdgeInsetsDirectional.fromSTEB(20.0, 12.0, 20.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -312,7 +337,11 @@ class _PaymentDetailsWidgetState extends State<PaymentDetailsWidget> {
                           FFLocalizations.of(context).getText(
                             'jzyax4hn' /* Spent by */,
                           ),
-                          style: FlutterFlowTheme.of(context).bodyMedium,
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Lexend',
+                                    letterSpacing: 0.0,
+                                  ),
                         ),
                       ),
                     ],
@@ -320,7 +349,7 @@ class _PaymentDetailsWidgetState extends State<PaymentDetailsWidget> {
                 ),
                 Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(20.0, 12.0, 20.0, 0.0),
+                      const EdgeInsetsDirectional.fromSTEB(20.0, 12.0, 20.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -340,7 +369,9 @@ class _PaymentDetailsWidgetState extends State<PaymentDetailsWidget> {
                               ),
                             );
                           }
+
                           final containerUsersRecord = snapshot.data!;
+
                           return Material(
                             color: Colors.transparent,
                             elevation: 3.0,
@@ -356,7 +387,7 @@ class _PaymentDetailsWidgetState extends State<PaymentDetailsWidget> {
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     12.0, 0.0, 12.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -371,19 +402,19 @@ class _PaymentDetailsWidgetState extends State<PaymentDetailsWidget> {
                                             BorderRadius.circular(40.0),
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsets.all(2.0),
+                                        padding: const EdgeInsets.all(2.0),
                                         child: Container(
                                           width: 40.0,
                                           height: 40.0,
                                           clipBehavior: Clip.antiAlias,
-                                          decoration: BoxDecoration(
+                                          decoration: const BoxDecoration(
                                             shape: BoxShape.circle,
                                           ),
                                           child: CachedNetworkImage(
                                             fadeInDuration:
-                                                Duration(milliseconds: 500),
+                                                const Duration(milliseconds: 500),
                                             fadeOutDuration:
-                                                Duration(milliseconds: 500),
+                                                const Duration(milliseconds: 500),
                                             imageUrl: valueOrDefault<String>(
                                               containerUsersRecord.photoUrl,
                                               'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/sample-app-e-comm-3oxq8y/assets/hszmaloprc7a/Mia%20Deaven.jpg',
@@ -394,7 +425,7 @@ class _PaymentDetailsWidgetState extends State<PaymentDetailsWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           12.0, 0.0, 0.0, 0.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
@@ -411,7 +442,11 @@ class _PaymentDetailsWidgetState extends State<PaymentDetailsWidget> {
                                                     .displayName,
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .headlineSmall,
+                                                        .headlineSmall
+                                                        .override(
+                                                          fontFamily: 'Lexend',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                               ),
                                             ],
                                           ),
@@ -424,6 +459,7 @@ class _PaymentDetailsWidgetState extends State<PaymentDetailsWidget> {
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primary,
+                                                  letterSpacing: 0.0,
                                                 ),
                                           ),
                                         ],

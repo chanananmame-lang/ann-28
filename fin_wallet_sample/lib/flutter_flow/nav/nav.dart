@@ -1,21 +1,13 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:go_router/go_router.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
-import '/backend/backend.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
 import '/index.dart';
 import '/main.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/lat_lng.dart';
-import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'serialization_util.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -80,117 +72,137 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? NavBarPage() : LoginPageWidget(),
+          appStateNotifier.loggedIn ? const NavBarPage() : const LoginPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? NavBarPage() : LoginPageWidget(),
+              appStateNotifier.loggedIn ? const NavBarPage() : const LoginPageWidget(),
         ),
         FFRoute(
           name: 'loginPage',
           path: '/loginPage',
-          builder: (context, params) => LoginPageWidget(),
+          builder: (context, params) => const LoginPageWidget(),
         ),
         FFRoute(
           name: 'registerAccount',
           path: '/registerAccount',
-          builder: (context, params) => RegisterAccountWidget(),
+          builder: (context, params) => const RegisterAccountWidget(),
         ),
         FFRoute(
           name: 'completeProfile',
           path: '/completeProfile',
-          builder: (context, params) => CompleteProfileWidget(),
+          builder: (context, params) => const CompleteProfileWidget(),
         ),
         FFRoute(
           name: 'forgotPassword',
           path: '/forgotPassword',
-          builder: (context, params) => ForgotPasswordWidget(),
+          builder: (context, params) => const ForgotPasswordWidget(),
         ),
         FFRoute(
           name: 'onboarding',
           path: '/onboarding',
-          builder: (context, params) => OnboardingWidget(),
+          builder: (context, params) => const OnboardingWidget(),
         ),
         FFRoute(
           name: 'createBudgetBegin',
           path: '/createBudgetBegin',
-          builder: (context, params) => CreateBudgetBeginWidget(),
+          builder: (context, params) => const CreateBudgetBeginWidget(),
         ),
         FFRoute(
           name: 'MY_Card',
           path: '/mYCard',
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'MY_Card')
-              : MYCardWidget(),
+              ? const NavBarPage(initialPage: 'MY_Card')
+              : const MYCardWidget(),
         ),
         FFRoute(
           name: 'MY_Budgets',
           path: '/mYBudgets',
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'MY_Budgets')
-              : MYBudgetsWidget(),
+              ? const NavBarPage(initialPage: 'MY_Budgets')
+              : const MYBudgetsWidget(),
         ),
         FFRoute(
           name: 'paymentDetails',
           path: '/paymentDetails',
           builder: (context, params) => PaymentDetailsWidget(
-            transactionDetails: params.getParam('transactionDetails',
-                ParamType.DocumentReference, false, ['transactions']),
+            transactionDetails: params.getParam(
+              'transactionDetails',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['transactions'],
+            ),
             userSpent: params.getParam(
-                'userSpent', ParamType.DocumentReference, false, ['users']),
+              'userSpent',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['users'],
+            ),
           ),
         ),
         FFRoute(
           name: 'MY_profilePage',
           path: '/mYProfilePage',
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'MY_profilePage')
+              ? const NavBarPage(initialPage: 'MY_profilePage')
               : MYProfilePageWidget(
-                  userProfile: params.getParam('userProfile',
-                      ParamType.DocumentReference, false, ['users']),
+                  userProfile: params.getParam(
+                    'userProfile',
+                    ParamType.DocumentReference,
+                    isList: false,
+                    collectionNamePath: ['users'],
+                  ),
                 ),
         ),
         FFRoute(
           name: 'budgetDetails',
           path: '/budgetDetails',
           builder: (context, params) => BudgetDetailsWidget(
-            budgetDetails: params.getParam('budgetDetails',
-                ParamType.DocumentReference, false, ['budgets']),
+            budgetDetails: params.getParam(
+              'budgetDetails',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['budgets'],
+            ),
           ),
         ),
         FFRoute(
           name: 'transferComplete',
           path: '/transferComplete',
-          builder: (context, params) => TransferCompleteWidget(),
+          builder: (context, params) => const TransferCompleteWidget(),
         ),
         FFRoute(
           name: 'transferFunds',
           path: '/transferFunds',
-          builder: (context, params) => TransferFundsWidget(),
+          builder: (context, params) => const TransferFundsWidget(),
         ),
         FFRoute(
           name: 'requestFunds',
           path: '/requestFunds',
-          builder: (context, params) => RequestFundsWidget(),
+          builder: (context, params) => const RequestFundsWidget(),
         ),
         FFRoute(
           name: 'createBudget',
           path: '/createBudget',
-          builder: (context, params) => CreateBudgetWidget(),
+          builder: (context, params) => const CreateBudgetWidget(),
         ),
         FFRoute(
           name: 'transaction_ADD',
           path: '/transactionADD',
-          builder: (context, params) => TransactionADDWidget(),
+          builder: (context, params) => const TransactionADDWidget(),
         ),
         FFRoute(
           name: 'transaction_EDIT',
           path: '/transactionEDIT',
           builder: (context, params) => TransactionEDITWidget(
-            transactionDetails: params.getParam('transactionDetails',
-                ParamType.DocumentReference, false, ['transactions']),
+            transactionDetails: params.getParam(
+              'transactionDetails',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['transactions'],
+            ),
           ),
         ),
         FFRoute(
@@ -198,56 +210,64 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/editProfile',
           builder: (context, params) => EditProfileWidget(
             userProfile: params.getParam(
-                'userProfile', ParamType.DocumentReference, false, ['users']),
+              'userProfile',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['users'],
+            ),
           ),
         ),
         FFRoute(
           name: 'changePassword',
           path: '/changePassword',
-          builder: (context, params) => ChangePasswordWidget(),
+          builder: (context, params) => const ChangePasswordWidget(),
         ),
         FFRoute(
           name: 'notificationsSettings',
           path: '/notificationsSettings',
-          builder: (context, params) => NotificationsSettingsWidget(),
+          builder: (context, params) => const NotificationsSettingsWidget(),
         ),
         FFRoute(
           name: 'privacyPolicy',
           path: '/privacyPolicy',
-          builder: (context, params) => PrivacyPolicyWidget(),
+          builder: (context, params) => const PrivacyPolicyWidget(),
         ),
         FFRoute(
           name: 'tutorial_PROFILE',
           path: '/tutorialPROFILE',
-          builder: (context, params) => TutorialPROFILEWidget(),
+          builder: (context, params) => const TutorialPROFILEWidget(),
         ),
         FFRoute(
           name: 'homePage',
           path: '/homePage',
-          builder: (context, params) => HomePageWidget(),
+          builder: (context, params) => const HomePageWidget(),
         ),
         FFRoute(
           name: 'homePage_alt',
           path: '/homePageAlt',
-          builder: (context, params) => HomePageAltWidget(),
+          builder: (context, params) => const HomePageAltWidget(),
         ),
         FFRoute(
           name: 'homePage_alt_1',
           path: '/homePageAlt1',
-          builder: (context, params) => HomePageAlt1Widget(),
+          builder: (context, params) => const HomePageAlt1Widget(),
         ),
         FFRoute(
           name: 'budget_DELETE',
           path: '/budgetDELETE',
           builder: (context, params) => BudgetDELETEWidget(
             budgetList: params.getParam(
-                'budgetList', ParamType.DocumentReference, false, ['budgets']),
+              'budgetList',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['budgets'],
+            ),
           ),
         ),
         FFRoute(
           name: 'profilepage',
           path: '/profilepage',
-          builder: (context, params) => ProfilepageWidget(),
+          builder: (context, params) => const ProfilepageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -324,7 +344,7 @@ extension _GoRouterStateExtensions on GoRouterState {
       extra != null ? extra as Map<String, dynamic> : {};
   Map<String, dynamic> get allParams => <String, dynamic>{}
     ..addAll(pathParameters)
-    ..addAll(queryParameters)
+    ..addAll(uri.queryParameters)
     ..addAll(extraMap);
   TransitionInfo get transitionInfo => extraMap.containsKey(kTransitionInfoKey)
       ? extraMap[kTransitionInfoKey] as TransitionInfo
@@ -343,7 +363,7 @@ class FFParameters {
   // present is the special extra parameter reserved for the transition info.
   bool get isEmpty =>
       state.allParams.isEmpty ||
-      (state.extraMap.length == 1 &&
+      (state.allParams.length == 1 &&
           state.extraMap.containsKey(kTransitionInfoKey));
   bool isAsyncParam(MapEntry<String, dynamic> param) =>
       asyncParams.containsKey(param.key) && param.value is String;
@@ -364,10 +384,10 @@ class FFParameters {
 
   dynamic getParam<T>(
     String paramName,
-    ParamType type, [
+    ParamType type, {
     bool isList = false,
     List<String>? collectionNamePath,
-  ]) {
+  }) {
     if (futureParamValues.containsKey(paramName)) {
       return futureParamValues[paramName];
     }
@@ -380,8 +400,12 @@ class FFParameters {
       return param;
     }
     // Return serialized value.
-    return deserializeParam<T>(param, type, isList,
-        collectionNamePath: collectionNamePath);
+    return deserializeParam<T>(
+      param,
+      type,
+      isList,
+      collectionNamePath: collectionNamePath,
+    );
   }
 }
 
@@ -413,7 +437,7 @@ class FFRoute {
           }
 
           if (requireAuth && !appStateNotifier.loggedIn) {
-            appStateNotifier.setRedirectLocationIfUnset(state.location);
+            appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
             return '/loginPage';
           }
           return null;
@@ -480,7 +504,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {
@@ -491,7 +515,7 @@ class RootPageContext {
   static bool isInactiveRootPage(BuildContext context) {
     final rootPageContext = context.read<RootPageContext?>();
     final isRootPage = rootPageContext?.isRootPage ?? false;
-    final location = GoRouter.of(context).location;
+    final location = GoRouterState.of(context).uri.toString();
     return isRootPage &&
         location != '/' &&
         location != rootPageContext?.errorRoute;
@@ -501,4 +525,14 @@ class RootPageContext {
         value: RootPageContext(true, errorRoute),
         child: child,
       );
+}
+
+extension GoRouterLocationExtension on GoRouter {
+  String getCurrentLocation() {
+    final RouteMatch lastMatch = routerDelegate.currentConfiguration.last;
+    final RouteMatchList matchList = lastMatch is ImperativeRouteMatch
+        ? lastMatch.matches
+        : routerDelegate.currentConfiguration;
+    return matchList.uri.toString();
+  }
 }

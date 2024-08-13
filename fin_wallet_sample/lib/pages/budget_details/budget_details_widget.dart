@@ -3,12 +3,8 @@ import '/flutter_flow/flutter_flow_charts.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'budget_details_model.dart';
 export 'budget_details_model.dart';
 
@@ -63,7 +59,9 @@ class _BudgetDetailsWidgetState extends State<BudgetDetailsWidget> {
             ),
           );
         }
+
         final budgetDetailsBudgetsRecord = snapshot.data!;
+
         return Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -86,7 +84,7 @@ class _BudgetDetailsWidgetState extends State<BudgetDetailsWidget> {
             ),
             actions: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
                 child: FlutterFlowIconButton(
                   borderColor: Colors.transparent,
                   borderRadius: 30.0,
@@ -106,7 +104,7 @@ class _BudgetDetailsWidgetState extends State<BudgetDetailsWidget> {
                         ),
                       }.withoutNulls,
                       extra: <String, dynamic>{
-                        kTransitionInfoKey: TransitionInfo(
+                        kTransitionInfoKey: const TransitionInfo(
                           hasTransition: true,
                           transitionType: PageTransitionType.bottomToTop,
                           duration: Duration(milliseconds: 220),
@@ -128,29 +126,32 @@ class _BudgetDetailsWidgetState extends State<BudgetDetailsWidget> {
                   width: MediaQuery.sizeOf(context).width * 1.0,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).primary,
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
                         blurRadius: 4.0,
                         color: Color(0x3F14181B),
-                        offset: Offset(0.0, 3.0),
+                        offset: Offset(
+                          0.0,
+                          3.0,
+                        ),
                       )
                     ],
                   ),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 20.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Expanded(
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 4.0, 0.0, 0.0),
                                   child: Text(
                                     budgetDetailsBudgetsRecord.budetName,
@@ -160,6 +161,7 @@ class _BudgetDetailsWidgetState extends State<BudgetDetailsWidget> {
                                           fontFamily: 'Lexend',
                                           color: FlutterFlowTheme.of(context)
                                               .textColor,
+                                          letterSpacing: 0.0,
                                         ),
                                   ),
                                 ),
@@ -168,14 +170,14 @@ class _BudgetDetailsWidgetState extends State<BudgetDetailsWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 20.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 12.0, 0.0, 0.0),
                                 child: Text(
                                   formatNumber(
@@ -192,12 +194,13 @@ class _BudgetDetailsWidgetState extends State<BudgetDetailsWidget> {
                                         color: FlutterFlowTheme.of(context)
                                             .textColor,
                                         fontSize: 36.0,
+                                        letterSpacing: 0.0,
                                         fontWeight: FontWeight.normal,
                                       ),
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     8.0, 0.0, 0.0, 4.0),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
@@ -207,7 +210,8 @@ class _BudgetDetailsWidgetState extends State<BudgetDetailsWidget> {
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Lexend',
-                                        color: Color(0xB3FFFFFF),
+                                        color: const Color(0xB3FFFFFF),
+                                        letterSpacing: 0.0,
                                       ),
                                 ),
                               ),
@@ -215,7 +219,7 @@ class _BudgetDetailsWidgetState extends State<BudgetDetailsWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               20.0, 8.0, 20.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -226,13 +230,18 @@ class _BudgetDetailsWidgetState extends State<BudgetDetailsWidget> {
                                   budgetDetailsBudgetsRecord.budgetTime,
                                   '4 Days Left',
                                 ),
-                                style: FlutterFlowTheme.of(context).titleSmall,
+                                style: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      fontFamily: 'Lexend',
+                                      letterSpacing: 0.0,
+                                    ),
                               ),
                               Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 4.0, 0.0),
                                     child: Text(
                                       FFLocalizations.of(context).getText(
@@ -243,7 +252,8 @@ class _BudgetDetailsWidgetState extends State<BudgetDetailsWidget> {
                                           .bodySmall
                                           .override(
                                             fontFamily: 'Lexend',
-                                            color: Color(0xB3FFFFFF),
+                                            color: const Color(0xB3FFFFFF),
+                                            letterSpacing: 0.0,
                                             fontWeight: FontWeight.w300,
                                           ),
                                     ),
@@ -266,6 +276,7 @@ class _BudgetDetailsWidgetState extends State<BudgetDetailsWidget> {
                                           fontFamily: 'Lexend',
                                           color: FlutterFlowTheme.of(context)
                                               .textColor,
+                                          letterSpacing: 0.0,
                                         ),
                                   ),
                                 ],
@@ -306,7 +317,8 @@ class _BudgetDetailsWidgetState extends State<BudgetDetailsWidget> {
                       }
                       List<TransactionsRecord> chartTransactionsRecordList =
                           snapshot.data!;
-                      return Container(
+
+                      return SizedBox(
                         width: double.infinity,
                         height: 250.0,
                         child: FlutterFlowLineChart(
@@ -315,14 +327,14 @@ class _BudgetDetailsWidgetState extends State<BudgetDetailsWidget> {
                               xData: chartTransactionsRecordList,
                               yData: chartTransactionsRecordList,
                               settings: LineChartBarData(
-                                color: Color(0xFF39D2C0),
+                                color: const Color(0xFF39D2C0),
                                 barWidth: 2.0,
                                 isCurved: true,
                                 preventCurveOverShooting: true,
-                                dotData: FlDotData(show: false),
+                                dotData: const FlDotData(show: false),
                                 belowBarData: BarAreaData(
                                   show: true,
-                                  color: Color(0x6639D2C0),
+                                  color: const Color(0x6639D2C0),
                                 ),
                               ),
                             )
@@ -335,7 +347,7 @@ class _BudgetDetailsWidgetState extends State<BudgetDetailsWidget> {
                                 FlutterFlowTheme.of(context).primary,
                             showBorder: false,
                           ),
-                          axisBounds: AxisBounds(),
+                          axisBounds: const AxisBounds(),
                           xAxisLabelInfo: AxisLabelInfo(
                             showLabels: true,
                             labelTextStyle: FlutterFlowTheme.of(context)
@@ -343,13 +355,18 @@ class _BudgetDetailsWidgetState extends State<BudgetDetailsWidget> {
                                 .override(
                                   fontFamily: 'Lexend',
                                   fontSize: 12.0,
+                                  letterSpacing: 0.0,
                                 ),
                             labelInterval: 10.0,
                           ),
                           yAxisLabelInfo: AxisLabelInfo(
                             showLabels: true,
-                            labelTextStyle:
-                                FlutterFlowTheme.of(context).bodyMedium,
+                            labelTextStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Lexend',
+                                  letterSpacing: 0.0,
+                                ),
                             labelInterval: 10.0,
                           ),
                         ),
@@ -362,19 +379,24 @@ class _BudgetDetailsWidgetState extends State<BudgetDetailsWidget> {
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Expanded(
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 12.0, 0.0, 0.0),
                               child: Text(
                                 FFLocalizations.of(context).getText(
                                   'ifi6fmsa' /* Transactions */,
                                 ),
-                                style: FlutterFlowTheme.of(context).bodyMedium,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Lexend',
+                                      letterSpacing: 0.0,
+                                    ),
                               ),
                             ),
                           ),
@@ -383,7 +405,7 @@ class _BudgetDetailsWidgetState extends State<BudgetDetailsWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 24.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 24.0),
                       child: StreamBuilder<List<TransactionsRecord>>(
                         stream: queryTransactionsRecord(
                           queryBuilder: (transactionsRecord) =>
@@ -422,6 +444,7 @@ class _BudgetDetailsWidgetState extends State<BudgetDetailsWidget> {
                               ),
                             );
                           }
+
                           return Column(
                             mainAxisSize: MainAxisSize.max,
                             children: List.generate(
@@ -431,7 +454,7 @@ class _BudgetDetailsWidgetState extends State<BudgetDetailsWidget> {
                                   transactionListTransactionsRecordList[
                                       transactionListIndex];
                               return Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 8.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
@@ -462,11 +485,14 @@ class _BudgetDetailsWidgetState extends State<BudgetDetailsWidget> {
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
-                                      boxShadow: [
+                                      boxShadow: const [
                                         BoxShadow(
                                           blurRadius: 4.0,
                                           color: Color(0x3F14181B),
-                                          offset: Offset(0.0, 3.0),
+                                          offset: Offset(
+                                            0.0,
+                                            3.0,
+                                          ),
                                         )
                                       ],
                                       borderRadius: BorderRadius.circular(8.0),
@@ -476,18 +502,18 @@ class _BudgetDetailsWidgetState extends State<BudgetDetailsWidget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   8.0, 0.0, 0.0, 0.0),
                                           child: Card(
                                             clipBehavior:
                                                 Clip.antiAliasWithSaveLayer,
-                                            color: Color(0x6639D2C0),
+                                            color: const Color(0x6639D2C0),
                                             shape: RoundedRectangleBorder(
                                               borderRadius:
                                                   BorderRadius.circular(40.0),
                                             ),
                                             child: Padding(
-                                              padding: EdgeInsets.all(8.0),
+                                              padding: const EdgeInsets.all(8.0),
                                               child: Icon(
                                                 Icons.monetization_on_rounded,
                                                 color:
@@ -501,7 +527,7 @@ class _BudgetDetailsWidgetState extends State<BudgetDetailsWidget> {
                                         Expanded(
                                           child: Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     12.0, 0.0, 0.0, 0.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
@@ -516,11 +542,15 @@ class _BudgetDetailsWidgetState extends State<BudgetDetailsWidget> {
                                                         .transactionName,
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .headlineSmall,
+                                                        .headlineSmall
+                                                        .override(
+                                                          fontFamily: 'Lexend',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 4.0, 0.0, 0.0),
                                                   child: Text(
@@ -530,7 +560,11 @@ class _BudgetDetailsWidgetState extends State<BudgetDetailsWidget> {
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyMedium,
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Lexend',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                                   ),
                                                 ),
                                               ],
@@ -539,7 +573,7 @@ class _BudgetDetailsWidgetState extends State<BudgetDetailsWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 12.0, 0.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -560,15 +594,16 @@ class _BudgetDetailsWidgetState extends State<BudgetDetailsWidget> {
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .tertiary,
+                                                          letterSpacing: 0.0,
                                                         ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 4.0, 0.0, 0.0),
                                                 child: Text(
                                                   dateTimeFormat(
-                                                    'MMMEd',
+                                                    "MMMEd",
                                                     transactionListTransactionsRecord
                                                         .transactionTime!,
                                                     locale: FFLocalizations.of(
@@ -582,6 +617,7 @@ class _BudgetDetailsWidgetState extends State<BudgetDetailsWidget> {
                                                       .override(
                                                         fontFamily: 'Lexend',
                                                         fontSize: 12.0,
+                                                        letterSpacing: 0.0,
                                                       ),
                                                 ),
                                               ),

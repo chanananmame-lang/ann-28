@@ -5,9 +5,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'request_funds_model.dart';
 export 'request_funds_model.dart';
 
@@ -53,7 +50,7 @@ class _RequestFundsWidgetState extends State<RequestFundsWidget> {
           Material(
             color: Colors.transparent,
             elevation: 3.0,
-            shape: RoundedRectangleBorder(
+            shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(16.0),
                 bottomRight: Radius.circular(16.0),
@@ -66,7 +63,7 @@ class _RequestFundsWidgetState extends State<RequestFundsWidget> {
               height: MediaQuery.sizeOf(context).height * 0.8,
               decoration: BoxDecoration(
                 color: FlutterFlowTheme.of(context).secondaryBackground,
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   bottomLeft: Radius.circular(16.0),
                   bottomRight: Radius.circular(16.0),
                   topLeft: Radius.circular(0.0),
@@ -74,7 +71,7 @@ class _RequestFundsWidgetState extends State<RequestFundsWidget> {
                 ),
               ),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 44.0, 20.0, 20.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 44.0, 20.0, 20.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -86,7 +83,12 @@ class _RequestFundsWidgetState extends State<RequestFundsWidget> {
                           FFLocalizations.of(context).getText(
                             'wv1862li' /* Request Funds */,
                           ),
-                          style: FlutterFlowTheme.of(context).displaySmall,
+                          style: FlutterFlowTheme.of(context)
+                              .displaySmall
+                              .override(
+                                fontFamily: 'Lexend',
+                                letterSpacing: 0.0,
+                              ),
                         ),
                         Card(
                           clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -112,7 +114,7 @@ class _RequestFundsWidgetState extends State<RequestFundsWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                       child: TextFormField(
                         controller: _model.textController1,
                         focusNode: _model.textFieldFocusNode1,
@@ -123,6 +125,7 @@ class _RequestFundsWidgetState extends State<RequestFundsWidget> {
                               .override(
                                 fontFamily: 'Lexend',
                                 color: FlutterFlowTheme.of(context).grayLight,
+                                letterSpacing: 0.0,
                                 fontWeight: FontWeight.w300,
                               ),
                           hintText: FFLocalizations.of(context).getText(
@@ -133,6 +136,7 @@ class _RequestFundsWidgetState extends State<RequestFundsWidget> {
                               .override(
                                 fontFamily: 'Lexend',
                                 color: FlutterFlowTheme.of(context).grayLight,
+                                letterSpacing: 0.0,
                                 fontWeight: FontWeight.w300,
                               ),
                           enabledBorder: UnderlineInputBorder(
@@ -143,30 +147,34 @@ class _RequestFundsWidgetState extends State<RequestFundsWidget> {
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Color(0x00000000),
                               width: 2.0,
                             ),
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           errorBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Color(0x00000000),
                               width: 2.0,
                             ),
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           focusedErrorBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Color(0x00000000),
                               width: 2.0,
                             ),
                             borderRadius: BorderRadius.circular(8.0),
                           ),
-                          contentPadding: EdgeInsetsDirectional.fromSTEB(
+                          contentPadding: const EdgeInsetsDirectional.fromSTEB(
                               20.0, 24.0, 24.0, 24.0),
                         ),
-                        style: FlutterFlowTheme.of(context).displaySmall,
+                        style:
+                            FlutterFlowTheme.of(context).displaySmall.override(
+                                  fontFamily: 'Lexend',
+                                  letterSpacing: 0.0,
+                                ),
                         textAlign: TextAlign.center,
                         validator: _model.textController1Validator
                             .asValidator(context),
@@ -174,7 +182,7 @@ class _RequestFundsWidgetState extends State<RequestFundsWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                       child: FlutterFlowDropDown<String>(
                         controller: _model.dropDownValueController ??=
                             FormFieldController<String>(null),
@@ -193,7 +201,11 @@ class _RequestFundsWidgetState extends State<RequestFundsWidget> {
                             setState(() => _model.dropDownValue = val),
                         width: MediaQuery.sizeOf(context).width * 0.9,
                         height: 60.0,
-                        textStyle: FlutterFlowTheme.of(context).bodyMedium,
+                        textStyle:
+                            FlutterFlowTheme.of(context).bodyMedium.override(
+                                  fontFamily: 'Lexend',
+                                  letterSpacing: 0.0,
+                                ),
                         hintText: FFLocalizations.of(context).getText(
                           'wo9cebk7' /* Select Transfer */,
                         ),
@@ -208,7 +220,7 @@ class _RequestFundsWidgetState extends State<RequestFundsWidget> {
                         borderColor: FlutterFlowTheme.of(context).alternate,
                         borderWidth: 2.0,
                         borderRadius: 8.0,
-                        margin: EdgeInsetsDirectional.fromSTEB(
+                        margin: const EdgeInsetsDirectional.fromSTEB(
                             20.0, 20.0, 12.0, 20.0),
                         hidesUnderline: true,
                         isSearchable: false,
@@ -217,17 +229,25 @@ class _RequestFundsWidgetState extends State<RequestFundsWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                       child: TextFormField(
                         controller: _model.textController2,
                         focusNode: _model.textFieldFocusNode2,
                         obscureText: false,
                         decoration: InputDecoration(
-                          labelStyle: FlutterFlowTheme.of(context).bodyMedium,
+                          labelStyle:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Lexend',
+                                    letterSpacing: 0.0,
+                                  ),
                           hintText: FFLocalizations.of(context).getText(
                             'rcevwwju' /* Reason */,
                           ),
-                          hintStyle: FlutterFlowTheme.of(context).bodyMedium,
+                          hintStyle:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Lexend',
+                                    letterSpacing: 0.0,
+                                  ),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                               color: FlutterFlowTheme.of(context).alternate,
@@ -236,30 +256,33 @@ class _RequestFundsWidgetState extends State<RequestFundsWidget> {
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Color(0x00000000),
                               width: 2.0,
                             ),
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           errorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Color(0x00000000),
                               width: 2.0,
                             ),
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           focusedErrorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Color(0x00000000),
                               width: 2.0,
                             ),
                             borderRadius: BorderRadius.circular(8.0),
                           ),
-                          contentPadding: EdgeInsetsDirectional.fromSTEB(
+                          contentPadding: const EdgeInsetsDirectional.fromSTEB(
                               20.0, 32.0, 24.0, 0.0),
                         ),
-                        style: FlutterFlowTheme.of(context).bodyMedium,
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Lexend',
+                              letterSpacing: 0.0,
+                            ),
                         textAlign: TextAlign.start,
                         maxLines: 4,
                         validator: _model.textController2Validator
@@ -272,7 +295,7 @@ class _RequestFundsWidgetState extends State<RequestFundsWidget> {
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -285,7 +308,7 @@ class _RequestFundsWidgetState extends State<RequestFundsWidget> {
                         context.pushNamed(
                           'transferComplete',
                           extra: <String, dynamic>{
-                            kTransitionInfoKey: TransitionInfo(
+                            kTransitionInfoKey: const TransitionInfo(
                               hasTransition: true,
                               transitionType: PageTransitionType.bottomToTop,
                               duration: Duration(milliseconds: 220),
@@ -300,17 +323,18 @@ class _RequestFundsWidgetState extends State<RequestFundsWidget> {
                         width: 300.0,
                         height: 70.0,
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).tertiary,
                         textStyle:
                             FlutterFlowTheme.of(context).displaySmall.override(
                                   fontFamily: 'Lexend',
                                   color: FlutterFlowTheme.of(context).textColor,
+                                  letterSpacing: 0.0,
                                 ),
                         elevation: 0.0,
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Colors.transparent,
                           width: 1.0,
                         ),
@@ -328,7 +352,8 @@ class _RequestFundsWidgetState extends State<RequestFundsWidget> {
             ),
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   fontFamily: 'Lexend',
-                  color: Color(0x43000000),
+                  color: const Color(0x43000000),
+                  letterSpacing: 0.0,
                 ),
           ),
         ],

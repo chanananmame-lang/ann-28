@@ -4,11 +4,8 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'budget_d_e_l_e_t_e_model.dart';
 export 'budget_d_e_l_e_t_e_model.dart';
 
@@ -63,7 +60,9 @@ class _BudgetDELETEWidgetState extends State<BudgetDELETEWidget> {
             ),
           );
         }
+
         final budgetDELETEBudgetsRecord = snapshot.data!;
+
         return Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).errorRed,
@@ -73,7 +72,7 @@ class _BudgetDELETEWidgetState extends State<BudgetDELETEWidget> {
               Material(
                 color: Colors.transparent,
                 elevation: 3.0,
-                shape: RoundedRectangleBorder(
+                shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(16.0),
                     bottomRight: Radius.circular(16.0),
@@ -86,7 +85,7 @@ class _BudgetDELETEWidgetState extends State<BudgetDELETEWidget> {
                   height: MediaQuery.sizeOf(context).height * 0.8,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
-                    borderRadius: BorderRadius.only(
+                    borderRadius: const BorderRadius.only(
                       bottomLeft: Radius.circular(16.0),
                       bottomRight: Radius.circular(16.0),
                       topLeft: Radius.circular(0.0),
@@ -95,7 +94,7 @@ class _BudgetDELETEWidgetState extends State<BudgetDELETEWidget> {
                   ),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(20.0, 44.0, 20.0, 20.0),
+                        const EdgeInsetsDirectional.fromSTEB(20.0, 44.0, 20.0, 20.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -128,7 +127,7 @@ class _BudgetDELETEWidgetState extends State<BudgetDELETEWidget> {
                           ],
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 24.0, 0.0, 0.0),
                           child: Image.asset(
                             'assets/images/fin_budgetRemove@2x.png',
@@ -138,17 +137,22 @@ class _BudgetDELETEWidgetState extends State<BudgetDELETEWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 16.0, 0.0, 0.0),
                           child: Text(
                             FFLocalizations.of(context).getText(
                               'pozov0xz' /* Delete Budget */,
                             ),
-                            style: FlutterFlowTheme.of(context).displaySmall,
+                            style: FlutterFlowTheme.of(context)
+                                .displaySmall
+                                .override(
+                                  fontFamily: 'Lexend',
+                                  letterSpacing: 0.0,
+                                ),
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               20.0, 12.0, 20.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -160,7 +164,12 @@ class _BudgetDELETEWidgetState extends State<BudgetDELETEWidget> {
                                     'aptjmof0' /* If you delete this budget, you... */,
                                   ),
                                   textAlign: TextAlign.center,
-                                  style: FlutterFlowTheme.of(context).bodySmall,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodySmall
+                                      .override(
+                                        fontFamily: 'Lexend',
+                                        letterSpacing: 0.0,
+                                      ),
                                 ),
                               ),
                             ],
@@ -172,7 +181,7 @@ class _BudgetDELETEWidgetState extends State<BudgetDELETEWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -213,6 +222,7 @@ class _BudgetDELETEWidgetState extends State<BudgetDELETEWidget> {
                                 buttonBudgetListRecordList.isNotEmpty
                                     ? buttonBudgetListRecordList.first
                                     : null;
+
                             return FFButtonWidget(
                               onPressed: () async {
                                 await budgetDELETEBudgetsRecord.reference
@@ -231,7 +241,7 @@ class _BudgetDELETEWidgetState extends State<BudgetDELETEWidget> {
                                 context.goNamed(
                                   'MY_Budgets',
                                   extra: <String, dynamic>{
-                                    kTransitionInfoKey: TransitionInfo(
+                                    kTransitionInfoKey: const TransitionInfo(
                                       hasTransition: true,
                                       transitionType: PageTransitionType.fade,
                                       duration: Duration(milliseconds: 200),
@@ -245,9 +255,9 @@ class _BudgetDELETEWidgetState extends State<BudgetDELETEWidget> {
                               options: FFButtonOptions(
                                 width: 300.0,
                                 height: 70.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).errorRed,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -256,9 +266,10 @@ class _BudgetDELETEWidgetState extends State<BudgetDELETEWidget> {
                                       fontFamily: 'Lexend',
                                       color: FlutterFlowTheme.of(context)
                                           .textColor,
+                                      letterSpacing: 0.0,
                                     ),
                                 elevation: 0.0,
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -278,7 +289,8 @@ class _BudgetDELETEWidgetState extends State<BudgetDELETEWidget> {
                 ),
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Lexend',
-                      color: Color(0x43000000),
+                      color: const Color(0x43000000),
+                      letterSpacing: 0.0,
                     ),
               ),
             ],

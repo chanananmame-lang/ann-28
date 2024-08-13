@@ -1,4 +1,4 @@
-# Fin Wallet Sample
+# Marketplace - FinWallet
 
 A new Flutter project.
 

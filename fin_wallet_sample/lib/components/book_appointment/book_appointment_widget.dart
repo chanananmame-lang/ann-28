@@ -7,14 +7,9 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'book_appointment_model.dart';
 export 'book_appointment_model.dart';
 
@@ -34,164 +29,7 @@ class _BookAppointmentWidgetState extends State<BookAppointmentWidget>
     with TickerProviderStateMixin {
   late BookAppointmentModel _model;
 
-  final animationsMap = {
-    'textFieldOnPageLoadAnimation1': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: Offset(0.0, 9.0),
-          end: Offset(0.0, 0.0),
-        ),
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: Offset(1.0, 0.0),
-          end: Offset(1.0, 1.0),
-        ),
-      ],
-    ),
-    'dropDownOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 40.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 40.ms,
-          duration: 600.ms,
-          begin: Offset(0.0, 20.0),
-          end: Offset(0.0, 0.0),
-        ),
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 40.ms,
-          duration: 600.ms,
-          begin: Offset(1.0, 0.0),
-          end: Offset(1.0, 1.0),
-        ),
-      ],
-    ),
-    'textFieldOnPageLoadAnimation2': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 60.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 60.ms,
-          duration: 600.ms,
-          begin: Offset(0.0, 30.0),
-          end: Offset(0.0, 0.0),
-        ),
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 60.ms,
-          duration: 600.ms,
-          begin: Offset(1.0, 0.0),
-          end: Offset(1.0, 1.0),
-        ),
-      ],
-    ),
-    'containerOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: Offset(0.0, 90.0),
-          end: Offset(0.0, 0.0),
-        ),
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: Offset(1.0, 0.0),
-          end: Offset(1.0, 1.0),
-        ),
-      ],
-    ),
-    'buttonOnPageLoadAnimation1': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.bounceOut,
-          delay: 150.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.bounceOut,
-          delay: 150.ms,
-          duration: 600.ms,
-          begin: Offset(0.0, 20.0),
-          end: Offset(0.0, 0.0),
-        ),
-        ScaleEffect(
-          curve: Curves.bounceOut,
-          delay: 150.ms,
-          duration: 600.ms,
-          begin: Offset(1.0, 0.0),
-          end: Offset(1.0, 1.0),
-        ),
-      ],
-    ),
-    'buttonOnPageLoadAnimation2': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.bounceOut,
-          delay: 150.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.bounceOut,
-          delay: 150.ms,
-          duration: 600.ms,
-          begin: Offset(0.0, 20.0),
-          end: Offset(0.0, 0.0),
-        ),
-        ScaleEffect(
-          curve: Curves.bounceOut,
-          delay: 150.ms,
-          duration: 600.ms,
-          begin: Offset(1.0, 0.0),
-          end: Offset(1.0, 1.0),
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void setState(VoidCallback callback) {
@@ -206,9 +44,167 @@ class _BookAppointmentWidgetState extends State<BookAppointmentWidget>
 
     _model.personsNameFocusNode ??= FocusNode();
 
-    _model.problemDescriptionController ??= TextEditingController();
+    _model.problemDescriptionTextController ??= TextEditingController();
     _model.problemDescriptionFocusNode ??= FocusNode();
 
+    animationsMap.addAll({
+      'textFieldOnPageLoadAnimation1': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(0.0, 9.0),
+            end: const Offset(0.0, 0.0),
+          ),
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(1.0, 0.0),
+            end: const Offset(1.0, 1.0),
+          ),
+        ],
+      ),
+      'dropDownOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 40.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 40.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(0.0, 20.0),
+            end: const Offset(0.0, 0.0),
+          ),
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 40.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(1.0, 0.0),
+            end: const Offset(1.0, 1.0),
+          ),
+        ],
+      ),
+      'textFieldOnPageLoadAnimation2': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 60.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 60.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(0.0, 30.0),
+            end: const Offset(0.0, 0.0),
+          ),
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 60.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(1.0, 0.0),
+            end: const Offset(1.0, 1.0),
+          ),
+        ],
+      ),
+      'containerOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(0.0, 90.0),
+            end: const Offset(0.0, 0.0),
+          ),
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(1.0, 0.0),
+            end: const Offset(1.0, 1.0),
+          ),
+        ],
+      ),
+      'buttonOnPageLoadAnimation1': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.bounceOut,
+            delay: 150.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.bounceOut,
+            delay: 150.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(0.0, 20.0),
+            end: const Offset(0.0, 0.0),
+          ),
+          ScaleEffect(
+            curve: Curves.bounceOut,
+            delay: 150.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(1.0, 0.0),
+            end: const Offset(1.0, 1.0),
+          ),
+        ],
+      ),
+      'buttonOnPageLoadAnimation2': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.bounceOut,
+            delay: 150.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.bounceOut,
+            delay: 150.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(0.0, 20.0),
+            end: const Offset(0.0, 0.0),
+          ),
+          ScaleEffect(
+            curve: Curves.bounceOut,
+            delay: 150.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(1.0, 0.0),
+            end: const Offset(1.0, 1.0),
+          ),
+        ],
+      ),
+    });
     setupAnimations(
       animationsMap.values.where((anim) =>
           anim.trigger == AnimationTrigger.onActionTrigger ||
@@ -233,7 +229,7 @@ class _BookAppointmentWidgetState extends State<BookAppointmentWidget>
         color: FlutterFlowTheme.of(context).darkBackground,
       ),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
         child: StreamBuilder<UsersRecord>(
           stream: UsersRecord.getDocument(currentUserReference!),
           builder: (context, snapshot) {
@@ -250,26 +246,32 @@ class _BookAppointmentWidgetState extends State<BookAppointmentWidget>
                 ),
               );
             }
+
             final columnUsersRecord = snapshot.data!;
+
             return SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Divider(
+                  const Divider(
                     thickness: 3.0,
                     indent: 150.0,
                     endIndent: 150.0,
                     color: Color(0xFF465056),
                   ),
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                     child: Text(
                       FFLocalizations.of(context).getText(
                         'sfzj3riz' /* Book Appointment */,
                       ),
-                      style: FlutterFlowTheme.of(context).headlineSmall,
+                      style:
+                          FlutterFlowTheme.of(context).headlineSmall.override(
+                                fontFamily: 'Lexend',
+                                letterSpacing: 0.0,
+                              ),
                     ),
                   ),
                   Row(
@@ -277,13 +279,18 @@ class _BookAppointmentWidgetState extends State<BookAppointmentWidget>
                     children: [
                       Expanded(
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 8.0, 0.0, 0.0),
                           child: Text(
                             FFLocalizations.of(context).getText(
                               '4skzh9os' /* Fill out the information below... */,
                             ),
-                            style: FlutterFlowTheme.of(context).bodyMedium,
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Lexend',
+                                  letterSpacing: 0.0,
+                                ),
                           ),
                         ),
                       ),
@@ -291,30 +298,34 @@ class _BookAppointmentWidgetState extends State<BookAppointmentWidget>
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                     child: Text(
                       FFLocalizations.of(context).getText(
                         'b87tcas2' /* Emails will be sent to: */,
                       ),
-                      style: FlutterFlowTheme.of(context).bodyMedium,
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 12.0),
-                    child: Text(
-                      currentUserEmail,
-                      style: FlutterFlowTheme.of(context).titleMedium.override(
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Lexend',
-                            color: FlutterFlowTheme.of(context).primary,
+                            letterSpacing: 0.0,
                           ),
                     ),
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 12.0),
+                    child: Text(
+                      currentUserEmail,
+                      style: FlutterFlowTheme.of(context).titleMedium.override(
+                            fontFamily: 'Lexend',
+                            color: FlutterFlowTheme.of(context).primary,
+                            letterSpacing: 0.0,
+                          ),
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                     child: TextFormField(
-                      controller: _model.personsNameController ??=
+                      controller: _model.personsNameTextController ??=
                           TextEditingController(
                         text: columnUsersRecord.displayName,
                       ),
@@ -324,7 +335,11 @@ class _BookAppointmentWidgetState extends State<BookAppointmentWidget>
                         labelText: FFLocalizations.of(context).getText(
                           'iicnw3dq' /* Booking For */,
                         ),
-                        labelStyle: FlutterFlowTheme.of(context).bodyMedium,
+                        labelStyle:
+                            FlutterFlowTheme.of(context).bodyMedium.override(
+                                  fontFamily: 'Lexend',
+                                  letterSpacing: 0.0,
+                                ),
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
                             color: FlutterFlowTheme.of(context).background,
@@ -333,21 +348,21 @@ class _BookAppointmentWidgetState extends State<BookAppointmentWidget>
                           borderRadius: BorderRadius.circular(8.0),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Color(0x00000000),
                             width: 2.0,
                           ),
                           borderRadius: BorderRadius.circular(8.0),
                         ),
                         errorBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Color(0x00000000),
                             width: 2.0,
                           ),
                           borderRadius: BorderRadius.circular(8.0),
                         ),
                         focusedErrorBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Color(0x00000000),
                             width: 2.0,
                           ),
@@ -355,22 +370,23 @@ class _BookAppointmentWidgetState extends State<BookAppointmentWidget>
                         ),
                         filled: true,
                         fillColor: FlutterFlowTheme.of(context).darkBackground,
-                        contentPadding: EdgeInsetsDirectional.fromSTEB(
+                        contentPadding: const EdgeInsetsDirectional.fromSTEB(
                             20.0, 24.0, 0.0, 24.0),
                       ),
                       style: FlutterFlowTheme.of(context).titleSmall.override(
                             fontFamily: 'Lexend',
                             color: FlutterFlowTheme.of(context).textColor,
+                            letterSpacing: 0.0,
                             fontWeight: FontWeight.bold,
                           ),
-                      validator: _model.personsNameControllerValidator
+                      validator: _model.personsNameTextControllerValidator
                           .asValidator(context),
                     ).animateOnPageLoad(
                         animationsMap['textFieldOnPageLoadAnimation1']!),
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                     child: FlutterFlowDropDown<String>(
                       controller: _model.dropDownValueController ??=
                           FormFieldController<String>(null),
@@ -396,6 +412,7 @@ class _BookAppointmentWidgetState extends State<BookAppointmentWidget>
                           FlutterFlowTheme.of(context).titleSmall.override(
                                 fontFamily: 'Lexend',
                                 color: FlutterFlowTheme.of(context).textColor,
+                                letterSpacing: 0.0,
                               ),
                       icon: Icon(
                         Icons.keyboard_arrow_down_rounded,
@@ -408,7 +425,7 @@ class _BookAppointmentWidgetState extends State<BookAppointmentWidget>
                       borderWidth: 2.0,
                       borderRadius: 8.0,
                       margin:
-                          EdgeInsetsDirectional.fromSTEB(20.0, 4.0, 16.0, 4.0),
+                          const EdgeInsetsDirectional.fromSTEB(20.0, 4.0, 16.0, 4.0),
                       hidesUnderline: true,
                       isSearchable: false,
                       isMultiSelect: false,
@@ -417,16 +434,21 @@ class _BookAppointmentWidgetState extends State<BookAppointmentWidget>
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                     child: TextFormField(
-                      controller: _model.problemDescriptionController,
+                      controller: _model.problemDescriptionTextController,
                       focusNode: _model.problemDescriptionFocusNode,
                       obscureText: false,
                       decoration: InputDecoration(
+                        isDense: false,
                         labelText: FFLocalizations.of(context).getText(
                           '7ohalsg9' /* What's the problem? */,
                         ),
-                        labelStyle: FlutterFlowTheme.of(context).bodyMedium,
+                        labelStyle:
+                            FlutterFlowTheme.of(context).bodyMedium.override(
+                                  fontFamily: 'Lexend',
+                                  letterSpacing: 0.0,
+                                ),
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
                             color: FlutterFlowTheme.of(context).background,
@@ -435,21 +457,21 @@ class _BookAppointmentWidgetState extends State<BookAppointmentWidget>
                           borderRadius: BorderRadius.circular(8.0),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Color(0x00000000),
                             width: 2.0,
                           ),
                           borderRadius: BorderRadius.circular(8.0),
                         ),
                         errorBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Color(0x00000000),
                             width: 2.0,
                           ),
                           borderRadius: BorderRadius.circular(8.0),
                         ),
                         focusedErrorBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Color(0x00000000),
                             width: 2.0,
                           ),
@@ -457,47 +479,48 @@ class _BookAppointmentWidgetState extends State<BookAppointmentWidget>
                         ),
                         filled: true,
                         fillColor: FlutterFlowTheme.of(context).darkBackground,
-                        contentPadding: EdgeInsetsDirectional.fromSTEB(
+                        contentPadding: const EdgeInsetsDirectional.fromSTEB(
                             20.0, 24.0, 0.0, 24.0),
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Lexend',
                             color: FlutterFlowTheme.of(context).textColor,
+                            letterSpacing: 0.0,
                           ),
                       textAlign: TextAlign.start,
                       maxLines: 8,
                       keyboardType: TextInputType.multiline,
-                      validator: _model.problemDescriptionControllerValidator
+                      validator: _model
+                          .problemDescriptionTextControllerValidator
                           .asValidator(context),
                     ).animateOnPageLoad(
                         animationsMap['textFieldOnPageLoadAnimation2']!),
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                     child: InkWell(
                       splashColor: Colors.transparent,
                       focusColor: Colors.transparent,
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
-                        await DatePicker.showDatePicker(
-                          context,
-                          showTitleActions: true,
-                          onConfirm: (date) {
-                            safeSetState(() {
-                              _model.datePicked = date;
-                            });
-                          },
-                          currentTime: getCurrentTimestamp,
-                          minTime: DateTime(0, 0, 0),
-                          locale: LocaleType.values.firstWhere(
-                            (l) =>
-                                l.name ==
-                                FFLocalizations.of(context).languageCode,
-                            orElse: () => LocaleType.en,
-                          ),
+                        final datePickedDate = await showDatePicker(
+                          context: context,
+                          initialDate: getCurrentTimestamp,
+                          firstDate: getCurrentTimestamp,
+                          lastDate: DateTime(2050),
                         );
+
+                        if (datePickedDate != null) {
+                          safeSetState(() {
+                            _model.datePicked = DateTime(
+                              datePickedDate.year,
+                              datePickedDate.month,
+                              datePickedDate.day,
+                            );
+                          });
+                        }
                       },
                       child: Material(
                         color: Colors.transparent,
@@ -526,7 +549,7 @@ class _BookAppointmentWidgetState extends State<BookAppointmentWidget>
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           20.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
@@ -537,15 +560,16 @@ class _BookAppointmentWidgetState extends State<BookAppointmentWidget>
                                             .override(
                                               fontFamily: 'Lexend',
                                               fontSize: 12.0,
+                                              letterSpacing: 0.0,
                                             ),
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           20.0, 4.0, 0.0, 0.0),
                                       child: Text(
                                         dateTimeFormat(
-                                          'MMMMEEEEd',
+                                          "MMMMEEEEd",
                                           _model.datePicked,
                                           locale: FFLocalizations.of(context)
                                               .languageCode,
@@ -557,6 +581,7 @@ class _BookAppointmentWidgetState extends State<BookAppointmentWidget>
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .tertiary,
+                                              letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
                                             ),
                                       ),
@@ -565,7 +590,7 @@ class _BookAppointmentWidgetState extends State<BookAppointmentWidget>
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 8.0, 0.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -597,7 +622,7 @@ class _BookAppointmentWidgetState extends State<BookAppointmentWidget>
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 20.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 20.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -613,9 +638,9 @@ class _BookAppointmentWidgetState extends State<BookAppointmentWidget>
                           options: FFButtonOptions(
                             width: 100.0,
                             height: 50.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).background,
                             textStyle: FlutterFlowTheme.of(context)
@@ -623,10 +648,11 @@ class _BookAppointmentWidgetState extends State<BookAppointmentWidget>
                                 .override(
                                   fontFamily: 'Lexend',
                                   color: Colors.white,
+                                  letterSpacing: 0.0,
                                   fontWeight: FontWeight.w500,
                                 ),
                             elevation: 0.0,
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),
@@ -642,9 +668,9 @@ class _BookAppointmentWidgetState extends State<BookAppointmentWidget>
                                   appointmentType: _model.dropDownValue,
                                   appointmentTime: _model.datePicked,
                                   appointmentName:
-                                      _model.personsNameController.text,
-                                  appointmentDescription:
-                                      _model.problemDescriptionController.text,
+                                      _model.personsNameTextController.text,
+                                  appointmentDescription: _model
+                                      .problemDescriptionTextController.text,
                                   appointmentEmail: currentUserEmail,
                                 ));
                             context.pop();
@@ -655,9 +681,9 @@ class _BookAppointmentWidgetState extends State<BookAppointmentWidget>
                           options: FFButtonOptions(
                             width: 150.0,
                             height: 50.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).primary,
                             textStyle: FlutterFlowTheme.of(context)
@@ -665,10 +691,11 @@ class _BookAppointmentWidgetState extends State<BookAppointmentWidget>
                                 .override(
                                   fontFamily: 'Lexend',
                                   color: Colors.white,
+                                  letterSpacing: 0.0,
                                   fontWeight: FontWeight.w500,
                                 ),
                             elevation: 3.0,
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),

@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Fin Wallet Sample</string>
+	<string>Marketplace - FinWallet</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>Fin Wallet Sample</string>
+	<string>Marketplace - FinWallet</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleLocalizations</key>
@@ -35,7 +35,7 @@
             <string>Editor</string>
             <key>CFBundleURLSchemes</key>
             <array>
-                <string>com.googleusercontent.apps.180463640197-njukg0ftctm67shh0ta0riq9q1q54bep</string>
+                <!--FF_REVERSED_CLIENT_ID-->
                 
             </array>
         </dict>
@@ -44,10 +44,10 @@
         <key>CFBundleTypeRole</key>
         <string>Editor</string>
         <key>CFBundleURLName</key>
-        <string>finwalletsample.com</string>
+        <string>marketplacefinwallet.com</string>
         <key>CFBundleURLSchemes</key>
         <array>
-        <string>finwalletsample</string>
+        <string>marketplacefinwallet</string>
         </array>
         </dict>
     </array>

@@ -5,9 +5,10 @@ import '../base_auth_user_provider.dart';
 
 export '../base_auth_user_provider.dart';
 
-class FinWalletSampleFirebaseUser extends BaseAuthUser {
-  FinWalletSampleFirebaseUser(this.user);
+class MarketplaceFinWalletFirebaseUser extends BaseAuthUser {
+  MarketplaceFinWalletFirebaseUser(this.user);
   User? user;
+  @override
   bool get loggedIn => user != null;
 
   @override
@@ -54,10 +55,10 @@ class FinWalletSampleFirebaseUser extends BaseAuthUser {
   static BaseAuthUser fromUserCredential(UserCredential userCredential) =>
       fromFirebaseUser(userCredential.user);
   static BaseAuthUser fromFirebaseUser(User? user) =>
-      FinWalletSampleFirebaseUser(user);
+      MarketplaceFinWalletFirebaseUser(user);
 }
 
-Stream<BaseAuthUser> finWalletSampleFirebaseUserStream() =>
+Stream<BaseAuthUser> marketplaceFinWalletFirebaseUserStream() =>
     FirebaseAuth.instance
         .authStateChanges()
         .debounce((user) => user == null && !loggedIn
@@ -65,7 +66,7 @@ Stream<BaseAuthUser> finWalletSampleFirebaseUserStream() =>
             : Stream.value(user))
         .map<BaseAuthUser>(
       (user) {
-        currentUser = FinWalletSampleFirebaseUser(user);
+        currentUser = MarketplaceFinWalletFirebaseUser(user);
         return currentUser!;
       },
     );

@@ -1701,12 +1701,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'de': 'Herzlich willkommen,',
       'es': 'Bienvenidos,',
     },
-    'v74pa882': {
-      'en': 'Andrew',
-      'ar': 'أندرو',
-      'de': 'Andreas',
-      'es': 'Andrés',
-    },
     'rzpg3cvh': {
       'en': 'Your latest updates are below.',
       'ar': 'آخر التحديثات الخاصة بك أدناه.',
@@ -2505,6 +2499,36 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'de': '',
       'es': '',
     },
+    '5arwo1w3': {
+      'en': '',
+      'ar': '',
+      'de': '',
+      'es': '',
+    },
+    '9drb3fza': {
+      'en': '',
+      'ar': '',
+      'de': '',
+      'es': '',
+    },
+    'nv3x6x8c': {
+      'en': '',
+      'ar': '',
+      'de': '',
+      'es': '',
+    },
+    'sl7ybv17': {
+      'en': '',
+      'ar': '',
+      'de': '',
+      'es': '',
+    },
+    'fjswo9gb': {
+      'en': '',
+      'ar': '',
+      'de': '',
+      'es': '',
+    },
     'aox3s4fb': {
       'en': '',
       'ar': '',
@@ -2530,6 +2554,42 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': '',
     },
     '8twlwiwt': {
+      'en': '',
+      'ar': '',
+      'de': '',
+      'es': '',
+    },
+    'ukm40vck': {
+      'en': '',
+      'ar': '',
+      'de': '',
+      'es': '',
+    },
+    'j7good4y': {
+      'en': '',
+      'ar': '',
+      'de': '',
+      'es': '',
+    },
+    '72glqo0w': {
+      'en': '',
+      'ar': '',
+      'de': '',
+      'es': '',
+    },
+    'd0xqfhsq': {
+      'en': '',
+      'ar': '',
+      'de': '',
+      'es': '',
+    },
+    'twf0i47o': {
+      'en': '',
+      'ar': '',
+      'de': '',
+      'es': '',
+    },
+    'riyirsw9': {
       'en': '',
       'ar': '',
       'de': '',
