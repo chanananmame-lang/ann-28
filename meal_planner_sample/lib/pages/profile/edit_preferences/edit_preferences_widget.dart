@@ -1,18 +1,14 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 import '/components/custom_appbar_widget.dart';
 import '/components/diet_item/diet_item_widget.dart';
 import '/components/preference_item/preference_item_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'edit_preferences_model.dart';
 export 'edit_preferences_model.dart';
 
@@ -44,17 +40,16 @@ class _EditPreferencesWidgetState extends State<EditPreferencesWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('EDIT_PREFERENCES_EditPreferences_ON_INIT');
       logFirebaseEvent('EditPreferences_update_page_state');
-      setState(() {
-        _model.allergenSelection =
-            (currentUserDocument?.allergens?.toList() ?? [])
-                .toList()
-                .cast<String>();
-        _model.dietSelection = valueOrDefault(currentUserDocument?.diet, '');
-        _model.ingredientSelection =
-            (currentUserDocument?.ingredientDislikes?.toList() ?? [])
-                .toList()
-                .cast<String>();
-      });
+      _model.allergenSelection =
+          (currentUserDocument?.allergens.toList() ?? [])
+              .toList()
+              .cast<String>();
+      _model.dietSelection = valueOrDefault(currentUserDocument?.diet, '');
+      _model.ingredientSelection =
+          (currentUserDocument?.ingredientDislikes.toList() ?? [])
+              .toList()
+              .cast<String>();
+      setState(() {});
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -101,10 +96,9 @@ class _EditPreferencesWidgetState extends State<EditPreferencesWidget> {
             editPreferencesOnboardingOptionsRecordList.isNotEmpty
                 ? editPreferencesOnboardingOptionsRecordList.first
                 : null;
+
         return GestureDetector(
-          onTap: () => _model.unfocusNode.canRequestFocus
-              ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-              : FocusScope.of(context).unfocus(),
+          onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -115,9 +109,9 @@ class _EditPreferencesWidgetState extends State<EditPreferencesWidget> {
                 children: [
                   Expanded(
                     child: Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                      alignment: const AlignmentDirectional(0.0, 0.0),
                       child: Padding(
-                        padding: EdgeInsets.all(24.0),
+                        padding: const EdgeInsets.all(24.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -135,19 +129,21 @@ class _EditPreferencesWidgetState extends State<EditPreferencesWidget> {
                               ),
                             ),
                             Expanded(
-                              child: Container(
+                              child: SizedBox(
                                 width: double.infinity,
                                 height: 500.0,
                                 child: PageView(
                                   physics: const NeverScrollableScrollPhysics(),
                                   controller: _model.pageViewController ??=
                                       PageController(
-                                          initialPage: min(
-                                              valueOrDefault<int>(
-                                                widget.page,
-                                                0,
-                                              ),
-                                              2)),
+                                          initialPage: max(
+                                              0,
+                                              min(
+                                                  valueOrDefault<int>(
+                                                    widget.page,
+                                                    0,
+                                                  ),
+                                                  2))),
                                   scrollDirection: Axis.horizontal,
                                   children: [
                                     Column(
@@ -157,25 +153,30 @@ class _EditPreferencesWidgetState extends State<EditPreferencesWidget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 24.0, 0.0, 0.0),
                                           child: Text(
                                             'Update diet',
                                             style: FlutterFlowTheme.of(context)
-                                                .displaySmall,
+                                                .displaySmall
+                                                .override(
+                                                  fontFamily: 'Inter',
+                                                  letterSpacing: 0.0,
+                                                ),
                                           ),
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 18.0, 0.0, 0.0),
                                           child: Builder(
                                             builder: (context) {
                                               final diet =
                                                   editPreferencesOnboardingOptionsRecord
                                                           ?.dietOptions
-                                                          ?.toList() ??
+                                                          .toList() ??
                                                       [];
+
                                               return Column(
                                                 mainAxisSize: MainAxisSize.min,
                                                 crossAxisAlignment:
@@ -201,14 +202,13 @@ class _EditPreferencesWidgetState extends State<EditPreferencesWidget> {
                                                           .selectionClick();
                                                       logFirebaseEvent(
                                                           'dietItem_update_page_state');
-                                                      setState(() {
-                                                        _model.dietSelection =
-                                                            dietItem.dietName;
-                                                      });
+                                                      _model.dietSelection =
+                                                          dietItem.dietName;
+                                                      setState(() {});
                                                     },
                                                   );
                                                 }).divide(
-                                                    SizedBox(height: 8.0)),
+                                                    const SizedBox(height: 8.0)),
                                               );
                                             },
                                           ),
@@ -222,17 +222,21 @@ class _EditPreferencesWidgetState extends State<EditPreferencesWidget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 24.0, 0.0, 0.0),
                                           child: Text(
                                             'Update allergies',
                                             style: FlutterFlowTheme.of(context)
-                                                .displaySmall,
+                                                .displaySmall
+                                                .override(
+                                                  fontFamily: 'Inter',
+                                                  letterSpacing: 0.0,
+                                                ),
                                           ),
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 18.0, 0.0, 0.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.min,
@@ -244,8 +248,9 @@ class _EditPreferencesWidgetState extends State<EditPreferencesWidget> {
                                                   final allergens =
                                                       editPreferencesOnboardingOptionsRecord
                                                               ?.allergenOptions
-                                                              ?.toList() ??
+                                                              .toList() ??
                                                           [];
+
                                                   return Wrap(
                                                     spacing: 8.0,
                                                     runSpacing: 8.0,
@@ -285,10 +290,9 @@ class _EditPreferencesWidgetState extends State<EditPreferencesWidget> {
                                                                 .selectionClick();
                                                             logFirebaseEvent(
                                                                 'preferenceItem_update_page_state');
-                                                            setState(() {
-                                                              _model.removeFromAllergenSelection(
-                                                                  allergensItem);
-                                                            });
+                                                            _model.removeFromAllergenSelection(
+                                                                allergensItem);
+                                                            setState(() {});
                                                           } else {
                                                             logFirebaseEvent(
                                                                 'preferenceItem_haptic_feedback');
@@ -296,10 +300,9 @@ class _EditPreferencesWidgetState extends State<EditPreferencesWidget> {
                                                                 .selectionClick();
                                                             logFirebaseEvent(
                                                                 'preferenceItem_update_page_state');
-                                                            setState(() {
-                                                              _model.addToAllergenSelection(
-                                                                  allergensItem);
-                                                            });
+                                                            _model.addToAllergenSelection(
+                                                                allergensItem);
+                                                            setState(() {});
                                                           }
                                                         },
                                                       );
@@ -319,17 +322,21 @@ class _EditPreferencesWidgetState extends State<EditPreferencesWidget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 24.0, 0.0, 0.0),
                                           child: Text(
                                             'Update dislikes',
                                             style: FlutterFlowTheme.of(context)
-                                                .displaySmall,
+                                                .displaySmall
+                                                .override(
+                                                  fontFamily: 'Inter',
+                                                  letterSpacing: 0.0,
+                                                ),
                                           ),
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 18.0, 0.0, 0.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.min,
@@ -341,8 +348,9 @@ class _EditPreferencesWidgetState extends State<EditPreferencesWidget> {
                                                   final dislikes =
                                                       editPreferencesOnboardingOptionsRecord
                                                               ?.ingredientOptions
-                                                              ?.toList() ??
+                                                              .toList() ??
                                                           [];
+
                                                   return Wrap(
                                                     spacing: 8.0,
                                                     runSpacing: 8.0,
@@ -382,10 +390,9 @@ class _EditPreferencesWidgetState extends State<EditPreferencesWidget> {
                                                                 .selectionClick();
                                                             logFirebaseEvent(
                                                                 'preferenceItem_update_page_state');
-                                                            setState(() {
-                                                              _model.removeFromIngredientSelection(
-                                                                  dislikesItem);
-                                                            });
+                                                            _model.removeFromIngredientSelection(
+                                                                dislikesItem);
+                                                            setState(() {});
                                                           } else {
                                                             logFirebaseEvent(
                                                                 'preferenceItem_haptic_feedback');
@@ -393,10 +400,9 @@ class _EditPreferencesWidgetState extends State<EditPreferencesWidget> {
                                                                 .selectionClick();
                                                             logFirebaseEvent(
                                                                 'preferenceItem_update_page_state');
-                                                            setState(() {
-                                                              _model.addToIngredientSelection(
-                                                                  dislikesItem);
-                                                            });
+                                                            _model.addToIngredientSelection(
+                                                                dislikesItem);
+                                                            setState(() {});
                                                           }
                                                         },
                                                       );
@@ -420,7 +426,7 @@ class _EditPreferencesWidgetState extends State<EditPreferencesWidget> {
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 12.0),
+                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 12.0),
                     child: FFButtonWidget(
                       onPressed: () async {
                         logFirebaseEvent(
@@ -448,13 +454,17 @@ class _EditPreferencesWidgetState extends State<EditPreferencesWidget> {
                         width: double.infinity,
                         height: 50.0,
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).primary,
-                        textStyle: FlutterFlowTheme.of(context).titleSmall,
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Inter',
+                                  letterSpacing: 0.0,
+                                ),
                         elevation: 0.0,
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Colors.transparent,
                           width: 1.0,
                         ),

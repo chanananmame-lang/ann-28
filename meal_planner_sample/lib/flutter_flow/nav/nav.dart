@@ -1,21 +1,15 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
 import '/index.dart';
 import '/main.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/lat_lng.dart';
-import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'serialization_util.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -75,46 +69,49 @@ class AppStateNotifier extends ChangeNotifier {
   }
 }
 
-GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
+GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
+    GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? NavBarPage() : SplashWidget(),
+      errorBuilder: (context, state) => appStateNotifier.loggedIn
+          ? entryPage ?? const NavBarPage()
+          : const SplashWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) =>
-              appStateNotifier.loggedIn ? NavBarPage() : SplashWidget(),
+          builder: (context, _) => appStateNotifier.loggedIn
+              ? entryPage ?? const NavBarPage()
+              : const SplashWidget(),
           routes: [
             FFRoute(
               name: 'Splash',
               path: 'splash',
-              builder: (context, params) => SplashWidget(),
+              builder: (context, params) => const SplashWidget(),
             ),
             FFRoute(
               name: 'SignIn',
               path: 'sign-in',
-              builder: (context, params) => SignInWidget(),
+              builder: (context, params) => const SignInWidget(),
             ),
             FFRoute(
               name: 'Onboarding_Slideshow',
               path: 'onboarding',
-              builder: (context, params) => OnboardingSlideshowWidget(),
+              builder: (context, params) => const OnboardingSlideshowWidget(),
             ),
             FFRoute(
               name: 'Onboarding_CreateAccount',
               path: 'create-account',
-              builder: (context, params) => OnboardingCreateAccountWidget(),
+              builder: (context, params) => const OnboardingCreateAccountWidget(),
             ),
             FFRoute(
               name: 'Dashboard',
               path: 'dashboard',
               requireAuth: true,
               builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'Dashboard')
-                  : DashboardWidget(),
+                  ? const NavBarPage(initialPage: 'Dashboard')
+                  : const DashboardWidget(),
             ),
             FFRoute(
               name: 'MealDetails',
@@ -124,7 +121,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 'mealRef': getDoc(['meals'], MealsRecord.fromSnapshot),
               },
               builder: (context, params) => MealDetailsWidget(
-                mealRef: params.getParam('mealRef', ParamType.Document),
+                mealRef: params.getParam(
+                  'mealRef',
+                  ParamType.Document,
+                ),
               ),
             ),
             FFRoute(
@@ -132,50 +132,53 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'profile',
               requireAuth: true,
               builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'Profile')
-                  : ProfileWidget(),
+                  ? const NavBarPage(initialPage: 'Profile')
+                  : const ProfileWidget(),
             ),
             FFRoute(
               name: 'EditProfile',
               path: 'edit-profile',
               requireAuth: true,
-              builder: (context, params) => EditProfileWidget(),
+              builder: (context, params) => const EditProfileWidget(),
             ),
             FFRoute(
               name: 'AboutUs',
               path: 'about-us',
               requireAuth: true,
-              builder: (context, params) => AboutUsWidget(),
+              builder: (context, params) => const AboutUsWidget(),
             ),
             FFRoute(
               name: 'EatingPreferences',
               path: 'eating-preferences',
               requireAuth: true,
-              builder: (context, params) => EatingPreferencesWidget(),
+              builder: (context, params) => const EatingPreferencesWidget(),
             ),
             FFRoute(
               name: 'SupportCenter',
               path: 'support-center',
               requireAuth: true,
-              builder: (context, params) => SupportCenterWidget(),
+              builder: (context, params) => const SupportCenterWidget(),
             ),
             FFRoute(
               name: 'ForgotPassword',
               path: 'forgot-password',
-              builder: (context, params) => ForgotPasswordWidget(),
+              builder: (context, params) => const ForgotPasswordWidget(),
             ),
             FFRoute(
               name: 'EditPreferences',
               path: 'edit-preferences',
               requireAuth: true,
               builder: (context, params) => EditPreferencesWidget(
-                page: params.getParam('page', ParamType.int),
+                page: params.getParam(
+                  'page',
+                  ParamType.int,
+                ),
               ),
             ),
             FFRoute(
               name: 'Onboarding',
               path: 'preferences-onboarding',
-              builder: (context, params) => OnboardingWidget(),
+              builder: (context, params) => const OnboardingWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
@@ -254,7 +257,7 @@ extension _GoRouterStateExtensions on GoRouterState {
       extra != null ? extra as Map<String, dynamic> : {};
   Map<String, dynamic> get allParams => <String, dynamic>{}
     ..addAll(pathParameters)
-    ..addAll(queryParameters)
+    ..addAll(uri.queryParameters)
     ..addAll(extraMap);
   TransitionInfo get transitionInfo => extraMap.containsKey(kTransitionInfoKey)
       ? extraMap[kTransitionInfoKey] as TransitionInfo
@@ -273,7 +276,7 @@ class FFParameters {
   // present is the special extra parameter reserved for the transition info.
   bool get isEmpty =>
       state.allParams.isEmpty ||
-      (state.extraMap.length == 1 &&
+      (state.allParams.length == 1 &&
           state.extraMap.containsKey(kTransitionInfoKey));
   bool isAsyncParam(MapEntry<String, dynamic> param) =>
       asyncParams.containsKey(param.key) && param.value is String;
@@ -294,10 +297,11 @@ class FFParameters {
 
   dynamic getParam<T>(
     String paramName,
-    ParamType type, [
+    ParamType type, {
     bool isList = false,
     List<String>? collectionNamePath,
-  ]) {
+    StructBuilder<T>? structBuilder,
+  }) {
     if (futureParamValues.containsKey(paramName)) {
       return futureParamValues[paramName];
     }
@@ -310,8 +314,13 @@ class FFParameters {
       return param;
     }
     // Return serialized value.
-    return deserializeParam<T>(param, type, isList,
-        collectionNamePath: collectionNamePath);
+    return deserializeParam<T>(
+      param,
+      type,
+      isList,
+      collectionNamePath: collectionNamePath,
+      structBuilder: structBuilder,
+    );
   }
 }
 
@@ -343,7 +352,7 @@ class FFRoute {
           }
 
           if (requireAuth && !appStateNotifier.loggedIn) {
-            appStateNotifier.setRedirectLocationIfUnset(state.location);
+            appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
             return '/splash';
           }
           return null;
@@ -410,7 +419,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {
@@ -421,7 +430,7 @@ class RootPageContext {
   static bool isInactiveRootPage(BuildContext context) {
     final rootPageContext = context.read<RootPageContext?>();
     final isRootPage = rootPageContext?.isRootPage ?? false;
-    final location = GoRouter.of(context).location;
+    final location = GoRouterState.of(context).uri.toString();
     return isRootPage &&
         location != '/' &&
         location != rootPageContext?.errorRoute;
@@ -431,4 +440,14 @@ class RootPageContext {
         value: RootPageContext(true, errorRoute),
         child: child,
       );
+}
+
+extension GoRouterLocationExtension on GoRouter {
+  String getCurrentLocation() {
+    final RouteMatch lastMatch = routerDelegate.currentConfiguration.last;
+    final RouteMatchList matchList = lastMatch is ImperativeRouteMatch
+        ? lastMatch.matches
+        : routerDelegate.currentConfiguration;
+    return matchList.uri.toString();
+  }
 }

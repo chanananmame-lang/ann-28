@@ -1,8 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'empty_list_stories_model.dart';
 export 'empty_list_stories_model.dart';
 
@@ -56,7 +54,7 @@ class _EmptyListStoriesWidgetState extends State<EmptyListStoriesWidget> {
             ),
           ),
           child: Padding(
-            padding: EdgeInsets.all(4.0),
+            padding: const EdgeInsets.all(4.0),
             child: Icon(
               Icons.account_circle_outlined,
               color: FlutterFlowTheme.of(context).alternate,
@@ -76,7 +74,7 @@ class _EmptyListStoriesWidgetState extends State<EmptyListStoriesWidget> {
             ),
           ),
           child: Padding(
-            padding: EdgeInsets.all(4.0),
+            padding: const EdgeInsets.all(4.0),
             child: Icon(
               Icons.account_circle_outlined,
               color: FlutterFlowTheme.of(context).alternate,
@@ -96,7 +94,7 @@ class _EmptyListStoriesWidgetState extends State<EmptyListStoriesWidget> {
             ),
           ),
           child: Padding(
-            padding: EdgeInsets.all(4.0),
+            padding: const EdgeInsets.all(4.0),
             child: Icon(
               Icons.account_circle_outlined,
               color: FlutterFlowTheme.of(context).alternate,
@@ -116,7 +114,7 @@ class _EmptyListStoriesWidgetState extends State<EmptyListStoriesWidget> {
             ),
           ),
           child: Padding(
-            padding: EdgeInsets.all(4.0),
+            padding: const EdgeInsets.all(4.0),
             child: Icon(
               Icons.account_circle_outlined,
               color: FlutterFlowTheme.of(context).alternate,
@@ -125,9 +123,9 @@ class _EmptyListStoriesWidgetState extends State<EmptyListStoriesWidget> {
           ),
         ),
       ]
-          .divide(SizedBox(width: 12.0))
-          .addToStart(SizedBox(width: 16.0))
-          .addToEnd(SizedBox(width: 16.0)),
+          .divide(const SizedBox(width: 12.0))
+          .addToStart(const SizedBox(width: 16.0))
+          .addToEnd(const SizedBox(width: 16.0)),
     );
   }
 }

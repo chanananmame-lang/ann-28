@@ -12,12 +12,8 @@ import '/flutter_flow/flutter_flow_video_player.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'post_details_base_model.dart';
 export 'post_details_base_model.dart';
 
@@ -39,35 +35,7 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
     with TickerProviderStateMixin {
   late PostDetailsBaseModel _model;
 
-  final animationsMap = {
-    'containerOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 1.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 400.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 400.ms,
-          begin: Offset(0.0, 20.0),
-          end: Offset(0.0, 0.0),
-        ),
-        TiltEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 400.ms,
-          begin: Offset(0.698, 0),
-          end: Offset(0, 0),
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void setState(VoidCallback callback) {
@@ -82,6 +50,36 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
+
+    animationsMap.addAll({
+      'containerOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 1.ms),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: const Offset(0.0, 20.0),
+            end: const Offset(0.0, 0.0),
+          ),
+          TiltEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: const Offset(0.698, 0),
+            end: const Offset(0, 0),
+          ),
+        ],
+      ),
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -112,10 +110,12 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
             ),
           );
         }
+
         final containerUserPostsRecord = snapshot.data!;
+
         return Container(
           width: double.infinity,
-          constraints: BoxConstraints(
+          constraints: const BoxConstraints(
             maxWidth: 770.0,
           ),
           decoration: BoxDecoration(
@@ -141,8 +141,8 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
                             child: FlutterFlowMediaDisplay(
                               path: containerUserPostsRecord.postPhoto,
                               imageBuilder: (path) => CachedNetworkImage(
-                                fadeInDuration: Duration(milliseconds: 0),
-                                fadeOutDuration: Duration(milliseconds: 0),
+                                fadeInDuration: const Duration(milliseconds: 0),
+                                fadeOutDuration: const Duration(milliseconds: 0),
                                 imageUrl: path,
                                 width: MediaQuery.sizeOf(context).width * 1.0,
                                 height: 430.0,
@@ -162,7 +162,7 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 16.0, 64.0, 16.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -207,7 +207,7 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
                                     onPressed: () async {
                                       showModalBottomSheet(
                                         isScrollControlled: true,
-                                        backgroundColor: Color(0x00000000),
+                                        backgroundColor: const Color(0x00000000),
                                         barrierColor:
                                             FlutterFlowTheme.of(context)
                                                 .accent4,
@@ -216,7 +216,7 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
                                           return Padding(
                                             padding: MediaQuery.viewInsetsOf(
                                                 context),
-                                            child: Container(
+                                            child: SizedBox(
                                               height: 230.0,
                                               child: DeletePostWidget(
                                                 postParameters:
@@ -234,7 +234,7 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
                         ],
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 8.0, 16.0, 0.0),
                         child: InkWell(
                           splashColor: Colors.transparent,
@@ -271,14 +271,14 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
                                 height: 48.0,
                                 decoration: BoxDecoration(
                                   color: FlutterFlowTheme.of(context).accent1,
-                                  borderRadius: BorderRadius.circular(12.0),
+                                  borderRadius: BorderRadius.circular(10.0),
                                   border: Border.all(
                                     color: FlutterFlowTheme.of(context).primary,
                                     width: 2.0,
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsets.all(2.0),
+                                  padding: const EdgeInsets.all(2.0),
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(8.0),
                                     child: Image.network(
@@ -306,7 +306,7 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             valueOrDefault<String>(
@@ -314,12 +314,16 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
                                               'My Name',
                                             ),
                                             style: FlutterFlowTheme.of(context)
-                                                .titleLarge,
+                                                .titleLarge
+                                                .override(
+                                                  fontFamily: 'Outfit',
+                                                  letterSpacing: 0.0,
+                                                ),
                                           ),
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 4.0, 0.0, 0.0),
                                           child: Text(
                                             valueOrDefault<String>(
@@ -333,21 +337,26 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primary,
+                                                  letterSpacing: 0.0,
                                                 ),
                                           ),
                                         ),
                                       ],
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           12.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         dateTimeFormat(
-                                            'relative',
+                                            "relative",
                                             containerUserPostsRecord
                                                 .timePosted!),
                                         style: FlutterFlowTheme.of(context)
-                                            .labelSmall,
+                                            .labelSmall
+                                            .override(
+                                              fontFamily: 'Figtree',
+                                              letterSpacing: 0.0,
+                                            ),
                                       ),
                                     ),
                                   ],
@@ -358,14 +367,14 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 4.0, 16.0, 8.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Expanded(
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 12.0, 0.0, 0.0),
                                 child: Text(
                                   valueOrDefault<String>(
@@ -375,7 +384,12 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
                                     maxChars: 200,
                                     replacement: '…',
                                   ),
-                                  style: FlutterFlowTheme.of(context).bodyLarge,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyLarge
+                                      .override(
+                                        fontFamily: 'Figtree',
+                                        letterSpacing: 0.0,
+                                      ),
                                 ),
                               ),
                             ),
@@ -384,7 +398,7 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 16.0, 6.0),
+                            const EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 16.0, 6.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -393,7 +407,7 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 16.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -435,7 +449,7 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
                                         ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             4.0, 0.0, 0.0, 0.0),
                                         child: Text(
                                           valueOrDefault<String>(
@@ -447,7 +461,11 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
                                             '0',
                                           ),
                                           style: FlutterFlowTheme.of(context)
-                                              .labelMedium,
+                                              .labelMedium
+                                              .override(
+                                                fontFamily: 'Figtree',
+                                                letterSpacing: 0.0,
+                                              ),
                                         ),
                                       ),
                                     ],
@@ -463,7 +481,7 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
                                       size: 24.0,
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           4.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         valueOrDefault<String>(
@@ -475,7 +493,11 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
                                           '0',
                                         ),
                                         style: FlutterFlowTheme.of(context)
-                                            .labelMedium,
+                                            .labelMedium
+                                            .override(
+                                              fontFamily: 'Figtree',
+                                              letterSpacing: 0.0,
+                                            ),
                                       ),
                                     ),
                                   ],
@@ -506,7 +528,7 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   16.0, 12.0, 16.0, 12.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -518,6 +540,7 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
                                         .override(
                                           fontFamily: 'Figtree',
                                           fontSize: 12.0,
+                                          letterSpacing: 0.0,
                                         ),
                                   ),
                                 ],
@@ -555,13 +578,14 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
                                     commentListPostCommentsRecordList =
                                     snapshot.data!;
                                 if (commentListPostCommentsRecordList.isEmpty) {
-                                  return Center(
-                                    child: Container(
+                                  return const Center(
+                                    child: SizedBox(
                                       height: 300.0,
                                       child: EmptyList2Widget(),
                                     ),
                                   );
                                 }
+
                                 return Column(
                                   mainAxisSize: MainAxisSize.max,
                                   children: List.generate(
@@ -571,7 +595,7 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
                                         commentListPostCommentsRecordList[
                                             commentListIndex];
                                     return Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 2.0),
                                       child: StreamBuilder<UsersRecord>(
                                         stream: UsersRecord.getDocument(
@@ -596,8 +620,10 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
                                               ),
                                             );
                                           }
+
                                           final commentUsersRecord =
                                               snapshot.data!;
+
                                           return Container(
                                             width: double.infinity,
                                             decoration: BoxDecoration(
@@ -609,14 +635,17 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primaryBackground,
-                                                  offset: Offset(0.0, 1.0),
+                                                  offset: const Offset(
+                                                    0.0,
+                                                    1.0,
+                                                  ),
                                                 )
                                               ],
                                               borderRadius:
                                                   BorderRadius.circular(0.0),
                                             ),
                                             child: Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       16.0, 12.0, 16.0, 12.0),
                                               child: Row(
@@ -634,7 +663,7 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
                                                               .accent1,
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              12.0),
+                                                              10.0),
                                                       border: Border.all(
                                                         color:
                                                             FlutterFlowTheme.of(
@@ -645,7 +674,7 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsets.all(2.0),
+                                                          const EdgeInsets.all(2.0),
                                                       child: ClipRRect(
                                                         borderRadius:
                                                             BorderRadius
@@ -667,7 +696,7 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
                                                   Expanded(
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   12.0,
                                                                   0.0,
@@ -693,6 +722,8 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
                                                                 .override(
                                                                   fontFamily:
                                                                       'Figtree',
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
@@ -700,7 +731,7 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         4.0,
@@ -711,12 +742,18 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
                                                                   .comment,
                                                               style: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .labelLarge,
+                                                                  .labelLarge
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Figtree',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
                                                             ),
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         4.0,
@@ -728,7 +765,7 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
                                                                       .max,
                                                               children: [
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -738,17 +775,29 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
                                                                     'Posted',
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .labelSmall,
+                                                                        .labelSmall
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Figtree',
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                        ),
                                                                   ),
                                                                 ),
                                                                 Text(
                                                                   dateTimeFormat(
-                                                                      'relative',
+                                                                      "relative",
                                                                       commentListPostCommentsRecord
                                                                           .timePosted!),
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .labelSmall,
+                                                                      .labelSmall
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Figtree',
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                      ),
                                                                 ),
                                                               ],
                                                             ),
@@ -777,7 +826,7 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(12.0),
+                padding: const EdgeInsets.all(12.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -787,17 +836,20 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
                       autovalidateMode: AutovalidateMode.disabled,
                       child: Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
                         child: Container(
                           width: MediaQuery.sizeOf(context).width * 1.0,
                           decoration: BoxDecoration(
                             color:
                                 FlutterFlowTheme.of(context).primaryBackground,
-                            boxShadow: [
+                            boxShadow: const [
                               BoxShadow(
                                 blurRadius: 3.0,
                                 color: Color(0x3A000000),
-                                offset: Offset(0.0, 1.0),
+                                offset: Offset(
+                                  0.0,
+                                  1.0,
+                                ),
                               )
                             ],
                             borderRadius: BorderRadius.circular(40.0),
@@ -807,7 +859,7 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
                             children: [
                               Expanded(
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 4.0, 0.0, 4.0),
                                   child: TextFormField(
                                     controller: _model.textController,
@@ -816,7 +868,11 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
                                     decoration: InputDecoration(
                                       hintText: 'Comment here...',
                                       hintStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium,
+                                          .labelMedium
+                                          .override(
+                                            fontFamily: 'Figtree',
+                                            letterSpacing: 0.0,
+                                          ),
                                       errorStyle: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -824,57 +880,62 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
                                             color: FlutterFlowTheme.of(context)
                                                 .error,
                                             fontSize: 12.0,
+                                            letterSpacing: 0.0,
                                           ),
-                                      enabledBorder: UnderlineInputBorder(
+                                      enabledBorder: const UnderlineInputBorder(
                                         borderSide: BorderSide(
                                           color: Color(0x00000000),
                                           width: 1.0,
                                         ),
-                                        borderRadius: const BorderRadius.only(
+                                        borderRadius: BorderRadius.only(
                                           topLeft: Radius.circular(4.0),
                                           topRight: Radius.circular(4.0),
                                         ),
                                       ),
-                                      focusedBorder: UnderlineInputBorder(
+                                      focusedBorder: const UnderlineInputBorder(
                                         borderSide: BorderSide(
                                           color: Color(0x00000000),
                                           width: 1.0,
                                         ),
-                                        borderRadius: const BorderRadius.only(
+                                        borderRadius: BorderRadius.only(
                                           topLeft: Radius.circular(4.0),
                                           topRight: Radius.circular(4.0),
                                         ),
                                       ),
-                                      errorBorder: UnderlineInputBorder(
+                                      errorBorder: const UnderlineInputBorder(
                                         borderSide: BorderSide(
                                           color: Color(0x00000000),
                                           width: 1.0,
                                         ),
-                                        borderRadius: const BorderRadius.only(
+                                        borderRadius: BorderRadius.only(
                                           topLeft: Radius.circular(4.0),
                                           topRight: Radius.circular(4.0),
                                         ),
                                       ),
-                                      focusedErrorBorder: UnderlineInputBorder(
+                                      focusedErrorBorder: const UnderlineInputBorder(
                                         borderSide: BorderSide(
                                           color: Color(0x00000000),
                                           width: 1.0,
                                         ),
-                                        borderRadius: const BorderRadius.only(
+                                        borderRadius: BorderRadius.only(
                                           topLeft: Radius.circular(4.0),
                                           topRight: Radius.circular(4.0),
                                         ),
                                       ),
                                     ),
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Figtree',
+                                          letterSpacing: 0.0,
+                                        ),
                                     validator: _model.textControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 4.0, 0.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
@@ -924,9 +985,9 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
                                   options: FFButtonOptions(
                                     width: 70.0,
                                     height: 40.0,
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
                                     color: FlutterFlowTheme.of(context)
                                         .primaryBackground,
@@ -936,9 +997,10 @@ class _PostDetailsBaseWidgetState extends State<PostDetailsBaseWidget>
                                           fontFamily: 'Figtree',
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
+                                          letterSpacing: 0.0,
                                         ),
                                     elevation: 0.0,
-                                    borderSide: BorderSide(
+                                    borderSide: const BorderSide(
                                       color: Colors.transparent,
                                       width: 1.0,
                                     ),

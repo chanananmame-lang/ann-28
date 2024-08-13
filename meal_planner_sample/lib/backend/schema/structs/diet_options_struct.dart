@@ -3,9 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '/backend/schema/util/firestore_util.dart';
-import '/backend/schema/util/schema_util.dart';
 
-import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 class DietOptionsStruct extends FFFirebaseStruct {
@@ -21,12 +19,14 @@ class DietOptionsStruct extends FFFirebaseStruct {
   String? _dietName;
   String get dietName => _dietName ?? '';
   set dietName(String? val) => _dietName = val;
+
   bool hasDietName() => _dietName != null;
 
   // "diet_tagline" field.
   String? _dietTagline;
   String get dietTagline => _dietTagline ?? '';
   set dietTagline(String? val) => _dietTagline = val;
+
   bool hasDietTagline() => _dietTagline != null;
 
   static DietOptionsStruct fromMap(Map<String, dynamic> data) =>

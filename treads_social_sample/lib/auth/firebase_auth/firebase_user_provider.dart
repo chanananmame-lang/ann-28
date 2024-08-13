@@ -5,9 +5,10 @@ import '../base_auth_user_provider.dart';
 
 export '../base_auth_user_provider.dart';
 
-class TreadsSocialSampleFirebaseUser extends BaseAuthUser {
-  TreadsSocialSampleFirebaseUser(this.user);
+class MarketplaceTreadsSocialFirebaseUser extends BaseAuthUser {
+  MarketplaceTreadsSocialFirebaseUser(this.user);
   User? user;
+  @override
   bool get loggedIn => user != null;
 
   @override
@@ -54,10 +55,10 @@ class TreadsSocialSampleFirebaseUser extends BaseAuthUser {
   static BaseAuthUser fromUserCredential(UserCredential userCredential) =>
       fromFirebaseUser(userCredential.user);
   static BaseAuthUser fromFirebaseUser(User? user) =>
-      TreadsSocialSampleFirebaseUser(user);
+      MarketplaceTreadsSocialFirebaseUser(user);
 }
 
-Stream<BaseAuthUser> treadsSocialSampleFirebaseUserStream() =>
+Stream<BaseAuthUser> marketplaceTreadsSocialFirebaseUserStream() =>
     FirebaseAuth.instance
         .authStateChanges()
         .debounce((user) => user == null && !loggedIn
@@ -65,7 +66,7 @@ Stream<BaseAuthUser> treadsSocialSampleFirebaseUserStream() =>
             : Stream.value(user))
         .map<BaseAuthUser>(
       (user) {
-        currentUser = TreadsSocialSampleFirebaseUser(user);
+        currentUser = MarketplaceTreadsSocialFirebaseUser(user);
         return currentUser!;
       },
     );

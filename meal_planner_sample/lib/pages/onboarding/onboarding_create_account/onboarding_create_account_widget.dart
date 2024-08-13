@@ -4,11 +4,8 @@ import '/components/custom_appbar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'onboarding_create_account_model.dart';
 export 'onboarding_create_account_model.dart';
 
@@ -33,13 +30,13 @@ class _OnboardingCreateAccountWidgetState
 
     logFirebaseEvent('screen_view',
         parameters: {'screen_name': 'Onboarding_CreateAccount'});
-    _model.fullNameController ??= TextEditingController();
+    _model.fullNameTextController ??= TextEditingController();
     _model.fullNameFocusNode ??= FocusNode();
 
-    _model.emailAddressController ??= TextEditingController();
+    _model.emailAddressTextController ??= TextEditingController();
     _model.emailAddressFocusNode ??= FocusNode();
 
-    _model.passwordController ??= TextEditingController();
+    _model.passwordTextController ??= TextEditingController();
     _model.passwordFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -55,18 +52,16 @@ class _OnboardingCreateAccountWidgetState
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.0, 0.0),
+            alignment: const AlignmentDirectional(0.0, 0.0),
             child: Padding(
-              padding: EdgeInsets.all(24.0),
+              padding: const EdgeInsets.all(24.0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -84,10 +79,13 @@ class _OnboardingCreateAccountWidgetState
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                     child: Text(
                       'Create an account',
-                      style: FlutterFlowTheme.of(context).displaySmall,
+                      style: FlutterFlowTheme.of(context).displaySmall.override(
+                            fontFamily: 'Inter',
+                            letterSpacing: 0.0,
+                          ),
                     ),
                   ),
                   Form(
@@ -97,25 +95,30 @@ class _OnboardingCreateAccountWidgetState
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 18.0, 0.0, 0.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 4.0),
                                 child: Text(
                                   'Full Name',
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Inter',
+                                        letterSpacing: 0.0,
+                                      ),
                                 ),
                               ),
                               TextFormField(
-                                controller: _model.fullNameController,
+                                controller: _model.fullNameTextController,
                                 focusNode: _model.fullNameFocusNode,
-                                autofillHints: [AutofillHints.name],
+                                autofocus: false,
+                                autofillHints: const [AutofillHints.name],
                                 textCapitalization: TextCapitalization.words,
                                 textInputAction: TextInputAction.next,
                                 obscureText: false,
@@ -159,38 +162,45 @@ class _OnboardingCreateAccountWidgetState
                                     .override(
                                       fontFamily: 'Inter',
                                       fontSize: 16.0,
+                                      letterSpacing: 0.0,
                                       fontWeight: FontWeight.w500,
                                       lineHeight: 1.0,
                                     ),
                                 minLines: 1,
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primary,
-                                validator: _model.fullNameControllerValidator
+                                validator: _model
+                                    .fullNameTextControllerValidator
                                     .asValidator(context),
                               ),
                             ],
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 18.0, 0.0, 0.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 4.0),
                                 child: Text(
                                   'Email',
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Inter',
+                                        letterSpacing: 0.0,
+                                      ),
                                 ),
                               ),
                               TextFormField(
-                                controller: _model.emailAddressController,
+                                controller: _model.emailAddressTextController,
                                 focusNode: _model.emailAddressFocusNode,
-                                autofillHints: [AutofillHints.email],
+                                autofocus: false,
+                                autofillHints: const [AutofillHints.email],
                                 textInputAction: TextInputAction.next,
                                 obscureText: false,
                                 decoration: InputDecoration(
@@ -233,6 +243,7 @@ class _OnboardingCreateAccountWidgetState
                                     .override(
                                       fontFamily: 'Inter',
                                       fontSize: 16.0,
+                                      letterSpacing: 0.0,
                                       fontWeight: FontWeight.w500,
                                       lineHeight: 1.0,
                                     ),
@@ -241,32 +252,37 @@ class _OnboardingCreateAccountWidgetState
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primary,
                                 validator: _model
-                                    .emailAddressControllerValidator
+                                    .emailAddressTextControllerValidator
                                     .asValidator(context),
                               ),
                             ],
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 18.0, 0.0, 0.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 4.0),
                                 child: Text(
                                   'Password',
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Inter',
+                                        letterSpacing: 0.0,
+                                      ),
                                 ),
                               ),
                               TextFormField(
-                                controller: _model.passwordController,
+                                controller: _model.passwordTextController,
                                 focusNode: _model.passwordFocusNode,
-                                autofillHints: [AutofillHints.newPassword],
+                                autofocus: false,
+                                autofillHints: const [AutofillHints.newPassword],
                                 textInputAction: TextInputAction.done,
                                 obscureText: !_model.passwordVisibility,
                                 decoration: InputDecoration(
@@ -324,12 +340,14 @@ class _OnboardingCreateAccountWidgetState
                                     .override(
                                       fontFamily: 'Inter',
                                       fontSize: 16.0,
+                                      letterSpacing: 0.0,
                                       fontWeight: FontWeight.w500,
                                       lineHeight: 1.0,
                                     ),
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primary,
-                                validator: _model.passwordControllerValidator
+                                validator: _model
+                                    .passwordTextControllerValidator
                                     .asValidator(context),
                               ),
                             ],
@@ -340,7 +358,7 @@ class _OnboardingCreateAccountWidgetState
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                     child: FFButtonWidget(
                       onPressed: () async {
                         logFirebaseEvent(
@@ -357,8 +375,8 @@ class _OnboardingCreateAccountWidgetState
 
                         final user = await authManager.createAccountWithEmail(
                           context,
-                          _model.emailAddressController.text,
-                          _model.passwordController.text,
+                          _model.emailAddressTextController.text,
+                          _model.passwordTextController.text,
                         );
                         if (user == null) {
                           return;
@@ -366,7 +384,7 @@ class _OnboardingCreateAccountWidgetState
 
                         await UsersRecord.collection.doc(user.uid).update({
                           ...createUsersRecordData(
-                            displayName: _model.fullNameController.text,
+                            displayName: _model.fullNameTextController.text,
                             diet: FFAppState().userDiet,
                           ),
                           ...mapToFirestore(
@@ -387,13 +405,17 @@ class _OnboardingCreateAccountWidgetState
                         width: double.infinity,
                         height: 50.0,
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).primary,
-                        textStyle: FlutterFlowTheme.of(context).titleSmall,
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Inter',
+                                  letterSpacing: 0.0,
+                                ),
                         elevation: 0.0,
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Colors.transparent,
                           width: 1.0,
                         ),
@@ -403,7 +425,7 @@ class _OnboardingCreateAccountWidgetState
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -441,6 +463,7 @@ class _OnboardingCreateAccountWidgetState
                                       ? richTextCompanyInformationRecordList
                                           .first
                                       : null;
+
                               return InkWell(
                                 splashColor: Colors.transparent,
                                 focusColor: Colors.transparent,
@@ -462,7 +485,11 @@ class _OnboardingCreateAccountWidgetState
                                         text:
                                             'By clicking \"Create Account,\" you agree to MealPlanner\'s ',
                                         style: FlutterFlowTheme.of(context)
-                                            .bodySmall,
+                                            .bodySmall
+                                            .override(
+                                              fontFamily: 'Inter',
+                                              letterSpacing: 0.0,
+                                            ),
                                       ),
                                       TextSpan(
                                         text: 'Terms of Use',
@@ -470,17 +497,22 @@ class _OnboardingCreateAccountWidgetState
                                             .bodySmall
                                             .override(
                                               fontFamily: 'Inter',
+                                              letterSpacing: 0.0,
                                               decoration:
                                                   TextDecoration.underline,
                                             ),
                                       ),
-                                      TextSpan(
+                                      const TextSpan(
                                         text: '.',
                                         style: TextStyle(),
                                       )
                                     ],
-                                    style:
-                                        FlutterFlowTheme.of(context).bodySmall,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodySmall
+                                        .override(
+                                          fontFamily: 'Inter',
+                                          letterSpacing: 0.0,
+                                        ),
                                   ),
                                   textAlign: TextAlign.center,
                                 ),

@@ -9,10 +9,7 @@ import '/flutter_flow/flutter_flow_video_player.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'create_post_model.dart';
 export 'create_post_model.dart';
 
@@ -61,16 +58,19 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
               automaticallyImplyLeading: false,
               title: Text(
                 'Create Post',
-                style: FlutterFlowTheme.of(context).headlineMedium,
+                style: FlutterFlowTheme.of(context).headlineMedium.override(
+                      fontFamily: 'Outfit',
+                      letterSpacing: 0.0,
+                    ),
               ),
               actions: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
                   child: FlutterFlowIconButton(
                     borderColor: Colors.transparent,
                     borderRadius: 30.0,
                     buttonSize: 48.0,
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.close_rounded,
                       color: Color(0xFF95A1AC),
                       size: 25.0,
@@ -86,13 +86,13 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
             )
           : null,
       body: Align(
-        alignment: AlignmentDirectional(0.0, -1.0),
+        alignment: const AlignmentDirectional(0.0, -1.0),
         child: Container(
           width: double.infinity,
-          constraints: BoxConstraints(
+          constraints: const BoxConstraints(
             maxWidth: 570.0,
           ),
-          decoration: BoxDecoration(),
+          decoration: const BoxDecoration(),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -104,14 +104,14 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                 tablet: false,
               ))
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 12.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 12.0),
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               16.0, 2.0, 0.0, 2.0),
                           child: FlutterFlowIconButton(
                             borderColor: Colors.transparent,
@@ -127,7 +127,7 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                               context.pushNamed(
                                 'main_Feed',
                                 extra: <String, dynamic>{
-                                  kTransitionInfoKey: TransitionInfo(
+                                  kTransitionInfoKey: const TransitionInfo(
                                     hasTransition: true,
                                     transitionType: PageTransitionType.fade,
                                     duration: Duration(milliseconds: 0),
@@ -138,7 +138,7 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               12.0, 0.0, 12.0, 0.0),
                           child: Icon(
                             Icons.chevron_right_rounded,
@@ -147,7 +147,7 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 8.0, 0.0),
                           child: Container(
                             height: 36.0,
@@ -158,13 +158,18 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                                 color: FlutterFlowTheme.of(context).secondary,
                               ),
                             ),
-                            alignment: AlignmentDirectional(0.0, 0.0),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   16.0, 0.0, 16.0, 0.0),
                               child: Text(
                                 'Create Post',
-                                style: FlutterFlowTheme.of(context).bodyLarge,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyLarge
+                                    .override(
+                                      fontFamily: 'Figtree',
+                                      letterSpacing: 0.0,
+                                    ),
                               ),
                             ),
                           ),
@@ -180,21 +185,21 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                     children: [
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
                         child: Container(
                           width: MediaQuery.sizeOf(context).width * 1.0,
-                          decoration: BoxDecoration(),
+                          decoration: const BoxDecoration(),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              Container(
+                              SizedBox(
                                 height: 350.0,
                                 child: Stack(
                                   children: [
                                     if (!functions.hasUploadedMedia(
                                         _model.uploadedFileUrl))
                                       Padding(
-                                        padding: EdgeInsets.all(8.0),
+                                        padding: const EdgeInsets.all(8.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
                                           focusColor: Colors.transparent,
@@ -308,7 +313,7 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                                                   MainAxisAlignment.center,
                                               children: [
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 0.0, 0.0, 24.0),
                                                   child: Icon(
@@ -323,7 +328,11 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                                                   'Add image or video here.',
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .labelMedium,
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily: 'Figtree',
+                                                        letterSpacing: 0.0,
+                                                      ),
                                                 ),
                                               ],
                                             ),
@@ -334,7 +343,7 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                                         _model.uploadedFileUrl))
                                       Align(
                                         alignment:
-                                            AlignmentDirectional(0.0, 0.0),
+                                            const AlignmentDirectional(0.0, 0.0),
                                         child: FlutterFlowMediaDisplay(
                                           path: _model.uploadedFileUrl,
                                           imageBuilder: (path) => Image.network(
@@ -363,7 +372,7 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 4.0, 0.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -379,7 +388,11 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                                           hintText: 'Comment....',
                                           hintStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .labelMedium,
+                                                  .labelMedium
+                                                  .override(
+                                                    fontFamily: 'Figtree',
+                                                    letterSpacing: 0.0,
+                                                  ),
                                           enabledBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
                                               color:
@@ -422,11 +435,18 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                                                 BorderRadius.circular(0.0),
                                           ),
                                           contentPadding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   20.0, 20.0, 20.0, 12.0),
                                         ),
                                         style: FlutterFlowTheme.of(context)
-                                            .titleSmall,
+                                            .titleSmall
+                                            .override(
+                                              fontFamily: 'Figtree',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              letterSpacing: 0.0,
+                                            ),
                                         textAlign: TextAlign.start,
                                         maxLines: 4,
                                         cursorColor:
@@ -453,7 +473,7 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                 height: 100.0,
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).primary,
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                     bottomLeft: Radius.circular(0.0),
                     bottomRight: Radius.circular(0.0),
                     topLeft: Radius.circular(16.0),
@@ -461,7 +481,7 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                   ),
                 ),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 40.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 40.0),
                   child: FFButtonWidget(
                     onPressed: () async {
                       await UserPostsRecord.collection
@@ -478,7 +498,7 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                       context.pushNamed(
                         'main_Feed',
                         extra: <String, dynamic>{
-                          kTransitionInfoKey: TransitionInfo(
+                          kTransitionInfoKey: const TransitionInfo(
                             hasTransition: true,
                             transitionType: PageTransitionType.leftToRight,
                             duration: Duration(milliseconds: 250),
@@ -491,19 +511,20 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                       width: 270.0,
                       height: 50.0,
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       iconPadding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).primary,
                       textStyle:
                           FlutterFlowTheme.of(context).titleSmall.override(
                                 fontFamily: 'Outfit',
                                 color: Colors.white,
                                 fontSize: 16.0,
+                                letterSpacing: 0.0,
                                 fontWeight: FontWeight.w500,
                               ),
                       elevation: 0.0,
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Colors.transparent,
                         width: 1.0,
                       ),

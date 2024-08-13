@@ -18,10 +18,10 @@
   },
   "scripts": {
     "lint": "./node_modules/.bin/eslint --max-warnings=0 .",
-    "serve": "firebase -P school-social-uni-demo-ttazup emulators:start --only functions",
-    "shell": "firebase -P school-social-uni-demo-ttazup functions:shell",
+    "serve": "firebase -P marketplace-treads-soci-612o7d emulators:start --only functions",
+    "shell": "firebase -P marketplace-treads-soci-612o7d functions:shell",
     "start": "npm run shell",
-    "logs": "firebase -P school-social-uni-demo-ttazup functions:log",
+    "logs": "firebase -P marketplace-treads-soci-612o7d functions:log",
     "compile": "cp ../../tsconfig.template.json ./tsconfig-compile.json && tsc --project tsconfig-compile.json"
   },
   "engines": {

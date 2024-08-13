@@ -5,9 +5,10 @@ import '../base_auth_user_provider.dart';
 
 export '../base_auth_user_provider.dart';
 
-class MealPlannerSampleFirebaseUser extends BaseAuthUser {
-  MealPlannerSampleFirebaseUser(this.user);
+class MarketplaceMealPlannerFirebaseUser extends BaseAuthUser {
+  MarketplaceMealPlannerFirebaseUser(this.user);
   User? user;
+  @override
   bool get loggedIn => user != null;
 
   @override
@@ -54,10 +55,10 @@ class MealPlannerSampleFirebaseUser extends BaseAuthUser {
   static BaseAuthUser fromUserCredential(UserCredential userCredential) =>
       fromFirebaseUser(userCredential.user);
   static BaseAuthUser fromFirebaseUser(User? user) =>
-      MealPlannerSampleFirebaseUser(user);
+      MarketplaceMealPlannerFirebaseUser(user);
 }
 
-Stream<BaseAuthUser> mealPlannerSampleFirebaseUserStream() =>
+Stream<BaseAuthUser> marketplaceMealPlannerFirebaseUserStream() =>
     FirebaseAuth.instance
         .authStateChanges()
         .debounce((user) => user == null && !loggedIn
@@ -65,7 +66,7 @@ Stream<BaseAuthUser> mealPlannerSampleFirebaseUserStream() =>
             : Stream.value(user))
         .map<BaseAuthUser>(
       (user) {
-        currentUser = MealPlannerSampleFirebaseUser(user);
+        currentUser = MarketplaceMealPlannerFirebaseUser(user);
         return currentUser!;
       },
     );

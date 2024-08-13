@@ -1,12 +1,8 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'feedback_bottom_sheet_model.dart';
 export 'feedback_bottom_sheet_model.dart';
 
@@ -37,7 +33,7 @@ class _FeedbackBottomSheetWidgetState extends State<FeedbackBottomSheetWidget> {
     super.initState();
     _model = createModel(context, () => FeedbackBottomSheetModel());
 
-    _model.feedbackController ??= TextEditingController();
+    _model.feedbackTextController ??= TextEditingController();
     _model.feedbackFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -53,7 +49,7 @@ class _FeedbackBottomSheetWidgetState extends State<FeedbackBottomSheetWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.end,
@@ -62,7 +58,7 @@ class _FeedbackBottomSheetWidgetState extends State<FeedbackBottomSheetWidget> {
             width: double.infinity,
             decoration: BoxDecoration(
               color: FlutterFlowTheme.of(context).primaryBackground,
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(0.0),
                 bottomRight: Radius.circular(0.0),
                 topLeft: Radius.circular(24.0),
@@ -70,7 +66,7 @@ class _FeedbackBottomSheetWidgetState extends State<FeedbackBottomSheetWidget> {
               ),
             ),
             child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 0.0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
@@ -83,58 +79,67 @@ class _FeedbackBottomSheetWidgetState extends State<FeedbackBottomSheetWidget> {
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 12.0, 0.0, 0.0),
                           child: Text(
                             'Send Anonymous Feedback',
-                            style: FlutterFlowTheme.of(context).titleLarge,
+                            style: FlutterFlowTheme.of(context)
+                                .titleLarge
+                                .override(
+                                  fontFamily: 'Inter',
+                                  letterSpacing: 0.0,
+                                ),
                           ),
                         ),
                         Form(
                           key: _model.formKey,
                           autovalidateMode: AutovalidateMode.disabled,
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 12.0, 0.0, 24.0),
                             child: TextFormField(
-                              controller: _model.feedbackController,
+                              controller: _model.feedbackTextController,
                               focusNode: _model.feedbackFocusNode,
                               autofocus: true,
                               textCapitalization: TextCapitalization.sentences,
                               obscureText: false,
                               decoration: InputDecoration(
                                 hintText: 'Type something...',
-                                hintStyle:
-                                    FlutterFlowTheme.of(context).bodySmall,
+                                hintStyle: FlutterFlowTheme.of(context)
+                                    .bodySmall
+                                    .override(
+                                      fontFamily: 'Inter',
+                                      letterSpacing: 0.0,
+                                    ),
                                 enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 errorBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
@@ -149,17 +154,18 @@ class _FeedbackBottomSheetWidgetState extends State<FeedbackBottomSheetWidget> {
                                   .override(
                                     fontFamily: 'Inter',
                                     fontSize: 16.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
                                   ),
                               maxLines: 7,
                               keyboardType: TextInputType.multiline,
-                              validator: _model.feedbackControllerValidator
+                              validator: _model.feedbackTextControllerValidator
                                   .asValidator(context),
                             ),
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 32.0),
                           child: FFButtonWidget(
                             onPressed: () async {
@@ -176,26 +182,31 @@ class _FeedbackBottomSheetWidgetState extends State<FeedbackBottomSheetWidget> {
                                   .doc()
                                   .set(createFeedbackRecordData(
                                     mealName: widget.mealName,
-                                    feedback: _model.feedbackController.text,
+                                    feedback:
+                                        _model.feedbackTextController.text,
                                     timeCreated: getCurrentTimestamp,
                                   ));
                               logFirebaseEvent(
-                                  'Button_close_dialog,_drawer,_etc');
+                                  'Button_close_dialog_drawer_etc');
                               Navigator.pop(context);
                             },
                             text: 'Send Feedback',
                             options: FFButtonOptions(
                               width: double.infinity,
                               height: 50.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).primary,
-                              textStyle:
-                                  FlutterFlowTheme.of(context).titleSmall,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .override(
+                                    fontFamily: 'Inter',
+                                    letterSpacing: 0.0,
+                                  ),
                               elevation: 0.0,
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),

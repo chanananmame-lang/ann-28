@@ -5,11 +5,8 @@ import '/components/title_with_subtitle/title_with_subtitle_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'edit_profile_model.dart';
 export 'edit_profile_model.dart';
 
@@ -31,11 +28,11 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
     _model = createModel(context, () => EditProfileModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'EditProfile'});
-    _model.fullNameController ??=
+    _model.fullNameTextController ??=
         TextEditingController(text: currentUserDisplayName);
     _model.fullNameFocusNode ??= FocusNode();
 
-    _model.emailAddressController ??=
+    _model.emailAddressTextController ??=
         TextEditingController(text: currentUserEmail);
     _model.emailAddressFocusNode ??= FocusNode();
 
@@ -52,18 +49,16 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.0, 0.0),
+            alignment: const AlignmentDirectional(0.0, 0.0),
             child: Padding(
-              padding: EdgeInsets.all(24.0),
+              padding: const EdgeInsets.all(24.0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -83,22 +78,24 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
 
                         await currentUserReference!
                             .update(createUsersRecordData(
-                          displayName: _model.fullNameController.text,
+                          displayName: _model.fullNameTextController.text,
                         ));
                         logFirebaseEvent('customAppbar_update_page_state');
-                        setState(() {
-                          _model.unsavedChanges = false;
-                        });
+                        _model.unsavedChanges = false;
+                        setState(() {});
                       },
                       optionsButtonAction: () async {},
                     ),
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                     child: Text(
                       'Edit Profile',
-                      style: FlutterFlowTheme.of(context).displaySmall,
+                      style: FlutterFlowTheme.of(context).displaySmall.override(
+                            fontFamily: 'Inter',
+                            letterSpacing: 0.0,
+                          ),
                     ),
                   ),
                   Column(
@@ -107,40 +104,45 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                     children: [
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 18.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 18.0, 0.0, 0.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 4.0),
                               child: Text(
                                 'Full Name',
-                                style: FlutterFlowTheme.of(context).bodyLarge,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyLarge
+                                    .override(
+                                      fontFamily: 'Inter',
+                                      letterSpacing: 0.0,
+                                    ),
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 4.0, 0.0, 0.0),
                               child: AuthUserStreamWidget(
                                 builder: (context) => TextFormField(
-                                  controller: _model.fullNameController,
+                                  controller: _model.fullNameTextController,
                                   focusNode: _model.fullNameFocusNode,
                                   onChanged: (_) => EasyDebounce.debounce(
-                                    '_model.fullNameController',
-                                    Duration(milliseconds: 2000),
+                                    '_model.fullNameTextController',
+                                    const Duration(milliseconds: 2000),
                                     () async {
                                       logFirebaseEvent(
                                           'EDIT_PROFILE_fullName_ON_TEXTFIELD_CHANG');
                                       logFirebaseEvent(
                                           'fullName_update_page_state');
-                                      setState(() {
-                                        _model.unsavedChanges = true;
-                                      });
+                                      _model.unsavedChanges = true;
+                                      setState(() {});
                                     },
                                   ),
-                                  autofillHints: [AutofillHints.name],
+                                  autofocus: false,
+                                  autofillHints: const [AutofillHints.name],
                                   textCapitalization: TextCapitalization.words,
                                   textInputAction: TextInputAction.next,
                                   obscureText: false,
@@ -186,13 +188,15 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                       .override(
                                         fontFamily: 'Inter',
                                         fontSize: 16.0,
+                                        letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
                                         lineHeight: 1.0,
                                       ),
                                   minLines: 1,
                                   cursorColor:
                                       FlutterFlowTheme.of(context).primary,
-                                  validator: _model.fullNameControllerValidator
+                                  validator: _model
+                                      .fullNameTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ),
@@ -205,7 +209,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                   wrapWithModel(
                     model: _model.titleWithSubtitleModel1,
                     updateCallback: () => setState(() {}),
-                    child: TitleWithSubtitleWidget(
+                    child: const TitleWithSubtitleWidget(
                       title: 'Reset Password',
                       subtitle:
                           'Recieve a link via email to reset your password.',
@@ -213,15 +217,15 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                     child: FFButtonWidget(
                       onPressed: () async {
                         logFirebaseEvent(
                             'EDIT_PROFILE_RESET_PASSWORD_BTN_ON_TAP');
                         logFirebaseEvent('Button_auth');
-                        if (_model.emailAddressController.text.isEmpty) {
+                        if (_model.emailAddressTextController.text.isEmpty) {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
+                            const SnackBar(
                               content: Text(
                                 'Email required!',
                               ),
@@ -230,7 +234,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                           return;
                         }
                         await authManager.resetPassword(
-                          email: _model.emailAddressController.text,
+                          email: _model.emailAddressTextController.text,
                           context: context,
                         );
                       },
@@ -239,19 +243,20 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                         width: double.infinity,
                         height: 50.0,
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).primary,
                         textStyle:
                             FlutterFlowTheme.of(context).bodyMedium.override(
                                   fontFamily: 'Inter',
                                   color: FlutterFlowTheme.of(context)
                                       .primaryBackground,
+                                  letterSpacing: 0.0,
                                   fontWeight: FontWeight.w600,
                                 ),
                         elevation: 0.0,
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Colors.transparent,
                           width: 1.0,
                         ),
@@ -262,14 +267,14 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                   wrapWithModel(
                     model: _model.titleWithSubtitleModel2,
                     updateCallback: () => setState(() {}),
-                    child: TitleWithSubtitleWidget(
+                    child: const TitleWithSubtitleWidget(
                       title: 'Delete Account',
                       subtitle: 'The data from your account will be deleted.',
                     ),
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 48.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 48.0),
                     child: FFButtonWidget(
                       onPressed: () async {
                         logFirebaseEvent(
@@ -281,7 +286,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                         context.goNamed(
                           'Splash',
                           extra: <String, dynamic>{
-                            kTransitionInfoKey: TransitionInfo(
+                            kTransitionInfoKey: const TransitionInfo(
                               hasTransition: true,
                               transitionType: PageTransitionType.fade,
                               duration: Duration(milliseconds: 0),
@@ -294,18 +299,19 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                         width: double.infinity,
                         height: 50.0,
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: Color(0xFFFFD4D4),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: const Color(0xFFFFD4D4),
                         textStyle:
                             FlutterFlowTheme.of(context).bodyMedium.override(
                                   fontFamily: 'Inter',
-                                  color: Color(0xFFB74D4D),
+                                  color: const Color(0xFFB74D4D),
+                                  letterSpacing: 0.0,
                                   fontWeight: FontWeight.w600,
                                 ),
                         elevation: 0.0,
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Colors.transparent,
                           width: 1.0,
                         ),
@@ -314,12 +320,13 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                     ),
                   ),
                   TextFormField(
-                    controller: _model.emailAddressController,
+                    controller: _model.emailAddressTextController,
                     focusNode: _model.emailAddressFocusNode,
+                    autofocus: false,
                     textCapitalization: TextCapitalization.words,
                     readOnly: true,
                     obscureText: false,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       isDense: true,
                       enabledBorder: InputBorder.none,
                       focusedBorder: InputBorder.none,
@@ -330,11 +337,12 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                           fontFamily: 'Inter',
                           color: FlutterFlowTheme.of(context).primaryBackground,
                           fontSize: 1.0,
+                          letterSpacing: 0.0,
                           fontWeight: FontWeight.w500,
                           lineHeight: 1.0,
                         ),
                     minLines: 1,
-                    validator: _model.emailAddressControllerValidator
+                    validator: _model.emailAddressTextControllerValidator
                         .asValidator(context),
                   ),
                 ],

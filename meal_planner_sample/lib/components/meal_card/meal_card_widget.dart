@@ -3,13 +3,9 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'meal_card_model.dart';
 export 'meal_card_model.dart';
 
@@ -29,20 +25,7 @@ class _MealCardWidgetState extends State<MealCardWidget>
     with TickerProviderStateMixin {
   late MealCardModel _model;
 
-  final animationsMap = {
-    'iconOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        ScaleEffect(
-          curve: Curves.elasticOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: Offset(0.0, 0.0),
-          end: Offset(1.0, 1.0),
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void setState(VoidCallback callback) {
@@ -54,6 +37,21 @@ class _MealCardWidgetState extends State<MealCardWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => MealCardModel());
+
+    animationsMap.addAll({
+      'iconOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.elasticOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(0.0, 0.0),
+            end: const Offset(1.0, 1.0),
+          ),
+        ],
+      ),
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -175,9 +173,9 @@ class _MealCardWidgetState extends State<MealCardWidget>
                 ),
               ),
               child: Align(
-                alignment: AlignmentDirectional(1.0, -1.0),
+                alignment: const AlignmentDirectional(1.0, -1.0),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 12.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 12.0, 0.0),
                   child: InkWell(
                     splashColor: Colors.transparent,
                     focusColor: Colors.transparent,
@@ -218,13 +216,13 @@ class _MealCardWidgetState extends State<MealCardWidget>
                         });
                       }
                     },
-                    child: Container(
-                      width: 32.0,
-                      height: 32.0,
+                    child: SizedBox(
+                      width: 48.0,
+                      height: 48.0,
                       child: Stack(
                         children: [
                           Align(
-                            alignment: AlignmentDirectional(1.0, -1.0),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Icon(
                               Icons.favorite_border_rounded,
                               color: FlutterFlowTheme.of(context).secondaryText,
@@ -232,11 +230,11 @@ class _MealCardWidgetState extends State<MealCardWidget>
                             ),
                           ),
                           if (widget.mealRef?.mealFavorites
-                                  ?.contains(currentUserReference) ??
+                                  .contains(currentUserReference) ??
                               true)
                             Align(
-                              alignment: AlignmentDirectional(1.0, -1.0),
-                              child: Icon(
+                              alignment: const AlignmentDirectional(1.0, -1.0),
+                              child: const Icon(
                                 Icons.favorite_rounded,
                                 color: Color(0xFFFF4E59),
                                 size: 32.0,
@@ -252,31 +250,34 @@ class _MealCardWidgetState extends State<MealCardWidget>
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
             child: Text(
               widget.mealRef!.mealName.maybeHandleOverflow(
                 maxChars: 36,
                 replacement: '…',
               ),
               maxLines: 2,
-              style: FlutterFlowTheme.of(context).bodyMedium,
+              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                    fontFamily: 'Inter',
+                    letterSpacing: 0.0,
+                  ),
             ),
           ),
-          if (widget.mealRef!.mealDiet.length > 0)
+          if (widget.mealRef!.mealDiet.isNotEmpty)
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 6.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 6.0, 0.0, 0.0),
               child: Container(
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).accent1,
                   borderRadius: BorderRadius.circular(24.0),
                 ),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 6.0, 8.0, 6.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(8.0, 6.0, 8.0, 6.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: const AlignmentDirectional(0.0, 0.0),
                         child: AuthUserStreamWidget(
                           builder: (context) => Text(
                             valueOrDefault(currentUserDocument?.diet, ''),
@@ -286,6 +287,7 @@ class _MealCardWidgetState extends State<MealCardWidget>
                                   fontFamily: 'Inter',
                                   color: FlutterFlowTheme.of(context).primary,
                                   fontSize: 10.0,
+                                  letterSpacing: 0.0,
                                   fontWeight: FontWeight.w500,
                                   lineHeight: 1.0,
                                 ),

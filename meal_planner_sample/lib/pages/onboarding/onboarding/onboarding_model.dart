@@ -1,18 +1,7 @@
-import '/auth/firebase_auth/auth_util.dart';
-import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 import '/components/custom_appbar_widget.dart';
-import '/components/diet_item/diet_item_widget.dart';
-import '/components/preference_item/preference_item_widget.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'onboarding_widget.dart' show OnboardingWidget;
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 class OnboardingModel extends FlutterFlowModel<OnboardingWidget> {
   ///  Local state fields for this page.
@@ -43,7 +32,6 @@ class OnboardingModel extends FlutterFlowModel<OnboardingWidget> {
 
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   // Model for customAppbar component.
   late CustomAppbarModel customAppbarModel;
   // State field(s) for PageView widget.
@@ -55,8 +43,6 @@ class OnboardingModel extends FlutterFlowModel<OnboardingWidget> {
       ? pageViewController!.page!.round()
       : 0;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     customAppbarModel = createModel(context, () => CustomAppbarModel());
@@ -64,11 +50,6 @@ class OnboardingModel extends FlutterFlowModel<OnboardingWidget> {
 
   @override
   void dispose() {
-    unfocusNode.dispose();
     customAppbarModel.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

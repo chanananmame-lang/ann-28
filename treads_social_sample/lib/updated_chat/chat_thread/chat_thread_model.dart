@@ -1,17 +1,9 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_media_display.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_video_player.dart';
 import '/flutter_flow/request_manager.dart';
 
 import 'chat_thread_widget.dart' show ChatThreadWidget;
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 class ChatThreadModel extends FlutterFlowModel<ChatThreadWidget> {
   /// Query cache managers for this widget.
@@ -31,8 +23,6 @@ class ChatThreadModel extends FlutterFlowModel<ChatThreadWidget> {
   void clearChatUserCacheKey(String? uniqueKey) =>
       _chatUserManager.clearRequest(uniqueKey);
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -42,8 +32,4 @@ class ChatThreadModel extends FlutterFlowModel<ChatThreadWidget> {
 
     clearChatUserCache();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

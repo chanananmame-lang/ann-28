@@ -3,10 +3,7 @@ import '/components/web_components/post_details_base/post_details_base_widget.da
 import '/components/web_components/side_nav/side_nav_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'post_details_page_model.dart';
 export 'post_details_page_model.dart';
 
@@ -55,13 +52,13 @@ class _PostDetailsPageWidgetState extends State<PostDetailsPageWidget> {
           wrapWithModel(
             model: _model.sideNavModel,
             updateCallback: () => setState(() {}),
-            child: SideNavWidget(
+            child: const SideNavWidget(
               selectedNav: 1,
             ),
           ),
           Expanded(
             child: Align(
-              alignment: AlignmentDirectional(0.0, -1.0),
+              alignment: const AlignmentDirectional(0.0, -1.0),
               child: wrapWithModel(
                 model: _model.postDetailsBaseModel,
                 updateCallback: () => setState(() {}),

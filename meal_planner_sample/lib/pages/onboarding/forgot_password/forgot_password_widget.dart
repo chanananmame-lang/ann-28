@@ -5,8 +5,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'forgot_password_model.dart';
 export 'forgot_password_model.dart';
 
@@ -29,7 +27,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
 
     logFirebaseEvent('screen_view',
         parameters: {'screen_name': 'ForgotPassword'});
-    _model.emailAddressController ??= TextEditingController();
+    _model.emailAddressTextController ??= TextEditingController();
     _model.emailAddressFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -45,9 +43,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -58,9 +54,9 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
             children: [
               Expanded(
                 child: Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: const AlignmentDirectional(0.0, 0.0),
                   child: Padding(
-                    padding: EdgeInsets.all(24.0),
+                    padding: const EdgeInsets.all(24.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -77,11 +73,16 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 24.0, 0.0, 0.0),
                           child: Text(
                             'Forgot password',
-                            style: FlutterFlowTheme.of(context).displaySmall,
+                            style: FlutterFlowTheme.of(context)
+                                .displaySmall
+                                .override(
+                                  fontFamily: 'Inter',
+                                  letterSpacing: 0.0,
+                                ),
                           ),
                         ),
                         Form(
@@ -91,7 +92,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 8.0, 0.0, 0.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -101,26 +102,35 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                                       'We\'ll send you an email to reset your password.',
                                       textAlign: TextAlign.start,
                                       style: FlutterFlowTheme.of(context)
-                                          .labelLarge,
+                                          .labelLarge
+                                          .override(
+                                            fontFamily: 'Inter',
+                                            letterSpacing: 0.0,
+                                          ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 15.0, 0.0, 0.0),
                                       child: Text(
                                         'Email',
                                         textAlign: TextAlign.start,
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyLarge,
+                                            .bodyLarge
+                                            .override(
+                                              fontFamily: 'Inter',
+                                              letterSpacing: 0.0,
+                                            ),
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 4.0, 0.0, 0.0),
                                       child: TextFormField(
                                         controller:
-                                            _model.emailAddressController,
+                                            _model.emailAddressTextController,
                                         focusNode: _model.emailAddressFocusNode,
-                                        autofillHints: [AutofillHints.name],
+                                        autofocus: false,
+                                        autofillHints: const [AutofillHints.name],
                                         textCapitalization:
                                             TextCapitalization.none,
                                         textInputAction: TextInputAction.next,
@@ -177,6 +187,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                                             .override(
                                               fontFamily: 'Inter',
                                               fontSize: 16.0,
+                                              letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
                                               lineHeight: 1.0,
                                             ),
@@ -187,7 +198,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                                             FlutterFlowTheme.of(context)
                                                 .primary,
                                         validator: _model
-                                            .emailAddressControllerValidator
+                                            .emailAddressTextControllerValidator
                                             .asValidator(context),
                                       ),
                                     ),
@@ -198,7 +209,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 24.0, 0.0, 0.0),
                           child: FFButtonWidget(
                             onPressed: () async {
@@ -207,9 +218,10 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                               logFirebaseEvent('Button_haptic_feedback');
                               HapticFeedback.lightImpact();
                               logFirebaseEvent('Button_auth');
-                              if (_model.emailAddressController.text.isEmpty) {
+                              if (_model
+                                  .emailAddressTextController.text.isEmpty) {
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
+                                  const SnackBar(
                                     content: Text(
                                       'Email required!',
                                     ),
@@ -218,7 +230,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                                 return;
                               }
                               await authManager.resetPassword(
-                                email: _model.emailAddressController.text,
+                                email: _model.emailAddressTextController.text,
                                 context: context,
                               );
                               logFirebaseEvent('Button_navigate_back');
@@ -228,15 +240,19 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                             options: FFButtonOptions(
                               width: double.infinity,
                               height: 50.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).primary,
-                              textStyle:
-                                  FlutterFlowTheme.of(context).titleSmall,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .override(
+                                    fontFamily: 'Inter',
+                                    letterSpacing: 0.0,
+                                  ),
                               elevation: 0.0,
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),

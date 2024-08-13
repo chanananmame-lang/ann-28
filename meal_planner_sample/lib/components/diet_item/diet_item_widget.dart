@@ -1,8 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'diet_item_model.dart';
 export 'diet_item_model.dart';
 
@@ -70,7 +68,7 @@ class _DietItemWidgetState extends State<DietItemWidget> {
           borderRadius: BorderRadius.circular(8.0),
         ),
         child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 12.0),
+          padding: const EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 12.0),
           child: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -83,6 +81,7 @@ class _DietItemWidgetState extends State<DietItemWidget> {
                           ? FlutterFlowTheme.of(context).primaryBackground
                           : FlutterFlowTheme.of(context).primaryText,
                       fontSize: 16.0,
+                      letterSpacing: 0.0,
                       fontWeight: FontWeight.w600,
                     ),
               ),
@@ -93,6 +92,7 @@ class _DietItemWidgetState extends State<DietItemWidget> {
                         fontFamily: 'Inter',
                         color: FlutterFlowTheme.of(context).primaryBackground,
                         fontSize: 12.0,
+                        letterSpacing: 0.0,
                         fontWeight: FontWeight.w600,
                       ),
                 ),

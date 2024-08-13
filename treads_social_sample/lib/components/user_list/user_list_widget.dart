@@ -2,10 +2,7 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'user_list_model.dart';
 export 'user_list_model.dart';
 
@@ -48,7 +45,7 @@ class _UserListWidgetState extends State<UserListWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
       child: FutureBuilder<UsersRecord>(
         future: UsersRecord.getDocumentOnce(widget.userRef!),
         builder: (context, snapshot) {
@@ -66,7 +63,9 @@ class _UserListWidgetState extends State<UserListWidget> {
               ),
             );
           }
+
           final containerUsersRecord = snapshot.data!;
+
           return Container(
             width: double.infinity,
             height: 60.0,
@@ -74,7 +73,7 @@ class _UserListWidgetState extends State<UserListWidget> {
               color: FlutterFlowTheme.of(context).secondaryBackground,
             ),
             child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 12.0, 8.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 12.0, 8.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
@@ -90,12 +89,12 @@ class _UserListWidgetState extends State<UserListWidget> {
                       ),
                     ),
                     child: Padding(
-                      padding: EdgeInsets.all(2.0),
+                      padding: const EdgeInsets.all(2.0),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(6.0),
                         child: CachedNetworkImage(
-                          fadeInDuration: Duration(milliseconds: 300),
-                          fadeOutDuration: Duration(milliseconds: 300),
+                          fadeInDuration: const Duration(milliseconds: 300),
+                          fadeOutDuration: const Duration(milliseconds: 300),
                           imageUrl: valueOrDefault<String>(
                             containerUsersRecord.photoUrl,
                             'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/school-social-uni-demo-ttazup/assets/r5iuluq1cerl/favicon%401x.png',
@@ -110,7 +109,7 @@ class _UserListWidgetState extends State<UserListWidget> {
                   Expanded(
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -121,10 +120,14 @@ class _UserListWidgetState extends State<UserListWidget> {
                               containerUsersRecord.displayName,
                               'Ghost User',
                             ),
-                            style: FlutterFlowTheme.of(context).bodyLarge,
+                            style:
+                                FlutterFlowTheme.of(context).bodyLarge.override(
+                                      fontFamily: 'Figtree',
+                                      letterSpacing: 0.0,
+                                    ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 4.0, 0.0, 0.0),
                             child: Text(
                               valueOrDefault<String>(
@@ -136,6 +139,7 @@ class _UserListWidgetState extends State<UserListWidget> {
                                   .override(
                                     fontFamily: 'Figtree',
                                     color: FlutterFlowTheme.of(context).primary,
+                                    letterSpacing: 0.0,
                                   ),
                             ),
                           ),

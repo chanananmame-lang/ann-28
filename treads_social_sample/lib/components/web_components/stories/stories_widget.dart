@@ -8,8 +8,6 @@ import '/flutter_flow/flutter_flow_video_player.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'stories_model.dart';
 export 'stories_model.dart';
 
@@ -78,18 +76,21 @@ class _StoriesWidgetState extends State<StoriesWidget> {
               }
               List<UserStoriesRecord> pageViewUserStoriesRecordList =
                   snapshot.data!;
-              return Container(
+
+              return SizedBox(
                 width: double.infinity,
                 child: Stack(
                   children: [
                     PageView.builder(
                       controller: _model.pageViewController ??= PageController(
-                          initialPage: min(
-                              valueOrDefault<int>(
-                                widget.initialIndex,
-                                0,
-                              ),
-                              pageViewUserStoriesRecordList.length - 1)),
+                          initialPage: max(
+                              0,
+                              min(
+                                  valueOrDefault<int>(
+                                    widget.initialIndex,
+                                    0,
+                                  ),
+                                  pageViewUserStoriesRecordList.length - 1))),
                       scrollDirection: Axis.vertical,
                       itemCount: pageViewUserStoriesRecordList.length,
                       itemBuilder: (context, pageViewIndex) {
@@ -98,13 +99,11 @@ class _StoriesWidgetState extends State<StoriesWidget> {
                         return Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            Container(
+                            SizedBox(
                               height: MediaQuery.sizeOf(context).height * 0.82,
                               child: Stack(
                                 children: [
                                   if (pageViewUserStoriesRecord.storyPhoto !=
-                                          null &&
-                                      pageViewUserStoriesRecord.storyPhoto !=
                                           '')
                                     ClipRRect(
                                       borderRadius: BorderRadius.circular(8.0),
@@ -123,16 +122,14 @@ class _StoriesWidgetState extends State<StoriesWidget> {
                                       ),
                                     ),
                                   if (pageViewUserStoriesRecord.storyVideo !=
-                                          null &&
-                                      pageViewUserStoriesRecord.storyVideo !=
                                           '')
                                     Align(
-                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      alignment: const AlignmentDirectional(0.0, 0.0),
                                       child: FlutterFlowVideoPlayer(
                                         path: pageViewUserStoriesRecord
                                             .storyVideo,
                                         videoType: VideoType.network,
-                                        aspectRatio: 1.70,
+                                        aspectRatio: 1.7,
                                         autoPlay: true,
                                         looping: true,
                                         showControls: true,
@@ -141,7 +138,7 @@ class _StoriesWidgetState extends State<StoriesWidget> {
                                       ),
                                     ),
                                   Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
@@ -150,7 +147,7 @@ class _StoriesWidgetState extends State<StoriesWidget> {
                                         Container(
                                           width: double.infinity,
                                           height: 102.0,
-                                          decoration: BoxDecoration(
+                                          decoration: const BoxDecoration(
                                             gradient: LinearGradient(
                                               colors: [
                                                 Color(0xFF1A1F24),
@@ -166,7 +163,7 @@ class _StoriesWidgetState extends State<StoriesWidget> {
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         16.0, 12.0, 16.0, 36.0),
                                                 child:
@@ -194,8 +191,10 @@ class _StoriesWidgetState extends State<StoriesWidget> {
                                                         ),
                                                       );
                                                     }
+
                                                     final userInfoUsersRecord =
                                                         snapshot.data!;
+
                                                     return Row(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
@@ -209,7 +208,7 @@ class _StoriesWidgetState extends State<StoriesWidget> {
                                                           clipBehavior:
                                                               Clip.antiAlias,
                                                           decoration:
-                                                              BoxDecoration(
+                                                              const BoxDecoration(
                                                             shape:
                                                                 BoxShape.circle,
                                                           ),
@@ -238,7 +237,7 @@ class _StoriesWidgetState extends State<StoriesWidget> {
                                                             children: [
                                                               Padding(
                                                                 padding:
-                                                                    EdgeInsetsDirectional
+                                                                    const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             12.0,
                                                                             0.0,
@@ -253,12 +252,18 @@ class _StoriesWidgetState extends State<StoriesWidget> {
                                                                   ),
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .titleSmall,
+                                                                      .titleSmall
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Figtree',
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                      ),
                                                                 ),
                                                               ),
                                                               Padding(
                                                                 padding:
-                                                                    EdgeInsetsDirectional
+                                                                    const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             12.0,
                                                                             4.0,
@@ -273,8 +278,10 @@ class _StoriesWidgetState extends State<StoriesWidget> {
                                                                       .override(
                                                                         fontFamily:
                                                                             'Figtree',
-                                                                        color: Color(
+                                                                        color: const Color(
                                                                             0xCCFFFFFF),
+                                                                        letterSpacing:
+                                                                            0.0,
                                                                       ),
                                                                 ),
                                                               ),
@@ -286,7 +293,7 @@ class _StoriesWidgetState extends State<StoriesWidget> {
                                                           Card(
                                                             clipBehavior: Clip
                                                                 .antiAliasWithSaveLayer,
-                                                            color: Color(
+                                                            color: const Color(
                                                                 0xFF262D34),
                                                             shape:
                                                                 RoundedRectangleBorder(
@@ -319,7 +326,7 @@ class _StoriesWidgetState extends State<StoriesWidget> {
                                                                               context)
                                                                           .accent4,
                                                                   barrierColor:
-                                                                      Color(
+                                                                      const Color(
                                                                           0x00000000),
                                                                   context:
                                                                       context,
@@ -330,7 +337,7 @@ class _StoriesWidgetState extends State<StoriesWidget> {
                                                                           .viewInsetsOf(
                                                                               context),
                                                                       child:
-                                                                          Container(
+                                                                          SizedBox(
                                                                         height:
                                                                             240.0,
                                                                         child:
@@ -351,7 +358,7 @@ class _StoriesWidgetState extends State<StoriesWidget> {
                                                           clipBehavior: Clip
                                                               .antiAliasWithSaveLayer,
                                                           color:
-                                                              Color(0xFF262D34),
+                                                              const Color(0xFF262D34),
                                                           shape:
                                                               RoundedRectangleBorder(
                                                             borderRadius:
@@ -390,7 +397,7 @@ class _StoriesWidgetState extends State<StoriesWidget> {
                                         Container(
                                           width: double.infinity,
                                           height: 100.0,
-                                          decoration: BoxDecoration(
+                                          decoration: const BoxDecoration(
                                             gradient: LinearGradient(
                                               colors: [
                                                 Color(0x001A1F24),
@@ -410,7 +417,7 @@ class _StoriesWidgetState extends State<StoriesWidget> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Padding(
-                                                padding: EdgeInsets.all(16.0),
+                                                padding: const EdgeInsets.all(16.0),
                                                 child: Text(
                                                   valueOrDefault<String>(
                                                     pageViewUserStoriesRecord
@@ -420,7 +427,11 @@ class _StoriesWidgetState extends State<StoriesWidget> {
                                                   textAlign: TextAlign.start,
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .titleSmall,
+                                                      .titleSmall
+                                                      .override(
+                                                        fontFamily: 'Figtree',
+                                                        letterSpacing: 0.0,
+                                                      ),
                                                 ),
                                               ),
                                             ],
@@ -433,7 +444,7 @@ class _StoriesWidgetState extends State<StoriesWidget> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   16.0, 12.0, 16.0, 8.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -449,7 +460,7 @@ class _StoriesWidgetState extends State<StoriesWidget> {
                                         backgroundColor:
                                             FlutterFlowTheme.of(context)
                                                 .accent4,
-                                        barrierColor: Color(0x00000000),
+                                        barrierColor: const Color(0x00000000),
                                         context: context,
                                         builder: (context) {
                                           return Padding(
@@ -473,14 +484,18 @@ class _StoriesWidgetState extends State<StoriesWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   8.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             pageViewUserStoriesRecord
                                                 .numComments
                                                 .toString(),
                                             style: FlutterFlowTheme.of(context)
-                                                .labelMedium,
+                                                .labelMedium
+                                                .override(
+                                                  fontFamily: 'Figtree',
+                                                  letterSpacing: 0.0,
+                                                ),
                                           ),
                                         ),
                                       ],
@@ -494,28 +509,31 @@ class _StoriesWidgetState extends State<StoriesWidget> {
                       },
                     ),
                     Align(
-                      alignment: AlignmentDirectional(0.95, 0.7),
+                      alignment: const AlignmentDirectional(0.95, 0.7),
                       child: Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                         child: smooth_page_indicator.SmoothPageIndicator(
                           controller: _model.pageViewController ??=
                               PageController(
-                                  initialPage: min(
-                                      valueOrDefault<int>(
-                                        widget.initialIndex,
-                                        0,
-                                      ),
-                                      pageViewUserStoriesRecordList.length -
-                                          1)),
+                                  initialPage: max(
+                                      0,
+                                      min(
+                                          valueOrDefault<int>(
+                                            widget.initialIndex,
+                                            0,
+                                          ),
+                                          pageViewUserStoriesRecordList.length -
+                                              1))),
                           count: pageViewUserStoriesRecordList.length,
                           axisDirection: Axis.vertical,
                           onDotClicked: (i) async {
                             await _model.pageViewController!.animateToPage(
                               i,
-                              duration: Duration(milliseconds: 500),
+                              duration: const Duration(milliseconds: 500),
                               curve: Curves.ease,
                             );
+                            setState(() {});
                           },
                           effect: smooth_page_indicator.ExpandingDotsEffect(
                             expansionFactor: 2.0,

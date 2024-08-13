@@ -7,8 +7,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'sign_in_model.dart';
 export 'sign_in_model.dart';
 
@@ -41,15 +39,15 @@ class _SignInWidgetState extends State<SignInWidget> {
       });
     }
 
-    _model.emailAddressController ??= TextEditingController();
+    _model.emailAddressTextController ??= TextEditingController();
     _model.emailAddressFocusNode ??= FocusNode();
 
-    _model.passwordController ??= TextEditingController();
+    _model.passwordTextController ??= TextEditingController();
     _model.passwordFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
-          _model.emailAddressController?.text = 'tsmith@email.com';
-          _model.passwordController?.text = 'password';
+          _model.emailAddressTextController?.text = 'tsmith@email.com';
+          _model.passwordTextController?.text = 'password';
         }));
   }
 
@@ -66,9 +64,7 @@ class _SignInWidgetState extends State<SignInWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -79,7 +75,7 @@ class _SignInWidgetState extends State<SignInWidget> {
             children: [
               Expanded(
                 child: Padding(
-                  padding: EdgeInsets.all(24.0),
+                  padding: const EdgeInsets.all(24.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -98,10 +94,15 @@ class _SignInWidgetState extends State<SignInWidget> {
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                         child: Text(
                           'Sign In',
-                          style: FlutterFlowTheme.of(context).displaySmall,
+                          style: FlutterFlowTheme.of(context)
+                              .displaySmall
+                              .override(
+                                fontFamily: 'Inter',
+                                letterSpacing: 0.0,
+                              ),
                         ),
                       ),
                       Form(
@@ -111,14 +112,14 @@ class _SignInWidgetState extends State<SignInWidget> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 18.0, 0.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 4.0),
                                     child: Text(
                                       'Email',
@@ -126,19 +127,22 @@ class _SignInWidgetState extends State<SignInWidget> {
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Inter',
+                                            letterSpacing: 0.0,
                                             fontWeight: FontWeight.w600,
                                           ),
                                     ),
                                   ),
                                   TextFormField(
-                                    controller: _model.emailAddressController,
+                                    controller:
+                                        _model.emailAddressTextController,
                                     focusNode: _model.emailAddressFocusNode,
-                                    autofillHints: [AutofillHints.email],
+                                    autofocus: false,
+                                    autofillHints: const [AutofillHints.email],
                                     textInputAction: TextInputAction.next,
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0x00000000),
                                           width: 1.0,
                                         ),
@@ -146,7 +150,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                             BorderRadius.circular(8.0),
                                       ),
                                       focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0x00000000),
                                           width: 1.0,
                                         ),
@@ -154,7 +158,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                             BorderRadius.circular(8.0),
                                       ),
                                       errorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0x00000000),
                                           width: 1.0,
                                         ),
@@ -162,7 +166,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                             BorderRadius.circular(8.0),
                                       ),
                                       focusedErrorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0x00000000),
                                           width: 1.0,
                                         ),
@@ -178,6 +182,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                         .override(
                                           fontFamily: 'Inter',
                                           fontSize: 16.0,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.w500,
                                           lineHeight: 1.0,
                                         ),
@@ -186,21 +191,21 @@ class _SignInWidgetState extends State<SignInWidget> {
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
                                     validator: _model
-                                        .emailAddressControllerValidator
+                                        .emailAddressTextControllerValidator
                                         .asValidator(context),
                                   ),
                                 ],
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 18.0, 0.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 4.0),
                                     child: Text(
                                       'Password',
@@ -208,19 +213,21 @@ class _SignInWidgetState extends State<SignInWidget> {
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Inter',
+                                            letterSpacing: 0.0,
                                             fontWeight: FontWeight.w600,
                                           ),
                                     ),
                                   ),
                                   TextFormField(
-                                    controller: _model.passwordController,
+                                    controller: _model.passwordTextController,
                                     focusNode: _model.passwordFocusNode,
-                                    autofillHints: [AutofillHints.password],
+                                    autofocus: false,
+                                    autofillHints: const [AutofillHints.password],
                                     textInputAction: TextInputAction.done,
                                     obscureText: !_model.passwordVisibility,
                                     decoration: InputDecoration(
                                       enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0x00000000),
                                           width: 1.0,
                                         ),
@@ -228,7 +235,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                             BorderRadius.circular(8.0),
                                       ),
                                       focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0x00000000),
                                           width: 1.0,
                                         ),
@@ -236,7 +243,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                             BorderRadius.circular(8.0),
                                       ),
                                       errorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0x00000000),
                                           width: 1.0,
                                         ),
@@ -244,7 +251,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                             BorderRadius.circular(8.0),
                                       ),
                                       focusedErrorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0x00000000),
                                           width: 1.0,
                                         ),
@@ -276,13 +283,14 @@ class _SignInWidgetState extends State<SignInWidget> {
                                         .override(
                                           fontFamily: 'Inter',
                                           fontSize: 16.0,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.w500,
                                           lineHeight: 1.0,
                                         ),
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
                                     validator: _model
-                                        .passwordControllerValidator
+                                        .passwordTextControllerValidator
                                         .asValidator(context),
                                   ),
                                 ],
@@ -293,7 +301,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () async {
                             logFirebaseEvent('SIGN_IN_PAGE_SIGN_IN_BTN_ON_TAP');
@@ -304,8 +312,8 @@ class _SignInWidgetState extends State<SignInWidget> {
 
                             final user = await authManager.signInWithEmail(
                               context,
-                              _model.emailAddressController.text,
-                              _model.passwordController.text,
+                              _model.emailAddressTextController.text,
+                              _model.passwordTextController.text,
                             );
                             if (user == null) {
                               return;
@@ -317,14 +325,19 @@ class _SignInWidgetState extends State<SignInWidget> {
                           options: FFButtonOptions(
                             width: double.infinity,
                             height: 50.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).primary,
-                            textStyle: FlutterFlowTheme.of(context).titleSmall,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  fontFamily: 'Inter',
+                                  letterSpacing: 0.0,
+                                ),
                             elevation: 0.0,
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),
@@ -334,7 +347,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                         child: InkWell(
                           splashColor: Colors.transparent,
                           focusColor: Colors.transparent,
@@ -352,11 +365,16 @@ class _SignInWidgetState extends State<SignInWidget> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 12.0, 0.0, 12.0),
                                 child: Text(
                                   'I don\'t remember my password',
-                                  style: FlutterFlowTheme.of(context).bodySmall,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodySmall
+                                      .override(
+                                        fontFamily: 'Inter',
+                                        letterSpacing: 0.0,
+                                      ),
                                 ),
                               ),
                             ],
@@ -372,7 +390,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                   : _isKeyboardVisible))
                 Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 48.0),
+                      const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 48.0),
                   child: Container(
                     width: double.infinity,
                     decoration: BoxDecoration(
@@ -384,18 +402,23 @@ class _SignInWidgetState extends State<SignInWidget> {
                       ),
                     ),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
+                      padding: const EdgeInsetsDirectional.fromSTEB(
                           24.0, 16.0, 24.0, 20.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 12.0),
                             child: Text(
                               'Don\'t have an account yet?',
-                              style: FlutterFlowTheme.of(context).labelLarge,
+                              style: FlutterFlowTheme.of(context)
+                                  .labelLarge
+                                  .override(
+                                    fontFamily: 'Inter',
+                                    letterSpacing: 0.0,
+                                  ),
                             ),
                           ),
                           FFButtonWidget(
@@ -410,13 +433,17 @@ class _SignInWidgetState extends State<SignInWidget> {
                             options: FFButtonOptions(
                               width: double.infinity,
                               height: 50.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).accent1,
-                              textStyle:
-                                  FlutterFlowTheme.of(context).bodyMedium,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Inter',
+                                    letterSpacing: 0.0,
+                                  ),
                               elevation: 0.0,
                               borderSide: BorderSide(
                                 color: FlutterFlowTheme.of(context).primary,

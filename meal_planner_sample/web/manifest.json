@@ -1,6 +1,6 @@
 {
-    "name": "MealPlanner-Sample",
-    "short_name": "MealPlanner-Sample",
+    "name": "Marketplace - Meal Planner",
+    "short_name": "Marketplace - Meal Planner",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

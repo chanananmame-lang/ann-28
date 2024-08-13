@@ -11,10 +11,7 @@ import '/updated_chat/empty_state_simple/empty_state_simple_widget.dart';
 import 'dart:async';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'view_profile_page_other_model.dart';
 export 'view_profile_page_other_model.dart';
 
@@ -24,7 +21,7 @@ class ViewProfilePageOtherWidget extends StatefulWidget {
     this.userDetails,
     this.showPage,
     String? pageTitle,
-  }) : this.pageTitle = pageTitle ?? 'Page';
+  }) : pageTitle = pageTitle ?? 'Page';
 
   final UsersRecord? userDetails;
   final bool? showPage;
@@ -83,7 +80,9 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
             ),
           );
         }
+
         final viewProfilePageOtherUsersRecord = snapshot.data!;
+
         return Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -109,7 +108,7 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                       context.pop();
                     },
                   ),
-                  actions: [],
+                  actions: const [],
                   centerTitle: false,
                   elevation: 0.0,
                 )
@@ -117,26 +116,26 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
           body: SafeArea(
             top: true,
             child: Align(
-              alignment: AlignmentDirectional(0.0, -1.0),
+              alignment: const AlignmentDirectional(0.0, -1.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   wrapWithModel(
                     model: _model.sideNavModel,
                     updateCallback: () => setState(() {}),
-                    child: SideNavWidget(
+                    child: const SideNavWidget(
                       selectedNav: 1,
                     ),
                   ),
                   Expanded(
                     child: Align(
-                      alignment: AlignmentDirectional(0.0, -1.0),
+                      alignment: const AlignmentDirectional(0.0, -1.0),
                       child: Container(
                         width: double.infinity,
-                        constraints: BoxConstraints(
+                        constraints: const BoxConstraints(
                           maxWidth: 870.0,
                         ),
-                        decoration: BoxDecoration(),
+                        decoration: const BoxDecoration(),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -145,7 +144,7 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                               phone: false,
                             ))
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 16.0, 0.0, 12.0),
                                 child: Container(
                                   width: double.infinity,
@@ -161,7 +160,7 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   16.0, 2.0, 0.0, 2.0),
                                           child: FlutterFlowIconButton(
                                             borderColor: Colors.transparent,
@@ -180,7 +179,7 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                                 'main_Feed',
                                                 extra: <String, dynamic>{
                                                   kTransitionInfoKey:
-                                                      TransitionInfo(
+                                                      const TransitionInfo(
                                                     hasTransition: true,
                                                     transitionType:
                                                         PageTransitionType.fade,
@@ -194,7 +193,7 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 12.0, 0.0),
                                           child: Icon(
                                             Icons.chevron_right_rounded,
@@ -206,7 +205,7 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                         if (widget.showPage ?? true)
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 8.0, 0.0, 8.0),
                                             child: Container(
                                               decoration: BoxDecoration(
@@ -214,17 +213,21 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryBackground,
                                               ),
-                                              alignment: AlignmentDirectional(
+                                              alignment: const AlignmentDirectional(
                                                   0.0, 0.0),
                                               child: Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         16.0, 0.0, 16.0, 0.0),
                                                 child: Text(
                                                   widget.pageTitle,
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .labelLarge,
+                                                      .labelLarge
+                                                      .override(
+                                                        fontFamily: 'Figtree',
+                                                        letterSpacing: 0.0,
+                                                      ),
                                                 ),
                                               ),
                                             ),
@@ -232,7 +235,7 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                         if (widget.showPage ?? true)
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     12.0, 0.0, 12.0, 0.0),
                                             child: Icon(
                                               Icons.chevron_right_rounded,
@@ -244,7 +247,7 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                           ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 8.0, 16.0, 8.0),
                                           child: Container(
                                             decoration: BoxDecoration(
@@ -260,9 +263,9 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                               ),
                                             ),
                                             alignment:
-                                                AlignmentDirectional(0.0, 0.0),
+                                                const AlignmentDirectional(0.0, 0.0),
                                             child: Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       16.0, 0.0, 16.0, 0.0),
                                               child: Text(
@@ -270,7 +273,11 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                                     .displayName,
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyLarge,
+                                                        .bodyLarge
+                                                        .override(
+                                                          fontFamily: 'Figtree',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                               ),
                                             ),
                                           ),
@@ -290,7 +297,7 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         16.0, 0.0, 16.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -301,10 +308,10 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                       children: [
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.85, 0.68),
+                                              const AlignmentDirectional(0.85, 0.68),
                                           child: Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 16.0, 0.0),
                                             child: Container(
                                               width: 80.0,
@@ -314,7 +321,7 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                                     FlutterFlowTheme.of(context)
                                                         .accent2,
                                                 borderRadius:
-                                                    BorderRadius.circular(12.0),
+                                                    BorderRadius.circular(10.0),
                                                 border: Border.all(
                                                   color: FlutterFlowTheme.of(
                                                           context)
@@ -323,7 +330,7 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                                 ),
                                               ),
                                               child: Padding(
-                                                padding: EdgeInsets.all(2.0),
+                                                padding: const EdgeInsets.all(2.0),
                                                 child: ClipRRect(
                                                   borderRadius:
                                                       BorderRadius.circular(
@@ -357,13 +364,17 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                                 textAlign: TextAlign.start,
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .headlineSmall,
+                                                        .headlineSmall
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                               ),
                                               Align(
-                                                alignment: AlignmentDirectional(
+                                                alignment: const AlignmentDirectional(
                                                     -1.0, 0.0),
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 4.0, 0.0, 0.0),
                                                   child: Text(
@@ -377,8 +388,9 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                                           fontFamily:
                                                               'Lexend Deca',
                                                           color:
-                                                              Color(0xFFEE8B60),
+                                                              const Color(0xFFEE8B60),
                                                           fontSize: 14.0,
+                                                          letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.normal,
                                                         ),
@@ -386,10 +398,10 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                                 ),
                                               ),
                                               Align(
-                                                alignment: AlignmentDirectional(
+                                                alignment: const AlignmentDirectional(
                                                     -1.0, 0.0),
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 8.0, 0.0, 0.0),
                                                   child: Text(
@@ -398,7 +410,11 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                                     textAlign: TextAlign.start,
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .labelMedium,
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily: 'Figtree',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                                   ),
                                                 ),
                                               ),
@@ -450,18 +466,19 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                           stackFriendsRecordList.isNotEmpty
                                               ? stackFriendsRecordList.first
                                               : null;
+
                                       return Stack(
                                         children: [
                                           if (stackFriendsRecord != null)
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       16.0, 12.0, 16.0, 12.0),
                                               child: FFButtonWidget(
                                                 onPressed: () async {
                                                   unawaited(
                                                     () async {
-                                                      await stackFriendsRecord!
+                                                      await stackFriendsRecord
                                                           .reference
                                                           .delete();
                                                     }(),
@@ -481,9 +498,11 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .info,
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                 ),
                                                       ),
-                                                      duration: Duration(
+                                                      duration: const Duration(
                                                           milliseconds: 4000),
                                                       backgroundColor:
                                                           FlutterFlowTheme.of(
@@ -496,20 +515,23 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                                 options: FFButtonOptions(
                                                   width: double.infinity,
                                                   height: 40.0,
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 0.0, 0.0, 0.0),
                                                   iconPadding:
-                                                      EdgeInsetsDirectional
+                                                      const EdgeInsetsDirectional
                                                           .fromSTEB(0.0, 0.0,
                                                               0.0, 0.0),
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .accent1,
-                                                  textStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyLarge,
+                                                  textStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .bodyLarge
+                                                      .override(
+                                                        fontFamily: 'Figtree',
+                                                        letterSpacing: 0.0,
+                                                      ),
                                                   elevation: 0.0,
                                                   borderSide: BorderSide(
                                                     color: FlutterFlowTheme.of(
@@ -525,7 +547,7 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                             ),
                                           if (!(stackFriendsRecord != null))
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       16.0, 12.0, 16.0, 12.0),
                                               child: FFButtonWidget(
@@ -559,11 +581,11 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                                 options: FFButtonOptions(
                                                   width: double.infinity,
                                                   height: 40.0,
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 0.0, 0.0, 0.0),
                                                   iconPadding:
-                                                      EdgeInsetsDirectional
+                                                      const EdgeInsetsDirectional
                                                           .fromSTEB(0.0, 0.0,
                                                               0.0, 0.0),
                                                   color: FlutterFlowTheme.of(
@@ -575,9 +597,10 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                                       .override(
                                                         fontFamily: 'Figtree',
                                                         color: Colors.white,
+                                                        letterSpacing: 0.0,
                                                       ),
                                                   elevation: 2.0,
-                                                  borderSide: BorderSide(
+                                                  borderSide: const BorderSide(
                                                     color: Colors.transparent,
                                                     width: 1.0,
                                                   ),
@@ -598,7 +621,7 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                               child: Column(
                                 children: [
                                   Align(
-                                    alignment: Alignment(0.0, 0),
+                                    alignment: const Alignment(0.0, 0),
                                     child: TabBar(
                                       labelColor:
                                           FlutterFlowTheme.of(context).primary,
@@ -609,15 +632,20 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                           .bodyLarge
                                           .override(
                                             fontFamily: 'Figtree',
+                                            letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,
                                           ),
                                       unselectedLabelStyle:
                                           FlutterFlowTheme.of(context)
-                                              .labelLarge,
+                                              .labelLarge
+                                              .override(
+                                                fontFamily: 'Figtree',
+                                                letterSpacing: 0.0,
+                                              ),
                                       indicatorColor:
                                           FlutterFlowTheme.of(context).primary,
                                       indicatorWeight: 2.0,
-                                      tabs: [
+                                      tabs: const [
                                         Tab(
                                           text: 'Posts',
                                         ),
@@ -684,6 +712,7 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                                 ),
                                               );
                                             }
+
                                             return ListView.builder(
                                               padding: EdgeInsets.zero,
                                               scrollDirection: Axis.vertical,
@@ -696,7 +725,7 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                                     socialFeedUserPostsRecordList[
                                                         socialFeedIndex];
                                                 return Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 4.0, 0.0, 0.0),
                                                   child: StreamBuilder<
@@ -725,8 +754,10 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                                           ),
                                                         );
                                                       }
+
                                                       final userPostUsersRecord =
                                                           snapshot.data!;
+
                                                       return Container(
                                                         width:
                                                             MediaQuery.sizeOf(
@@ -744,8 +775,10 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                                               color: FlutterFlowTheme
                                                                       .of(context)
                                                                   .alternate,
-                                                              offset: Offset(
-                                                                  0.0, 1.0),
+                                                              offset: const Offset(
+                                                                0.0,
+                                                                1.0,
+                                                              ),
                                                             )
                                                           ],
                                                           borderRadius:
@@ -795,7 +828,7 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                                             children: [
                                                               Padding(
                                                                 padding:
-                                                                    EdgeInsetsDirectional
+                                                                    const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             8.0,
@@ -810,7 +843,7 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                                                           .center,
                                                                   children: [
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           16.0,
                                                                           0.0,
                                                                           0.0,
@@ -826,7 +859,7 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                                                           color:
                                                                               FlutterFlowTheme.of(context).accent2,
                                                                           borderRadius:
-                                                                              BorderRadius.circular(12.0),
+                                                                              BorderRadius.circular(10.0),
                                                                           border:
                                                                               Border.all(
                                                                             color:
@@ -838,7 +871,7 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                                                         child:
                                                                             Padding(
                                                                           padding:
-                                                                              EdgeInsets.all(2.0),
+                                                                              const EdgeInsets.all(2.0),
                                                                           child:
                                                                               ClipRRect(
                                                                             borderRadius:
@@ -863,7 +896,7 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                                                             MainAxisAlignment.spaceBetween,
                                                                         children: [
                                                                           Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
                                                                                 12.0,
                                                                                 0.0,
                                                                                 0.0,
@@ -874,7 +907,10 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                                                                 userPostUsersRecord.userName,
                                                                                 'myUsername',
                                                                               ),
-                                                                              style: FlutterFlowTheme.of(context).bodyLarge,
+                                                                              style: FlutterFlowTheme.of(context).bodyLarge.override(
+                                                                                    fontFamily: 'Figtree',
+                                                                                    letterSpacing: 0.0,
+                                                                                  ),
                                                                             ),
                                                                           ),
                                                                           FlutterFlowIconButton(
@@ -909,11 +945,11 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                                                 child:
                                                                     CachedNetworkImage(
                                                                   fadeInDuration:
-                                                                      Duration(
+                                                                      const Duration(
                                                                           milliseconds:
                                                                               500),
                                                                   fadeOutDuration:
-                                                                      Duration(
+                                                                      const Duration(
                                                                           milliseconds:
                                                                               500),
                                                                   imageUrl:
@@ -934,7 +970,7 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                                               ),
                                                               Padding(
                                                                 padding:
-                                                                    EdgeInsetsDirectional
+                                                                    const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             8.0,
                                                                             4.0,
@@ -954,7 +990,7 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                                                               .max,
                                                                       children: [
                                                                         Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
                                                                               0.0,
                                                                               0.0,
                                                                               16.0,
@@ -989,13 +1025,16 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                                                                 ),
                                                                               ),
                                                                               Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
+                                                                                padding: const EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
                                                                                 child: Text(
                                                                                   valueOrDefault<String>(
                                                                                     functions.likes(socialFeedUserPostsRecord).toString(),
                                                                                     '0',
                                                                                   ),
-                                                                                  style: FlutterFlowTheme.of(context).labelSmall,
+                                                                                  style: FlutterFlowTheme.of(context).labelSmall.override(
+                                                                                        fontFamily: 'Figtree',
+                                                                                        letterSpacing: 0.0,
+                                                                                      ),
                                                                                 ),
                                                                               ),
                                                                             ],
@@ -1011,12 +1050,13 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                                                               size: 24.0,
                                                                             ),
                                                                             Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
+                                                                              padding: const EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
                                                                               child: Text(
                                                                                 socialFeedUserPostsRecord.numComments.toString(),
                                                                                 style: FlutterFlowTheme.of(context).labelSmall.override(
                                                                                       fontFamily: 'Figtree',
                                                                                       color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                      letterSpacing: 0.0,
                                                                                     ),
                                                                               ),
                                                                             ),
@@ -1030,17 +1070,19 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                                                               .max,
                                                                       children: [
                                                                         Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
                                                                               0.0,
                                                                               2.0,
                                                                               8.0,
                                                                               0.0),
                                                                           child:
                                                                               Text(
-                                                                            dateTimeFormat('relative',
+                                                                            dateTimeFormat("relative",
                                                                                 socialFeedUserPostsRecord.timePosted!),
-                                                                            style:
-                                                                                FlutterFlowTheme.of(context).bodyMedium,
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  fontFamily: 'Figtree',
+                                                                                  letterSpacing: 0.0,
+                                                                                ),
                                                                           ),
                                                                         ),
                                                                         Icon(
@@ -1058,7 +1100,7 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                                               ),
                                                               Padding(
                                                                 padding:
-                                                                    EdgeInsetsDirectional
+                                                                    const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             2.0,
                                                                             4.0,
@@ -1072,7 +1114,7 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                                                     Expanded(
                                                                       child:
                                                                           Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                                                             12.0,
                                                                             0.0,
                                                                             12.0,
@@ -1084,8 +1126,12 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                                                             socialFeedUserPostsRecord.postDescription,
                                                                             'I\'m back with a super quick Instagram redesign just for the fan. Rounded corners and cute icons, what else do we need, haha.⁣ ',
                                                                           ),
-                                                                          style:
-                                                                              FlutterFlowTheme.of(context).bodyMedium,
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .override(
+                                                                                fontFamily: 'Figtree',
+                                                                                letterSpacing: 0.0,
+                                                                              ),
                                                                         ),
                                                                       ),
                                                                     ),
@@ -1159,6 +1205,7 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                                   ),
                                                 );
                                               }
+
                                               return ListView.separated(
                                                 padding: EdgeInsets.zero,
                                                 scrollDirection: Axis.vertical,
@@ -1166,7 +1213,7 @@ class _ViewProfilePageOtherWidgetState extends State<ViewProfilePageOtherWidget>
                                                     listViewFriendsRecordList
                                                         .length,
                                                 separatorBuilder: (_, __) =>
-                                                    SizedBox(height: 1.0),
+                                                    const SizedBox(height: 1.0),
                                                 itemBuilder:
                                                     (context, listViewIndex) {
                                                   final listViewFriendsRecord =

@@ -1,30 +1,21 @@
-import '/auth/firebase_auth/auth_util.dart';
-import '/backend/backend.dart';
 import '/components/custom_appbar_widget.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'onboarding_create_account_widget.dart'
     show OnboardingCreateAccountWidget;
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 class OnboardingCreateAccountModel
     extends FlutterFlowModel<OnboardingCreateAccountWidget> {
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
   // Model for customAppbar component.
   late CustomAppbarModel customAppbarModel;
   // State field(s) for fullName widget.
   FocusNode? fullNameFocusNode;
-  TextEditingController? fullNameController;
-  String? Function(BuildContext, String?)? fullNameControllerValidator;
-  String? _fullNameControllerValidator(BuildContext context, String? val) {
+  TextEditingController? fullNameTextController;
+  String? Function(BuildContext, String?)? fullNameTextControllerValidator;
+  String? _fullNameTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Full name is required.';
     }
@@ -34,9 +25,10 @@ class OnboardingCreateAccountModel
 
   // State field(s) for emailAddress widget.
   FocusNode? emailAddressFocusNode;
-  TextEditingController? emailAddressController;
-  String? Function(BuildContext, String?)? emailAddressControllerValidator;
-  String? _emailAddressControllerValidator(BuildContext context, String? val) {
+  TextEditingController? emailAddressTextController;
+  String? Function(BuildContext, String?)? emailAddressTextControllerValidator;
+  String? _emailAddressTextControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Email is required.';
     }
@@ -49,10 +41,10 @@ class OnboardingCreateAccountModel
 
   // State field(s) for password widget.
   FocusNode? passwordFocusNode;
-  TextEditingController? passwordController;
+  TextEditingController? passwordTextController;
   late bool passwordVisibility;
-  String? Function(BuildContext, String?)? passwordControllerValidator;
-  String? _passwordControllerValidator(BuildContext context, String? val) {
+  String? Function(BuildContext, String?)? passwordTextControllerValidator;
+  String? _passwordTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Password is required.';
     }
@@ -60,32 +52,25 @@ class OnboardingCreateAccountModel
     return null;
   }
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     customAppbarModel = createModel(context, () => CustomAppbarModel());
-    fullNameControllerValidator = _fullNameControllerValidator;
-    emailAddressControllerValidator = _emailAddressControllerValidator;
+    fullNameTextControllerValidator = _fullNameTextControllerValidator;
+    emailAddressTextControllerValidator = _emailAddressTextControllerValidator;
     passwordVisibility = false;
-    passwordControllerValidator = _passwordControllerValidator;
+    passwordTextControllerValidator = _passwordTextControllerValidator;
   }
 
   @override
   void dispose() {
-    unfocusNode.dispose();
     customAppbarModel.dispose();
     fullNameFocusNode?.dispose();
-    fullNameController?.dispose();
+    fullNameTextController?.dispose();
 
     emailAddressFocusNode?.dispose();
-    emailAddressController?.dispose();
+    emailAddressTextController?.dispose();
 
     passwordFocusNode?.dispose();
-    passwordController?.dispose();
+    passwordTextController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

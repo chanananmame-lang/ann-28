@@ -3,10 +3,7 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'comments_model.dart';
 export 'comments_model.dart';
 
@@ -52,26 +49,29 @@ class _CommentsWidgetState extends State<CommentsWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(0.0, 1.0),
+      alignment: const AlignmentDirectional(0.0, 1.0),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(16.0, 72.0, 16.0, 16.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(16.0, 72.0, 16.0, 16.0),
             child: Container(
               width: double.infinity,
-              constraints: BoxConstraints(
+              constraints: const BoxConstraints(
                 maxWidth: 570.0,
                 maxHeight: 570.0,
               ),
               decoration: BoxDecoration(
                 color: FlutterFlowTheme.of(context).secondaryBackground,
-                boxShadow: [
+                boxShadow: const [
                   BoxShadow(
                     blurRadius: 4.0,
                     color: Color(0x33000000),
-                    offset: Offset(0.0, 2.0),
+                    offset: Offset(
+                      0.0,
+                      2.0,
+                    ),
                   )
                 ],
                 borderRadius: BorderRadius.circular(12.0),
@@ -81,7 +81,7 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                 ),
               ),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 44.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 44.0),
                 child: StreamBuilder<UserStoriesRecord>(
                   stream:
                       UserStoriesRecord.getDocument(widget.story!.reference),
@@ -100,13 +100,15 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                         ),
                       );
                     }
+
                     final columnUserStoriesRecord = snapshot.data!;
+
                     return Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Expanded(
                           child: Padding(
-                            padding: EdgeInsets.all(12.0),
+                            padding: const EdgeInsets.all(12.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -121,7 +123,7 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 12.0, 0.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -129,14 +131,18 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                       Text(
                                         'Comments',
                                         style: FlutterFlowTheme.of(context)
-                                            .headlineSmall,
+                                            .headlineSmall
+                                            .override(
+                                              fontFamily: 'Outfit',
+                                              letterSpacing: 0.0,
+                                            ),
                                       ),
                                     ],
                                   ),
                                 ),
                                 Expanded(
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 12.0, 0.0, 0.0),
                                     child: StreamBuilder<
                                         List<StoryCommentsRecord>>(
@@ -185,6 +191,7 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                             ),
                                           );
                                         }
+
                                         return ListView.builder(
                                           padding: EdgeInsets.zero,
                                           scrollDirection: Axis.vertical,
@@ -220,8 +227,10 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                                     ),
                                                   );
                                                 }
+
                                                 final commentUsersRecord =
                                                     snapshot.data!;
+
                                                 return Container(
                                                   width: 100.0,
                                                   decoration: BoxDecoration(
@@ -240,7 +249,7 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(8.0, 12.0,
                                                                 8.0, 12.0),
                                                     child: Row(
@@ -261,7 +270,7 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .circular(
-                                                                        12.0),
+                                                                        10.0),
                                                             border: Border.all(
                                                               color: FlutterFlowTheme
                                                                       .of(context)
@@ -271,7 +280,7 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                                           ),
                                                           child: Padding(
                                                             padding:
-                                                                EdgeInsets.all(
+                                                                const EdgeInsets.all(
                                                                     2.0),
                                                             child: ClipRRect(
                                                               borderRadius:
@@ -297,7 +306,7 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                                         Expanded(
                                                           child: Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         12.0,
                                                                         0.0,
@@ -316,10 +325,16 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                                                       .displayName,
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .bodyLarge,
+                                                                      .bodyLarge
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Figtree',
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                      ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           4.0,
@@ -330,11 +345,17 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                                                         .comment,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .labelMedium,
+                                                                        .labelMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Figtree',
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                        ),
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           4.0,
@@ -346,7 +367,7 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                                                             .max,
                                                                     children: [
                                                                       Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
                                                                             0.0,
                                                                             4.0,
@@ -359,15 +380,20 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                                                               .override(
                                                                                 fontFamily: 'Figtree',
                                                                                 fontSize: 12.0,
+                                                                                letterSpacing: 0.0,
                                                                               ),
                                                                         ),
                                                                       ),
                                                                       Text(
                                                                         dateTimeFormat(
-                                                                            'relative',
+                                                                            "relative",
                                                                             listViewStoryCommentsRecord.timePosted!),
                                                                         style: FlutterFlowTheme.of(context)
-                                                                            .labelSmall,
+                                                                            .labelSmall
+                                                                            .override(
+                                                                              fontFamily: 'Figtree',
+                                                                              letterSpacing: 0.0,
+                                                                            ),
                                                                       ),
                                                                     ],
                                                                   ),
@@ -393,18 +419,21 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               8.0, 8.0, 8.0, 16.0),
                           child: Container(
                             width: MediaQuery.sizeOf(context).width * 1.0,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .primaryBackground,
-                              boxShadow: [
+                              boxShadow: const [
                                 BoxShadow(
                                   blurRadius: 3.0,
                                   color: Color(0x3A000000),
-                                  offset: Offset(0.0, 1.0),
+                                  offset: Offset(
+                                    0.0,
+                                    1.0,
+                                  ),
                                 )
                               ],
                               borderRadius: BorderRadius.circular(40.0),
@@ -420,9 +449,13 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                     decoration: InputDecoration(
                                       hintText: 'Comment here...',
                                       hintStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium,
+                                          .labelMedium
+                                          .override(
+                                            fontFamily: 'Figtree',
+                                            letterSpacing: 0.0,
+                                          ),
                                       enabledBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0x00000000),
                                           width: 1.0,
                                         ),
@@ -430,7 +463,7 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                             BorderRadius.circular(44.0),
                                       ),
                                       focusedBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0x00000000),
                                           width: 1.0,
                                         ),
@@ -438,7 +471,7 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                             BorderRadius.circular(44.0),
                                       ),
                                       errorBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0x00000000),
                                           width: 1.0,
                                         ),
@@ -446,7 +479,7 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                             BorderRadius.circular(44.0),
                                       ),
                                       focusedErrorBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0x00000000),
                                           width: 1.0,
                                         ),
@@ -454,11 +487,15 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                             BorderRadius.circular(44.0),
                                       ),
                                       contentPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               16.0, 12.0, 16.0, 12.0),
                                     ),
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Figtree',
+                                          letterSpacing: 0.0,
+                                        ),
                                     maxLines: 4,
                                     minLines: 1,
                                     validator: _model.textControllerValidator
@@ -466,12 +503,11 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 4.0, 0.0),
                                   child: FFButtonWidget(
                                     onPressed: () async {
-                                      if (_model.textController.text != null &&
-                                          _model.textController.text != '') {
+                                      if (_model.textController.text != '') {
                                         await StoryCommentsRecord.collection
                                             .doc()
                                             .set(createStoryCommentsRecordData(
@@ -502,10 +538,10 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                     options: FFButtonOptions(
                                       width: 70.0,
                                       height: 40.0,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 0.0),
                                       iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
                                       color: FlutterFlowTheme.of(context)
                                           .primaryBackground,
@@ -515,9 +551,10 @@ class _CommentsWidgetState extends State<CommentsWidget> {
                                             fontFamily: 'Figtree',
                                             color: FlutterFlowTheme.of(context)
                                                 .primary,
+                                            letterSpacing: 0.0,
                                           ),
                                       elevation: 0.0,
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Colors.transparent,
                                         width: 1.0,
                                       ),

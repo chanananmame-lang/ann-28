@@ -6,10 +6,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'edit_settings_model.dart';
 export 'edit_settings_model.dart';
 
@@ -26,27 +23,28 @@ class _EditSettingsWidgetState extends State<EditSettingsWidget>
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final animationsMap = {
-    'containerOnActionTriggerAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      applyInitialState: true,
-      effects: [
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: Offset(0.0, 0.0),
-          end: Offset(115.0, 0.0),
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => EditSettingsModel());
 
+    animationsMap.addAll({
+      'containerOnActionTriggerAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: true,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(0.0, 0.0),
+            end: const Offset(115.0, 0.0),
+          ),
+        ],
+      ),
+    });
     setupAnimations(
       animationsMap.values.where((anim) =>
           anim.trigger == AnimationTrigger.onActionTrigger ||
@@ -86,7 +84,9 @@ class _EditSettingsWidgetState extends State<EditSettingsWidget>
             ),
           );
         }
+
         final editSettingsUsersRecord = snapshot.data!;
+
         return Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -100,10 +100,14 @@ class _EditSettingsWidgetState extends State<EditSettingsWidget>
                       FlutterFlowTheme.of(context).secondaryBackground,
                   automaticallyImplyLeading: false,
                   title: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                     child: Text(
                       'Settings',
-                      style: FlutterFlowTheme.of(context).headlineMedium,
+                      style:
+                          FlutterFlowTheme.of(context).headlineMedium.override(
+                                fontFamily: 'Outfit',
+                                letterSpacing: 0.0,
+                              ),
                     ),
                   ),
                   actions: [
@@ -127,13 +131,13 @@ class _EditSettingsWidgetState extends State<EditSettingsWidget>
                 )
               : null,
           body: Align(
-            alignment: AlignmentDirectional(0.0, -1.0),
+            alignment: const AlignmentDirectional(0.0, -1.0),
             child: Container(
               width: double.infinity,
-              constraints: BoxConstraints(
+              constraints: const BoxConstraints(
                 maxWidth: 870.0,
               ),
-              decoration: BoxDecoration(),
+              decoration: const BoxDecoration(),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
@@ -144,13 +148,13 @@ class _EditSettingsWidgetState extends State<EditSettingsWidget>
                   ))
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                       child: Container(
                         width: double.infinity,
                         decoration: BoxDecoration(
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                             bottomLeft: Radius.circular(0.0),
                             bottomRight: Radius.circular(0.0),
                             topLeft: Radius.circular(12.0),
@@ -158,7 +162,7 @@ class _EditSettingsWidgetState extends State<EditSettingsWidget>
                           ),
                         ),
                         child: Padding(
-                          padding: EdgeInsets.all(16.0),
+                          padding: const EdgeInsets.all(16.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
@@ -177,7 +181,7 @@ class _EditSettingsWidgetState extends State<EditSettingsWidget>
                                 },
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     12.0, 0.0, 0.0, 0.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -186,15 +190,23 @@ class _EditSettingsWidgetState extends State<EditSettingsWidget>
                                     Text(
                                       'Settings',
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyLarge,
+                                          .bodyLarge
+                                          .override(
+                                            fontFamily: 'Figtree',
+                                            letterSpacing: 0.0,
+                                          ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 4.0, 0.0, 0.0),
                                       child: Text(
                                         'Edit your settings below',
                                         style: FlutterFlowTheme.of(context)
-                                            .labelSmall,
+                                            .labelSmall
+                                            .override(
+                                              fontFamily: 'Figtree',
+                                              letterSpacing: 0.0,
+                                            ),
                                       ),
                                     ),
                                   ],
@@ -212,7 +224,7 @@ class _EditSettingsWidgetState extends State<EditSettingsWidget>
                     ),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -222,12 +234,17 @@ class _EditSettingsWidgetState extends State<EditSettingsWidget>
                               editSettingsUsersRecord.displayName,
                               'UserName',
                             ),
-                            style: FlutterFlowTheme.of(context).headlineSmall,
+                            style: FlutterFlowTheme.of(context)
+                                .headlineSmall
+                                .override(
+                                  fontFamily: 'Outfit',
+                                  letterSpacing: 0.0,
+                                ),
                           ),
                           Align(
-                            alignment: AlignmentDirectional(-1.0, 0.0),
+                            alignment: const AlignmentDirectional(-1.0, 0.0),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 8.0, 0.0, 16.0),
                               child: Text(
                                 editSettingsUsersRecord.email,
@@ -238,6 +255,7 @@ class _EditSettingsWidgetState extends State<EditSettingsWidget>
                                       fontFamily: 'Figtree',
                                       color:
                                           FlutterFlowTheme.of(context).primary,
+                                      letterSpacing: 0.0,
                                     ),
                               ),
                             ),
@@ -250,11 +268,15 @@ class _EditSettingsWidgetState extends State<EditSettingsWidget>
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             24.0, 12.0, 0.0, 12.0),
                         child: Text(
                           'Account Settings',
-                          style: FlutterFlowTheme.of(context).labelMedium,
+                          style:
+                              FlutterFlowTheme.of(context).labelMedium.override(
+                                    fontFamily: 'Figtree',
+                                    letterSpacing: 0.0,
+                                  ),
                         ),
                       ),
                     ],
@@ -266,7 +288,7 @@ class _EditSettingsWidgetState extends State<EditSettingsWidget>
                     children: [
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
                         child: Container(
                           width: MediaQuery.sizeOf(context).width * 1.0,
                           height: 50.0,
@@ -276,7 +298,7 @@ class _EditSettingsWidgetState extends State<EditSettingsWidget>
                             shape: BoxShape.rectangle,
                           ),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 16.0, 0.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
@@ -292,15 +314,19 @@ class _EditSettingsWidgetState extends State<EditSettingsWidget>
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         24.0, 0.0, 0.0, 0.0),
                                     child: Text(
                                       'Edit Profile',
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Figtree',
+                                            letterSpacing: 0.0,
+                                          ),
                                     ),
                                   ),
-                                  Align(
+                                  const Align(
                                     alignment: AlignmentDirectional(0.9, 0.0),
                                     child: Icon(
                                       Icons.arrow_forward_ios,
@@ -323,7 +349,7 @@ class _EditSettingsWidgetState extends State<EditSettingsWidget>
                           shape: BoxShape.rectangle,
                         ),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 16.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -338,15 +364,19 @@ class _EditSettingsWidgetState extends State<EditSettingsWidget>
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       24.0, 0.0, 0.0, 0.0),
                                   child: Text(
                                     'Change Password',
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Figtree',
+                                          letterSpacing: 0.0,
+                                        ),
                                   ),
                                 ),
-                                Align(
+                                const Align(
                                   alignment: AlignmentDirectional(0.9, 0.0),
                                   child: Icon(
                                     Icons.arrow_forward_ios,
@@ -363,7 +393,7 @@ class _EditSettingsWidgetState extends State<EditSettingsWidget>
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 16.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 16.0),
                     child: Container(
                       width: 250.0,
                       height: 50.0,
@@ -376,7 +406,7 @@ class _EditSettingsWidgetState extends State<EditSettingsWidget>
                         ),
                       ),
                       child: Padding(
-                        padding: EdgeInsets.all(4.0),
+                        padding: const EdgeInsets.all(4.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -429,7 +459,7 @@ class _EditSettingsWidgetState extends State<EditSettingsWidget>
                                         size: 16.0,
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             4.0, 0.0, 0.0, 0.0),
                                         child: Text(
                                           'Light Mode',
@@ -446,6 +476,7 @@ class _EditSettingsWidgetState extends State<EditSettingsWidget>
                                                     : FlutterFlowTheme.of(
                                                             context)
                                                         .secondaryText,
+                                                letterSpacing: 0.0,
                                               ),
                                         ),
                                       ),
@@ -503,7 +534,7 @@ class _EditSettingsWidgetState extends State<EditSettingsWidget>
                                         size: 16.0,
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             4.0, 0.0, 0.0, 0.0),
                                         child: Text(
                                           'Dark Mode',
@@ -520,6 +551,7 @@ class _EditSettingsWidgetState extends State<EditSettingsWidget>
                                                     : FlutterFlowTheme.of(
                                                             context)
                                                         .secondaryText,
+                                                letterSpacing: 0.0,
                                               ),
                                         ),
                                       ),
@@ -538,15 +570,15 @@ class _EditSettingsWidgetState extends State<EditSettingsWidget>
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Align(
-                          alignment: AlignmentDirectional(0.0, -1.0),
+                          alignment: const AlignmentDirectional(0.0, -1.0),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 2.0, 24.0, 0.0, 12.0),
                             child: FFButtonWidget(
                               onPressed: () async {
@@ -559,14 +591,18 @@ class _EditSettingsWidgetState extends State<EditSettingsWidget>
                               text: 'Log Out',
                               options: FFButtonOptions(
                                 height: 40.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     32.0, 0.0, 32.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
-                                textStyle:
-                                    FlutterFlowTheme.of(context).labelMedium,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .override(
+                                      fontFamily: 'Figtree',
+                                      letterSpacing: 0.0,
+                                    ),
                                 elevation: 0.0,
                                 borderSide: BorderSide(
                                   color: FlutterFlowTheme.of(context).alternate,

@@ -5,10 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'create_your_profile_model.dart';
 export 'create_your_profile_model.dart';
 
@@ -30,13 +27,13 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
     super.initState();
     _model = createModel(context, () => CreateYourProfileModel());
 
-    _model.yourNameController ??= TextEditingController();
+    _model.yourNameTextController ??= TextEditingController();
     _model.yourNameFocusNode ??= FocusNode();
 
-    _model.userNameController ??= TextEditingController();
+    _model.userNameTextController ??= TextEditingController();
     _model.userNameFocusNode ??= FocusNode();
 
-    _model.bioController ??= TextEditingController();
+    _model.bioTextController ??= TextEditingController();
     _model.bioFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -64,16 +61,20 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
               automaticallyImplyLeading: false,
               title: Text(
                 'Your Profile',
-                style: FlutterFlowTheme.of(context).headlineMedium,
+                style: FlutterFlowTheme.of(context).headlineMedium.override(
+                      fontFamily: 'Outfit',
+                      letterSpacing: 0.0,
+                    ),
               ),
               actions: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 24.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 24.0, 0.0),
                   child: Text(
                     '2/2',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Figtree',
                           color: FlutterFlowTheme.of(context).primary,
+                          letterSpacing: 0.0,
                           fontWeight: FontWeight.bold,
                         ),
                   ),
@@ -86,13 +87,13 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
       body: SafeArea(
         top: true,
         child: Align(
-          alignment: AlignmentDirectional(0.0, -1.0),
+          alignment: const AlignmentDirectional(0.0, -1.0),
           child: Container(
             width: double.infinity,
-            constraints: BoxConstraints(
+            constraints: const BoxConstraints(
               maxWidth: 870.0,
             ),
-            decoration: BoxDecoration(),
+            decoration: const BoxDecoration(),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.max,
@@ -108,14 +109,14 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                         tablet: false,
                       ))
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 16.0, 0.0, 0.0),
                           child: Container(
                             width: double.infinity,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
-                              borderRadius: BorderRadius.only(
+                              borderRadius: const BorderRadius.only(
                                 bottomLeft: Radius.circular(0.0),
                                 bottomRight: Radius.circular(0.0),
                                 topLeft: Radius.circular(12.0),
@@ -123,23 +124,31 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                               ),
                             ),
                             child: Padding(
-                              padding: EdgeInsets.all(16.0),
+                              padding: const EdgeInsets.all(16.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
                                     'Create Profile',
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyLarge,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyLarge
+                                        .override(
+                                          fontFamily: 'Figtree',
+                                          letterSpacing: 0.0,
+                                        ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 4.0, 0.0, 0.0),
                                     child: Text(
                                       'Fill out your profile now in order to complete setup of your profile.',
                                       style: FlutterFlowTheme.of(context)
-                                          .labelMedium,
+                                          .labelMedium
+                                          .override(
+                                            fontFamily: 'Figtree',
+                                            letterSpacing: 0.0,
+                                          ),
                                     ),
                                   ),
                                 ],
@@ -153,17 +162,22 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                         desktop: false,
                       ))
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               16.0, 0.0, 16.0, 0.0),
                           child: Text(
                             'Fill out your profile now in order to complete setup of your profile.',
-                            style: FlutterFlowTheme.of(context).labelMedium,
+                            style: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Figtree',
+                                  letterSpacing: 0.0,
+                                ),
                           ),
                         ),
                       Align(
-                        alignment: AlignmentDirectional(0.0, -1.0),
+                        alignment: const AlignmentDirectional(0.0, -1.0),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 16.0, 0.0, 16.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -240,7 +254,7 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                               width: 120.0,
                               height: 120.0,
                               decoration: BoxDecoration(
-                                color: Color(0xFFDBE2E7),
+                                color: const Color(0xFFDBE2E7),
                                 image: DecorationImage(
                                   fit: BoxFit.cover,
                                   image: Image.asset(
@@ -253,7 +267,7 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                                 width: 120.0,
                                 height: 120.0,
                                 clipBehavior: Clip.antiAlias,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
                                 ),
                                 child: Image.network(
@@ -265,18 +279,19 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             24.0, 16.0, 24.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Expanded(
                               child: TextFormField(
-                                controller: _model.yourNameController,
+                                controller: _model.yourNameTextController,
                                 focusNode: _model.yourNameFocusNode,
                                 textCapitalization: TextCapitalization.words,
                                 obscureText: false,
                                 decoration: InputDecoration(
+                                  isDense: false,
                                   labelText: 'Your Name',
                                   labelStyle: FlutterFlowTheme.of(context)
                                       .headlineMedium
@@ -284,6 +299,7 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                                         fontFamily: 'Outfit',
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryText,
+                                        letterSpacing: 0.0,
                                         fontWeight: FontWeight.normal,
                                       ),
                                   enabledBorder: UnderlineInputBorder(
@@ -328,13 +344,18 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                                       topRight: Radius.circular(4.0),
                                     ),
                                   ),
-                                  contentPadding: EdgeInsets.all(16.0),
+                                  contentPadding: const EdgeInsets.all(16.0),
                                 ),
-                                style:
-                                    FlutterFlowTheme.of(context).headlineMedium,
+                                style: FlutterFlowTheme.of(context)
+                                    .headlineMedium
+                                    .override(
+                                      fontFamily: 'Outfit',
+                                      letterSpacing: 0.0,
+                                    ),
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primary,
-                                validator: _model.yourNameControllerValidator
+                                validator: _model
+                                    .yourNameTextControllerValidator
                                     .asValidator(context),
                               ),
                             ),
@@ -342,23 +363,27 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             24.0, 4.0, 24.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Expanded(
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 12.0, 0.0, 0.0),
                                 child: TextFormField(
-                                  controller: _model.userNameController,
+                                  controller: _model.userNameTextController,
                                   focusNode: _model.userNameFocusNode,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     labelText: 'UserName',
                                     labelStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium,
+                                        .labelMedium
+                                        .override(
+                                          fontFamily: 'Figtree',
+                                          letterSpacing: 0.0,
+                                        ),
                                     enabledBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: FlutterFlowTheme.of(context)
@@ -404,7 +429,7 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                                       ),
                                     ),
                                     contentPadding:
-                                        EdgeInsetsDirectional.fromSTEB(
+                                        const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 12.0, 0.0, 24.0),
                                     prefixIcon: Icon(
                                       Icons.alternate_email_outlined,
@@ -413,10 +438,15 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                                     ),
                                   ),
                                   style: FlutterFlowTheme.of(context)
-                                      .headlineSmall,
+                                      .headlineSmall
+                                      .override(
+                                        fontFamily: 'Outfit',
+                                        letterSpacing: 0.0,
+                                      ),
                                   cursorColor:
                                       FlutterFlowTheme.of(context).primary,
-                                  validator: _model.userNameControllerValidator
+                                  validator: _model
+                                      .userNameTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ),
@@ -425,17 +455,17 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             24.0, 4.0, 24.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Expanded(
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 12.0, 0.0, 0.0),
                                 child: TextFormField(
-                                  controller: _model.bioController,
+                                  controller: _model.bioTextController,
                                   focusNode: _model.bioFocusNode,
                                   textCapitalization:
                                       TextCapitalization.sentences,
@@ -443,10 +473,18 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     labelStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium,
+                                        .labelMedium
+                                        .override(
+                                          fontFamily: 'Figtree',
+                                          letterSpacing: 0.0,
+                                        ),
                                     hintText: 'Your Bio',
                                     hintStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium,
+                                        .labelMedium
+                                        .override(
+                                          fontFamily: 'Figtree',
+                                          letterSpacing: 0.0,
+                                        ),
                                     enabledBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: FlutterFlowTheme.of(context)
@@ -492,16 +530,20 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                                       ),
                                     ),
                                     contentPadding:
-                                        EdgeInsetsDirectional.fromSTEB(
+                                        const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 8.0, 0.0, 0.0),
                                   ),
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Figtree',
+                                        letterSpacing: 0.0,
+                                      ),
                                   textAlign: TextAlign.start,
                                   maxLines: 4,
                                   cursorColor:
                                       FlutterFlowTheme.of(context).primary,
-                                  validator: _model.bioControllerValidator
+                                  validator: _model.bioTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ),
@@ -513,22 +555,22 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 80.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 80.0, 0.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 40.0),
                           child: FFButtonWidget(
                             onPressed: () async {
                               await currentUserReference!
                                   .update(createUsersRecordData(
-                                displayName: _model.yourNameController.text,
-                                userName: _model.userNameController.text,
+                                displayName: _model.yourNameTextController.text,
+                                userName: _model.userNameTextController.text,
                                 photoUrl: _model.uploadedFileUrl,
-                                bio: _model.bioController.text,
+                                bio: _model.bioTextController.text,
                               ));
 
                               context.goNamed('main_Feed');
@@ -537,9 +579,9 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                             options: FFButtonOptions(
                               width: 230.0,
                               height: 50.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).primary,
                               textStyle: FlutterFlowTheme.of(context)
@@ -547,9 +589,10 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                                   .override(
                                     fontFamily: 'Figtree',
                                     color: Colors.white,
+                                    letterSpacing: 0.0,
                                   ),
                               elevation: 2.0,
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),

@@ -5,10 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'create_dog_profile_model.dart';
 export 'create_dog_profile_model.dart';
 
@@ -29,13 +26,13 @@ class _CreateDogProfileWidgetState extends State<CreateDogProfileWidget> {
     super.initState();
     _model = createModel(context, () => CreateDogProfileModel());
 
-    _model.dogNameController ??= TextEditingController();
+    _model.dogNameTextController ??= TextEditingController();
     _model.dogNameFocusNode ??= FocusNode();
 
-    _model.dogBreedController ??= TextEditingController();
+    _model.dogBreedTextController ??= TextEditingController();
     _model.dogBreedFocusNode ??= FocusNode();
 
-    _model.dogAgeController ??= TextEditingController();
+    _model.dogAgeTextController ??= TextEditingController();
     _model.dogAgeFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -63,16 +60,20 @@ class _CreateDogProfileWidgetState extends State<CreateDogProfileWidget> {
               automaticallyImplyLeading: false,
               title: Text(
                 'Dog Profile',
-                style: FlutterFlowTheme.of(context).headlineMedium,
+                style: FlutterFlowTheme.of(context).headlineMedium.override(
+                      fontFamily: 'Outfit',
+                      letterSpacing: 0.0,
+                    ),
               ),
               actions: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 24.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 24.0, 0.0),
                   child: Text(
                     '1/2',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Figtree',
                           color: FlutterFlowTheme.of(context).primary,
+                          letterSpacing: 0.0,
                           fontWeight: FontWeight.bold,
                         ),
                   ),
@@ -94,14 +95,19 @@ class _CreateDogProfileWidgetState extends State<CreateDogProfileWidget> {
                 children: [
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 16.0),
+                        const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 16.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Expanded(
                           child: Text(
                             'Fill out your dog profiles below! And then get to sharing your pups!',
-                            style: FlutterFlowTheme.of(context).labelMedium,
+                            style: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Figtree',
+                                  letterSpacing: 0.0,
+                                ),
                           ),
                         ),
                       ],
@@ -196,22 +202,27 @@ class _CreateDogProfileWidgetState extends State<CreateDogProfileWidget> {
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(24.0, 16.0, 24.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(24.0, 16.0, 24.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Expanded(
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 12.0, 0.0, 0.0),
                             child: TextFormField(
-                              controller: _model.dogNameController,
+                              controller: _model.dogNameTextController,
                               focusNode: _model.dogNameFocusNode,
                               obscureText: false,
                               decoration: InputDecoration(
+                                isDense: false,
                                 labelText: 'Dog Name',
-                                labelStyle:
-                                    FlutterFlowTheme.of(context).labelMedium,
+                                labelStyle: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .override(
+                                      fontFamily: 'Figtree',
+                                      letterSpacing: 0.0,
+                                    ),
                                 enabledBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
                                     color:
@@ -254,10 +265,14 @@ class _CreateDogProfileWidgetState extends State<CreateDogProfileWidget> {
                                   ),
                                 ),
                               ),
-                              style:
-                                  FlutterFlowTheme.of(context).headlineMedium,
+                              style: FlutterFlowTheme.of(context)
+                                  .headlineMedium
+                                  .override(
+                                    fontFamily: 'Outfit',
+                                    letterSpacing: 0.0,
+                                  ),
                               cursorColor: FlutterFlowTheme.of(context).primary,
-                              validator: _model.dogNameControllerValidator
+                              validator: _model.dogNameTextControllerValidator
                                   .asValidator(context),
                             ),
                           ),
@@ -267,22 +282,26 @@ class _CreateDogProfileWidgetState extends State<CreateDogProfileWidget> {
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 24.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 24.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Expanded(
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 12.0, 0.0, 0.0),
                             child: TextFormField(
-                              controller: _model.dogBreedController,
+                              controller: _model.dogBreedTextController,
                               focusNode: _model.dogBreedFocusNode,
                               obscureText: false,
                               decoration: InputDecoration(
                                 labelText: 'Dog Breed',
-                                labelStyle:
-                                    FlutterFlowTheme.of(context).labelMedium,
+                                labelStyle: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .override(
+                                      fontFamily: 'Figtree',
+                                      letterSpacing: 0.0,
+                                    ),
                                 enabledBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
                                     color:
@@ -325,9 +344,14 @@ class _CreateDogProfileWidgetState extends State<CreateDogProfileWidget> {
                                   ),
                                 ),
                               ),
-                              style: FlutterFlowTheme.of(context).headlineSmall,
+                              style: FlutterFlowTheme.of(context)
+                                  .headlineSmall
+                                  .override(
+                                    fontFamily: 'Outfit',
+                                    letterSpacing: 0.0,
+                                  ),
                               cursorColor: FlutterFlowTheme.of(context).primary,
-                              validator: _model.dogBreedControllerValidator
+                              validator: _model.dogBreedTextControllerValidator
                                   .asValidator(context),
                             ),
                           ),
@@ -337,22 +361,26 @@ class _CreateDogProfileWidgetState extends State<CreateDogProfileWidget> {
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 24.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 24.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Expanded(
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 12.0, 0.0, 0.0),
                             child: TextFormField(
-                              controller: _model.dogAgeController,
+                              controller: _model.dogAgeTextController,
                               focusNode: _model.dogAgeFocusNode,
                               obscureText: false,
                               decoration: InputDecoration(
                                 labelText: 'Dog Age',
-                                labelStyle:
-                                    FlutterFlowTheme.of(context).labelMedium,
+                                labelStyle: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .override(
+                                      fontFamily: 'Figtree',
+                                      letterSpacing: 0.0,
+                                    ),
                                 enabledBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
                                     color:
@@ -395,10 +423,15 @@ class _CreateDogProfileWidgetState extends State<CreateDogProfileWidget> {
                                   ),
                                 ),
                               ),
-                              style: FlutterFlowTheme.of(context).headlineSmall,
+                              style: FlutterFlowTheme.of(context)
+                                  .headlineSmall
+                                  .override(
+                                    fontFamily: 'Outfit',
+                                    letterSpacing: 0.0,
+                                  ),
                               keyboardType: TextInputType.number,
                               cursorColor: FlutterFlowTheme.of(context).primary,
-                              validator: _model.dogAgeControllerValidator
+                              validator: _model.dogAgeTextControllerValidator
                                   .asValidator(context),
                             ),
                           ),
@@ -409,20 +442,25 @@ class _CreateDogProfileWidgetState extends State<CreateDogProfileWidget> {
                 ],
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 60.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 60.0, 0.0, 0.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
                             'You can add multiple pups in your profile.',
-                            style: FlutterFlowTheme.of(context).labelMedium,
+                            style: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Figtree',
+                                  letterSpacing: 0.0,
+                                ),
                           ),
                         ],
                       ),
@@ -432,7 +470,7 @@ class _CreateDogProfileWidgetState extends State<CreateDogProfileWidget> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 20.0, 40.0),
                           child: FFButtonWidget(
                             onPressed: () async {
@@ -442,19 +480,20 @@ class _CreateDogProfileWidgetState extends State<CreateDogProfileWidget> {
                             options: FFButtonOptions(
                               width: 100.0,
                               height: 50.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              color: Color(0xCCFFFFFF),
+                              color: const Color(0xCCFFFFFF),
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
                                     fontFamily: 'Figtree',
-                                    color: Color(0xFF1A1F24),
+                                    color: const Color(0xFF1A1F24),
+                                    letterSpacing: 0.0,
                                   ),
                               elevation: 0.0,
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -463,7 +502,7 @@ class _CreateDogProfileWidgetState extends State<CreateDogProfileWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 40.0),
                           child: FFButtonWidget(
                             onPressed: () async {
@@ -472,9 +511,9 @@ class _CreateDogProfileWidgetState extends State<CreateDogProfileWidget> {
                                   .set(createDogsRecordData(
                                     userAssociation: currentUserReference,
                                     dogPhoto: _model.uploadedFileUrl,
-                                    dogName: _model.dogNameController.text,
-                                    dogType: _model.dogBreedController.text,
-                                    dogAge: _model.dogAgeController.text,
+                                    dogName: _model.dogNameTextController.text,
+                                    dogType: _model.dogBreedTextController.text,
+                                    dogAge: _model.dogAgeTextController.text,
                                   ));
 
                               context.goNamed('createYourProfile');
@@ -483,9 +522,9 @@ class _CreateDogProfileWidgetState extends State<CreateDogProfileWidget> {
                             options: FFButtonOptions(
                               width: 180.0,
                               height: 50.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).primary,
                               textStyle: FlutterFlowTheme.of(context)
@@ -493,9 +532,10 @@ class _CreateDogProfileWidgetState extends State<CreateDogProfileWidget> {
                                   .override(
                                     fontFamily: 'Figtree',
                                     color: Colors.white,
+                                    letterSpacing: 0.0,
                                   ),
                               elevation: 2.0,
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),

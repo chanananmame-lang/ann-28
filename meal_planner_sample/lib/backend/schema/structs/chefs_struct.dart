@@ -3,9 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '/backend/schema/util/firestore_util.dart';
-import '/backend/schema/util/schema_util.dart';
 
-import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 class ChefsStruct extends FFFirebaseStruct {
@@ -23,18 +21,21 @@ class ChefsStruct extends FFFirebaseStruct {
   String? _profilePicture;
   String get profilePicture => _profilePicture ?? '';
   set profilePicture(String? val) => _profilePicture = val;
+
   bool hasProfilePicture() => _profilePicture != null;
 
   // "name" field.
   String? _name;
   String get name => _name ?? '';
   set name(String? val) => _name = val;
+
   bool hasName() => _name != null;
 
   // "bio" field.
   String? _bio;
   String get bio => _bio ?? '';
   set bio(String? val) => _bio = val;
+
   bool hasBio() => _bio != null;
 
   static ChefsStruct fromMap(Map<String, dynamic> data) => ChefsStruct(

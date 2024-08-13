@@ -2,25 +2,32 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
-import 'package:treads_social_sample/flutter_flow/flutter_flow_icon_button.dart';
-import 'package:treads_social_sample/flutter_flow/flutter_flow_widgets.dart';
-import 'package:treads_social_sample/index.dart';
-import 'package:treads_social_sample/main.dart';
-import 'package:treads_social_sample/flutter_flow/flutter_flow_util.dart';
+import 'package:marketplace_treads_social/flutter_flow/flutter_flow_icon_button.dart';
+import 'package:marketplace_treads_social/flutter_flow/flutter_flow_widgets.dart';
+import 'package:marketplace_treads_social/flutter_flow/flutter_flow_theme.dart';
+import 'package:marketplace_treads_social/index.dart';
+import 'package:marketplace_treads_social/main.dart';
+import 'package:marketplace_treads_social/flutter_flow/flutter_flow_util.dart';
 
-import 'package:treads_social_sample/backend/firebase/firebase_config.dart';
-import 'package:treads_social_sample/auth/firebase_auth/auth_util.dart';
+import 'package:marketplace_treads_social/backend/firebase/firebase_config.dart';
+import 'package:marketplace_treads_social/auth/firebase_auth/auth_util.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 void main() async {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
-  testWidgets('ahhhh', (WidgetTester tester) async {
+  setUpAll(() async {
     _overrideOnError();
     await initFirebase();
 
-    await authManager.signOut();
+    await FlutterFlowTheme.initialize();
+  });
 
+  setUp(() async {
+    await authManager.signOut();
+  });
+
+  testWidgets('ahhhh', (WidgetTester tester) async {
     await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: 'andrew@flutterflow.', password: 'andrew123');
     await tester.pumpWidget(MyApp());

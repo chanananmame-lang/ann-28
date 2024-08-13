@@ -1,6 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 import '/components/custom_appbar_widget.dart';
 import '/components/diet_item/diet_item_widget.dart';
 import '/components/preference_item/preference_item_widget.dart';
@@ -10,8 +9,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'onboarding_model.dart';
 export 'onboarding_model.dart';
 
@@ -37,17 +34,16 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('ONBOARDING_PAGE_Onboarding_ON_INIT_STATE');
       logFirebaseEvent('Onboarding_update_page_state');
-      setState(() {
-        _model.allergenSelection =
-            (currentUserDocument?.allergens?.toList() ?? [])
-                .toList()
-                .cast<String>();
-        _model.dietSelection = valueOrDefault(currentUserDocument?.diet, '');
-        _model.ingredientSelection =
-            (currentUserDocument?.ingredientDislikes?.toList() ?? [])
-                .toList()
-                .cast<String>();
-      });
+      _model.allergenSelection =
+          (currentUserDocument?.allergens.toList() ?? [])
+              .toList()
+              .cast<String>();
+      _model.dietSelection = valueOrDefault(currentUserDocument?.diet, '');
+      _model.ingredientSelection =
+          (currentUserDocument?.ingredientDislikes.toList() ?? [])
+              .toList()
+              .cast<String>();
+      setState(() {});
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -94,10 +90,9 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
             onboardingOnboardingOptionsRecordList.isNotEmpty
                 ? onboardingOnboardingOptionsRecordList.first
                 : null;
+
         return GestureDetector(
-          onTap: () => _model.unfocusNode.canRequestFocus
-              ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-              : FocusScope.of(context).unfocus(),
+          onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -108,9 +103,9 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                 children: [
                   Expanded(
                     child: Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                      alignment: const AlignmentDirectional(0.0, 0.0),
                       child: Padding(
-                        padding: EdgeInsets.all(24.0),
+                        padding: const EdgeInsets.all(24.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -128,7 +123,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                               ),
                             ),
                             Expanded(
-                              child: Container(
+                              child: SizedBox(
                                 width: double.infinity,
                                 height: 500.0,
                                 child: PageView(
@@ -144,25 +139,30 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 24.0, 0.0, 0.0),
                                           child: Text(
                                             'Select your diet',
                                             style: FlutterFlowTheme.of(context)
-                                                .displaySmall,
+                                                .displaySmall
+                                                .override(
+                                                  fontFamily: 'Inter',
+                                                  letterSpacing: 0.0,
+                                                ),
                                           ),
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 18.0, 0.0, 0.0),
                                           child: Builder(
                                             builder: (context) {
                                               final diet =
                                                   onboardingOnboardingOptionsRecord
                                                           ?.dietOptions
-                                                          ?.toList() ??
+                                                          .toList() ??
                                                       [];
+
                                               return Column(
                                                 mainAxisSize: MainAxisSize.min,
                                                 crossAxisAlignment:
@@ -188,14 +188,13 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                                           .selectionClick();
                                                       logFirebaseEvent(
                                                           'dietItem_update_page_state');
-                                                      setState(() {
-                                                        _model.dietSelection =
-                                                            dietItem.dietName;
-                                                      });
+                                                      _model.dietSelection =
+                                                          dietItem.dietName;
+                                                      setState(() {});
                                                     },
                                                   );
                                                 }).divide(
-                                                    SizedBox(height: 8.0)),
+                                                    const SizedBox(height: 8.0)),
                                               );
                                             },
                                           ),
@@ -209,17 +208,21 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 24.0, 0.0, 0.0),
                                           child: Text(
                                             'Any allergies?',
                                             style: FlutterFlowTheme.of(context)
-                                                .displaySmall,
+                                                .displaySmall
+                                                .override(
+                                                  fontFamily: 'Inter',
+                                                  letterSpacing: 0.0,
+                                                ),
                                           ),
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 18.0, 0.0, 0.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.min,
@@ -231,8 +234,9 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                                   final allergens =
                                                       onboardingOnboardingOptionsRecord
                                                               ?.allergenOptions
-                                                              ?.toList() ??
+                                                              .toList() ??
                                                           [];
+
                                                   return Wrap(
                                                     spacing: 8.0,
                                                     runSpacing: 8.0,
@@ -272,10 +276,9 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                                                 .selectionClick();
                                                             logFirebaseEvent(
                                                                 'preferenceItem_update_page_state');
-                                                            setState(() {
-                                                              _model.removeFromAllergenSelection(
-                                                                  allergensItem);
-                                                            });
+                                                            _model.removeFromAllergenSelection(
+                                                                allergensItem);
+                                                            setState(() {});
                                                           } else {
                                                             logFirebaseEvent(
                                                                 'preferenceItem_haptic_feedback');
@@ -283,10 +286,9 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                                                 .selectionClick();
                                                             logFirebaseEvent(
                                                                 'preferenceItem_update_page_state');
-                                                            setState(() {
-                                                              _model.addToAllergenSelection(
-                                                                  allergensItem);
-                                                            });
+                                                            _model.addToAllergenSelection(
+                                                                allergensItem);
+                                                            setState(() {});
                                                           }
                                                         },
                                                       );
@@ -306,17 +308,21 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 24.0, 0.0, 0.0),
                                           child: Text(
                                             'How about dislikes?',
                                             style: FlutterFlowTheme.of(context)
-                                                .displaySmall,
+                                                .displaySmall
+                                                .override(
+                                                  fontFamily: 'Inter',
+                                                  letterSpacing: 0.0,
+                                                ),
                                           ),
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 18.0, 0.0, 0.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.min,
@@ -328,8 +334,9 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                                   final dislikes =
                                                       onboardingOnboardingOptionsRecord
                                                               ?.ingredientOptions
-                                                              ?.toList() ??
+                                                              .toList() ??
                                                           [];
+
                                                   return Wrap(
                                                     spacing: 8.0,
                                                     runSpacing: 8.0,
@@ -369,10 +376,9 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                                                 .selectionClick();
                                                             logFirebaseEvent(
                                                                 'preferenceItem_update_page_state');
-                                                            setState(() {
-                                                              _model.removeFromIngredientSelection(
-                                                                  dislikesItem);
-                                                            });
+                                                            _model.removeFromIngredientSelection(
+                                                                dislikesItem);
+                                                            setState(() {});
                                                           } else {
                                                             logFirebaseEvent(
                                                                 'preferenceItem_haptic_feedback');
@@ -380,10 +386,9 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                                                 .selectionClick();
                                                             logFirebaseEvent(
                                                                 'preferenceItem_update_page_state');
-                                                            setState(() {
-                                                              _model.addToIngredientSelection(
-                                                                  dislikesItem);
-                                                            });
+                                                            _model.addToIngredientSelection(
+                                                                dislikesItem);
+                                                            setState(() {});
                                                           }
                                                         },
                                                       );
@@ -407,22 +412,19 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 12.0),
+                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 12.0),
                     child: FFButtonWidget(
                       onPressed: () async {
                         logFirebaseEvent('ONBOARDING_PAGE_CONTINUE_BTN_ON_TAP');
                         logFirebaseEvent('Button_haptic_feedback');
                         HapticFeedback.lightImpact();
                         logFirebaseEvent('Button_update_app_state');
-                        setState(() {
-                          FFAppState().userDiet = _model.dietSelection!;
-                          FFAppState().userAllergens =
-                              _model.allergenSelection.toList().cast<String>();
-                          FFAppState().userIngredientDislikes = _model
-                              .ingredientSelection
-                              .toList()
-                              .cast<String>();
-                        });
+                        FFAppState().userDiet = _model.dietSelection!;
+                        FFAppState().userAllergens =
+                            _model.allergenSelection.toList().cast<String>();
+                        FFAppState().userIngredientDislikes =
+                            _model.ingredientSelection.toList().cast<String>();
+                        setState(() {});
                         if (_model.pageViewCurrentIndex == 2) {
                           logFirebaseEvent('Button_navigate_to');
 
@@ -430,7 +432,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                         } else {
                           logFirebaseEvent('Button_page_view');
                           await _model.pageViewController?.nextPage(
-                            duration: Duration(milliseconds: 300),
+                            duration: const Duration(milliseconds: 300),
                             curve: Curves.ease,
                           );
                         }
@@ -440,13 +442,17 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                         width: double.infinity,
                         height: 50.0,
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).primary,
-                        textStyle: FlutterFlowTheme.of(context).titleSmall,
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Inter',
+                                  letterSpacing: 0.0,
+                                ),
                         elevation: 0.0,
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Colors.transparent,
                           width: 1.0,
                         ),

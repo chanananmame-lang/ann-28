@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>MealPlanner-Sample</string>
+	<string>Marketplace - Meal Planner</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 
@@ -28,7 +28,7 @@
             <string>Editor</string>
             <key>CFBundleURLSchemes</key>
             <array>
-                <string>com.googleusercontent.apps.921473207936-jh1jrn09qai5fvfqi410fhiiaa89dtqd</string>
+                <!--FF_REVERSED_CLIENT_ID-->
                 
             </array>
         </dict>
@@ -37,10 +37,10 @@
         <key>CFBundleTypeRole</key>
         <string>Editor</string>
         <key>CFBundleURLName</key>
-        <string>mealplannersample.com</string>
+        <string>marketplacemealplanner.com</string>
         <key>CFBundleURLSchemes</key>
         <array>
-        <string>mealplannersample</string>
+        <string>marketplacemealplanner</string>
         </array>
         </dict>
     </array>
@@ -78,9 +78,5 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 
-	<key>CADisableMinimumFrameDurationOnPhone</key>
-	<true/>
-	<key>UIApplicationSupportsIndirectInputEvents</key>
-	<true/>
 </dict>
 </plist>

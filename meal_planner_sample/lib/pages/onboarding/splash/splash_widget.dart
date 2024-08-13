@@ -1,11 +1,8 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'splash_model.dart';
 export 'splash_model.dart';
 
@@ -40,9 +37,7 @@ class _SplashWidgetState extends State<SplashWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -53,7 +48,7 @@ class _SplashWidgetState extends State<SplashWidget> {
             children: [
               Expanded(
                 child: Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: const AlignmentDirectional(0.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -74,15 +69,19 @@ class _SplashWidgetState extends State<SplashWidget> {
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                         child: RichText(
                           textScaler: MediaQuery.of(context).textScaler,
                           text: TextSpan(
                             children: [
                               TextSpan(
                                 text: 'Meal',
-                                style:
-                                    FlutterFlowTheme.of(context).displaySmall,
+                                style: FlutterFlowTheme.of(context)
+                                    .displaySmall
+                                    .override(
+                                      fontFamily: 'Inter',
+                                      letterSpacing: 0.0,
+                                    ),
                               ),
                               TextSpan(
                                 text: 'Planner',
@@ -92,6 +91,7 @@ class _SplashWidgetState extends State<SplashWidget> {
                                       fontFamily: 'Inter',
                                       color:
                                           FlutterFlowTheme.of(context).primary,
+                                      letterSpacing: 0.0,
                                     ),
                               )
                             ],
@@ -100,6 +100,7 @@ class _SplashWidgetState extends State<SplashWidget> {
                                 .override(
                                   fontFamily: 'Inter',
                                   fontSize: 32.0,
+                                  letterSpacing: 0.0,
                                 ),
                           ),
                         ),
@@ -109,11 +110,12 @@ class _SplashWidgetState extends State<SplashWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 12.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 12.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     FFButtonWidget(
+                      key: const ValueKey('Button_pijy'),
                       onPressed: () async {
                         logFirebaseEvent('SPLASH_PAGE_GET_STARTED_BTN_ON_TAP');
                         logFirebaseEvent('Button_haptic_feedback');
@@ -127,13 +129,17 @@ class _SplashWidgetState extends State<SplashWidget> {
                         width: double.infinity,
                         height: 50.0,
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).primary,
-                        textStyle: FlutterFlowTheme.of(context).titleSmall,
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Inter',
+                                  letterSpacing: 0.0,
+                                ),
                         elevation: 0.0,
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Colors.transparent,
                           width: 1.0,
                         ),
@@ -155,7 +161,7 @@ class _SplashWidgetState extends State<SplashWidget> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 24.0, 0.0, 24.0),
                             child: RichText(
                               textScaler: MediaQuery.of(context).textScaler,
@@ -163,8 +169,12 @@ class _SplashWidgetState extends State<SplashWidget> {
                                 children: [
                                   TextSpan(
                                     text: 'Already a member?  ',
-                                    style:
-                                        FlutterFlowTheme.of(context).bodySmall,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodySmall
+                                        .override(
+                                          fontFamily: 'Inter',
+                                          letterSpacing: 0.0,
+                                        ),
                                   ),
                                   TextSpan(
                                     text: 'Sign In',
@@ -172,12 +182,18 @@ class _SplashWidgetState extends State<SplashWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Inter',
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.w600,
                                           decoration: TextDecoration.underline,
                                         ),
                                   )
                                 ],
-                                style: FlutterFlowTheme.of(context).bodyMedium,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Inter',
+                                      letterSpacing: 0.0,
+                                    ),
                               ),
                             ),
                           ),

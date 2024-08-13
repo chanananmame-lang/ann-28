@@ -1,8 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'empty_list1_model.dart';
 export 'empty_list1_model.dart';
 
@@ -49,22 +47,26 @@ class _EmptyList1WidgetState extends State<EmptyList1Widget> {
           size: 90.0,
         ),
         Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
           child: Text(
             'No Posts',
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).headlineSmall.override(
                   fontFamily: 'Outfit',
                   color: FlutterFlowTheme.of(context).primaryText,
+                  letterSpacing: 0.0,
                 ),
           ),
         ),
         Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(32.0, 8.0, 32.0, 0.0),
+          padding: const EdgeInsetsDirectional.fromSTEB(32.0, 8.0, 32.0, 0.0),
           child: Text(
             'It seems that there are no posts here. Check back later to see the latest stuff going on!',
             textAlign: TextAlign.center,
-            style: FlutterFlowTheme.of(context).labelMedium,
+            style: FlutterFlowTheme.of(context).labelMedium.override(
+                  fontFamily: 'Figtree',
+                  letterSpacing: 0.0,
+                ),
           ),
         ),
       ],

@@ -5,14 +5,9 @@ import '/components/meal_bottom_sheet/meal_bottom_sheet_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'meal_details_model.dart';
 export 'meal_details_model.dart';
 
@@ -34,20 +29,7 @@ class _MealDetailsWidgetState extends State<MealDetailsWidget>
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final animationsMap = {
-    'iconOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        ScaleEffect(
-          curve: Curves.elasticOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: Offset(0.0, 0.0),
-          end: Offset(1.0, 1.0),
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -55,6 +37,20 @@ class _MealDetailsWidgetState extends State<MealDetailsWidget>
     _model = createModel(context, () => MealDetailsModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'MealDetails'});
+    animationsMap.addAll({
+      'iconOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.elasticOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(0.0, 0.0),
+            end: const Offset(1.0, 1.0),
+          ),
+        ],
+      ),
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -69,9 +65,7 @@ class _MealDetailsWidgetState extends State<MealDetailsWidget>
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -82,7 +76,7 @@ class _MealDetailsWidgetState extends State<MealDetailsWidget>
               child: Stack(
                 children: [
                   Align(
-                    alignment: AlignmentDirectional(0.0, -1.0),
+                    alignment: const AlignmentDirectional(0.0, -1.0),
                     child: Container(
                       width: double.infinity,
                       height: 450.0,
@@ -97,7 +91,7 @@ class _MealDetailsWidgetState extends State<MealDetailsWidget>
                             ),
                           ).image,
                         ),
-                        borderRadius: BorderRadius.only(
+                        borderRadius: const BorderRadius.only(
                           bottomLeft: Radius.circular(0.0),
                           bottomRight: Radius.circular(0.0),
                           topLeft: Radius.circular(24.0),
@@ -111,9 +105,9 @@ class _MealDetailsWidgetState extends State<MealDetailsWidget>
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(0.0, -1.0),
+                        alignment: const AlignmentDirectional(0.0, -1.0),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               24.0, 54.0, 24.0, 0.0),
                           child: wrapWithModel(
                             model: _model.customAppbarModel,
@@ -129,16 +123,13 @@ class _MealDetailsWidgetState extends State<MealDetailsWidget>
                                 logFirebaseEvent('customAppbar_bottom_sheet');
                                 await showModalBottomSheet(
                                   isScrollControlled: true,
-                                  backgroundColor: Color(0x00FFFFFF),
-                                  barrierColor: Color(0x00000000),
+                                  backgroundColor: const Color(0x00FFFFFF),
+                                  barrierColor: const Color(0x00000000),
                                   context: context,
                                   builder: (context) {
                                     return GestureDetector(
-                                      onTap: () => _model
-                                              .unfocusNode.canRequestFocus
-                                          ? FocusScope.of(context)
-                                              .requestFocus(_model.unfocusNode)
-                                          : FocusScope.of(context).unfocus(),
+                                      onTap: () =>
+                                          FocusScope.of(context).unfocus(),
                                       child: Padding(
                                         padding:
                                             MediaQuery.viewInsetsOf(context),
@@ -158,7 +149,7 @@ class _MealDetailsWidgetState extends State<MealDetailsWidget>
                         width: double.infinity,
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).primaryBackground,
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                             bottomLeft: Radius.circular(0.0),
                             bottomRight: Radius.circular(0.0),
                             topLeft: Radius.circular(24.0),
@@ -166,7 +157,7 @@ class _MealDetailsWidgetState extends State<MealDetailsWidget>
                           ),
                         ),
                         child: Padding(
-                          padding: EdgeInsets.all(24.0),
+                          padding: const EdgeInsets.all(24.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -185,14 +176,15 @@ class _MealDetailsWidgetState extends State<MealDetailsWidget>
                                           .displaySmall
                                           .override(
                                             fontFamily: 'Inter',
+                                            letterSpacing: 0.0,
                                             lineHeight: 1.2,
                                           ),
                                     ),
                                   ),
                                   Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           18.0, 2.0, 0.0, 0.0),
                                       child: StreamBuilder<MealsRecord>(
                                         stream: MealsRecord.getDocument(
@@ -216,8 +208,10 @@ class _MealDetailsWidgetState extends State<MealDetailsWidget>
                                               ),
                                             );
                                           }
+
                                           final stackMealsRecord =
                                               snapshot.data!;
+
                                           return InkWell(
                                             splashColor: Colors.transparent,
                                             focusColor: Colors.transparent,
@@ -280,7 +274,7 @@ class _MealDetailsWidgetState extends State<MealDetailsWidget>
                                               children: [
                                                 Align(
                                                   alignment:
-                                                      AlignmentDirectional(
+                                                      const AlignmentDirectional(
                                                           1.0, -1.0),
                                                   child: Icon(
                                                     Icons
@@ -297,9 +291,9 @@ class _MealDetailsWidgetState extends State<MealDetailsWidget>
                                                         currentUserReference))
                                                   Align(
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             1.0, -1.0),
-                                                    child: Icon(
+                                                    child: const Icon(
                                                       Icons.favorite_rounded,
                                                       color: Color(0xFFFF4E59),
                                                       size: 32.0,
@@ -318,17 +312,18 @@ class _MealDetailsWidgetState extends State<MealDetailsWidget>
                               ),
                               if (widget.mealRef?.mealCalories != null)
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 6.0, 0.0, 0.0),
                                   child: Text(
                                     '${valueOrDefault<String>(
-                                      widget.mealRef?.mealCalories?.toString(),
+                                      widget.mealRef?.mealCalories.toString(),
                                       '0',
                                     )} calories',
                                     style: FlutterFlowTheme.of(context)
                                         .labelLarge
                                         .override(
                                           fontFamily: 'Inter',
+                                          letterSpacing: 0.0,
                                           lineHeight: 1.5,
                                         ),
                                   ),
@@ -336,7 +331,7 @@ class _MealDetailsWidgetState extends State<MealDetailsWidget>
                               if (widget.mealRef?.mealIngredients != null &&
                                   widget.mealRef?.mealIngredients != '')
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 24.0, 0.0, 0.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -349,6 +344,7 @@ class _MealDetailsWidgetState extends State<MealDetailsWidget>
                                             .labelMedium
                                             .override(
                                               fontFamily: 'Inter',
+                                              letterSpacing: 0.0,
                                               lineHeight: 1.5,
                                             ),
                                       ),
@@ -359,15 +355,16 @@ class _MealDetailsWidgetState extends State<MealDetailsWidget>
                                             .override(
                                               fontFamily: 'Inter',
                                               fontSize: 16.0,
+                                              letterSpacing: 0.0,
                                               lineHeight: 1.5,
                                             ),
                                       ),
                                     ],
                                   ),
                                 ),
-                              if (widget.mealRef!.mealAllergens.length > 0)
+                              if (widget.mealRef!.mealAllergens.isNotEmpty)
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 24.0, 0.0, 0.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -380,18 +377,20 @@ class _MealDetailsWidgetState extends State<MealDetailsWidget>
                                             .labelMedium
                                             .override(
                                               fontFamily: 'Inter',
+                                              letterSpacing: 0.0,
                                               lineHeight: 1.5,
                                             ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 6.0, 0.0, 0.0),
                                         child: Builder(
                                           builder: (context) {
                                             final allergens = widget
                                                     .mealRef?.mealAllergens
-                                                    ?.toList() ??
+                                                    .toList() ??
                                                 [];
+
                                             return Wrap(
                                               spacing: 0.0,
                                               runSpacing: 0.0,
@@ -409,20 +408,20 @@ class _MealDetailsWidgetState extends State<MealDetailsWidget>
                                                 final allergensItem =
                                                     allergens[allergensIndex];
                                                 return Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 0.0, 8.0, 8.0),
                                                   child: Container(
                                                     height: 44.0,
                                                     decoration: BoxDecoration(
-                                                      color: Color(0xFFFFECAA),
+                                                      color: const Color(0xFFFFECAA),
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               8.0),
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   24.0,
                                                                   12.0,
@@ -443,10 +442,12 @@ class _MealDetailsWidgetState extends State<MealDetailsWidget>
                                                                 .override(
                                                                   fontFamily:
                                                                       'Inter',
-                                                                  color: Color(
+                                                                  color: const Color(
                                                                       0xFF81681E),
                                                                   fontSize:
                                                                       16.0,
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w600,
