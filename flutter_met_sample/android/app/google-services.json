@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "621340452060",
+    "project_id": "marketplace-flutter-met-yele5x",
+    "storage_bucket": "marketplace-flutter-met-yele5x.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:621340452060:android:045af16c6aa0b58f790019",
+        "android_client_info": {
+          "package_name": "com.flutterflow.fluttermet"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHLET0U8t6rKdOzJ2bRZb-v4QszS_6OGI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
