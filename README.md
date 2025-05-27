@@ -1,4 +1,3 @@
-# Available Sample Apps
 
 Below is a quick overview of our available sample apps. 
 
